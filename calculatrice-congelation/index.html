@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Guide Durée Congélation">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,guide-congelation">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Guide Durée Congélation">
+    <meta property="og:type" content="website">
+    <title>Guide Durée Congélation | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide Durée Congélation</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Guide Durée Congélation</h2>
+    <p>Combien de temps conserver les aliments au congélateur sans perte qualité.</p>
+
+    <h3>Tableau Durée de Congélation</h3>
+    <table>
+        <tr><th>Catégorie</th><th>Aliment</th><th>Durée</th></tr>
+        <tr><td rowspan="4">Viande</td><td>Viande de Boeuf</td><td>6-12 mois</td></tr>
+        <tr><td>Viande Porc</td><td>4-6 mois</td></tr>
+        <tr><td>Viande Volaille</td><td>4-12 mois</td></tr>
+        <tr><td>Agneau</td><td>6-9 mois</td></tr>
+        <tr><td rowspan="3">Poisson</td><td>Poisson Gras</td><td>2-3 mois</td></tr>
+        <tr><td>Poisson Blanc</td><td>6-8 mois</td></tr>
+        <tr><td>Crustacés</td><td>3-6 mois</td></tr>
+        <tr><td rowspan="3">Laitier</td><td>Beurre</td><td>6-9 mois</td></tr>
+        <tr><td>Fromage</td><td>4-6 mois</td></tr>
+        <tr><td>Yaourt</td><td>1-2 mois</td></tr>
+        <tr><td rowspan="3">Fruits</td><td>Baies</td><td>8-12 mois</td></tr>
+        <tr><td>Agrumes</td><td>4-6 mois</td></tr>
+        <tr><td>Fruits Rouges</td><td>12 mois</td></tr>
+        <tr><td rowspan="3">Légumes</td><td>Légumes Cuits</td><td>2-3 mois</td></tr>
+        <tr><td>Légumes Crus</td><td>8-12 mois</td></tr>
+        <tr><td>Légumes Mixtes</td><td>6-8 mois</td></tr>
+        <tr><td rowspan="2">Plats Préparés</td><td>Restes Cuits</td><td>2-3 mois</td></tr>
+        <tr><td>Plats Congelés</td><td>3-6 mois</td></tr>
+    </table>
+
+    <h3>Conseils Conservation</h3>
+    <p><strong>Étiquetage:</strong> Marquez la date de congélation. <strong>Emballage:</strong> Utilisez papier congélation ou sacs hermétiques. <strong>Retrait air:</strong> Évitez les brûlures de congélation. <strong>Température:</strong> -18°C idéal.</p>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>À quelle température congeler?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">-18°C est la température de congélation idéale. À cette température, les aliments se conservent plusieurs mois voire années.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quelle est la différence entre congélateur et réfrigérateur?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Réfrigérateur: 4°C, conserve 3-4 jours. Congélateur: -18°C, conserve plusieurs mois. Congélateur « star »: -12°C, conserve 2-3 semaines.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment décongeler en toute sécurité?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Trois méthodes: au réfrigérateur (lent), à l'eau froide (moyen), ou à température ambiante (rapide mais moins sûr). Évitez l'eau chaude.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

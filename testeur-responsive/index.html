@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testeur Responsive Design - Outil Gratuit</title>
+    <meta name="description" content="Testez votre site sur différentes résolutions : mobile, tablet, desktop">
+    <meta name="keywords" content="testeur responsive, responsive design checker, test mobile">
+    <meta property="og:title" content="Testeur Responsive Design - Outil Gratuit">
+    <meta property="og:description" content="Testez votre site sur différentes résolutions : mobile, tablet, desktop">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Testeur Responsive Design - Outil Gratuit</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour tester le design responsive de votre site</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Testeur Responsive Design en Ligne</h2>
+<p>Testez comment votre site s'affiche sur différentes résolutions d'écran.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <label style="display: block; margin-bottom: 10px; color: #00ff88;">URL du Site :</label>
+    <input id="respUrl" type="text" placeholder="https://example.com" style="width: 100%; margin-bottom: 15px;">
+
+    <label style="display: block; margin-bottom: 10px; color: #00ff88;">Résolution :</label>
+    <select id="respResolution" onchange="updateResolution()" style="width: 100%; margin-bottom: 15px;">
+        <option value="1920x1080">Desktop (1920x1080)</option>
+        <option value="1366x768">Laptop (1366x768)</option>
+        <option value="768x1024">Tablet (768x1024)</option>
+        <option value="425x812">Mobile (425x812)</option>
+        <option value="375x667">iPhone (375x667)</option>
+        <option value="custom">Personnalisée</option>
+    </select>
+
+    <div id="customRes" style="display: none; margin-bottom: 15px;">
+        <input id="customWidth" type="number" placeholder="Largeur (px)" style="width: 48%; margin-right: 2%;">
+        <input id="customHeight" type="number" placeholder="Hauteur (px)" style="width: 48%; margin-left: 2%;">
+    </div>
+
+    <button onclick="testResponsive()" style="width: 100%;">Charger Aperçu</button>
+
+    <div id="respPreview" style="margin-top: 20px; border: 2px solid #00d4ff; border-radius: 4px; overflow: hidden; display: none;">
+        <div style="background: #1a1f3a; padding: 10px; border-bottom: 1px solid #00d4ff;">
+            <p style="text-align: center; color: #00ff88; margin: 0;">
+                <span id="resolutionLabel">-</span> • <span id="deviceInfo">-</span>
+            </p>
+        </div>
+        <iframe id="respIframe" style="width: 100%; border: none; min-height: 600px;"></iframe>
+    </div>
+</div>
+
+<h2>Breakpoints Responsive Courants</h2>
+<table>
+    <tr>
+        <th>Appareil</th>
+        <th>Résolution</th>
+        <th>CSS Media Query</th>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td>320-480px</td>
+        <td>@media (max-width: 480px)</td>
+    </tr>
+    <tr>
+        <td>Tablet</td>
+        <td>481-768px</td>
+        <td>@media (min-width: 481px)</td>
+    </tr>
+    <tr>
+        <td>Desktop</td>
+        <td>769px+</td>
+        <td>@media (min-width: 769px)</td>
+    </tr>
+</table>
+
+<h2>Checklist Responsive</h2>
+<ul style="margin-left: 20px;">
+    <li>✓ Viewport meta tag présent</li>
+    <li>✓ Texte lisible (14px minimum)</li>
+    <li>✓ Boutons cliquables (48x48px minimum)</li>
+    <li>✓ Images responsive (max-width: 100%)</li>
+    <li>✓ Pas de scroll horizontal</li>
+    <li>✓ Touch-friendly sur mobile</li>
+    <li>✓ Fast loading (&lt;3s)</li>
+</ul>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ Responsive</h2>
+    <div class="faq-item">
+        <h4>Mobile-first ou desktop-first ?</h4>
+        <div class="faq-answer">Mobile-first est mieux pour SEO 2026. Commencez petit, montez.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Combien de breakpoints ?</h4>
+        <div class="faq-answer">3-4 suffisent : mobile, tablet, desktop, widescreen.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Flexbox ou Grid pour responsive ?</h4>
+        <div class="faq-answer">Les deux ! Flexbox pour menus, Grid pour layouts.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Comment tester vraiment ?</h4>
+        <div class="faq-answer">Vrais appareils ou DevTools Chrome. Cet outil est pour aperçu.</div>
+    </div>
+</div>
+
+<script>
+function updateResolution() {
+    const sel = document.getElementById('respResolution').value;
+    document.getElementById('customRes').style.display = sel === 'custom' ? 'block' : 'none';
+}
+
+function testResponsive() {
+    const url = document.getElementById('respUrl').value;
+    if (!url) { alert('Entrez une URL'); return; }
+
+    let res = document.getElementById('respResolution').value;
+    let [w, h] = res === 'custom'
+        ? [document.getElementById('customWidth').value, document.getElementById('customHeight').value]
+        : res.split('x');
+
+    document.getElementById('respIframe').src = url;
+    document.getElementById('resolutionLabel').textContent = w + 'x' + h;
+    document.getElementById('deviceInfo').textContent = 'Aperçu responsif';
+    document.getElementById('respPreview').style.display = 'block';
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

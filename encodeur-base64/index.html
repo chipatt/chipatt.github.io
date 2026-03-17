@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Encodeur/Décodeur Base64 en Ligne</title><meta name="description" content="Encodez et décodez du texte en Base64 instantanément"><meta name="keywords" content="base64, encodeur décodeur, encoder base64, décoder base64"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Encodeur/Décodeur Base64 en Ligne"><meta property="og:description" content="Encodez et décodez du texte en Base64 instantanément"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#00B894,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#00B894;margin-bottom:10px;font-size:1rem}
+.btn{background:#00B894;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#00B894}
+.res{background:#f0f7ff;border-left:4px solid #00B894;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#00B894;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Encodeur/Décodeur Base64 en Ligne</h1><p>Encodez et décodez du texte en Base64 instantanément</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Encodeur / Décodeur Base64</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div><h3 style="color:#00B894;margin-bottom:10px">Texte</h3><textarea id="txt" rows="8" placeholder="Entrez votre texte ici..."></textarea></div>
+<div><h3 style="color:#00B894;margin-bottom:10px">Base64</h3><textarea id="b64" rows="8" placeholder="Résultat Base64..."></textarea></div></div>
+<div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap">
+<button class="btn" onclick="document.getElementById('b64').value=btoa(unescape(encodeURIComponent(document.getElementById('txt').value)))">Encoder →</button>
+<button class="btn" onclick="try{document.getElementById('txt').value=decodeURIComponent(escape(atob(document.getElementById('b64').value)))}catch(e){alert('Base64 invalide')}" style="background:#333">← Décoder</button>
+<button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('b64').value)" style="background:#636E72">Copier Base64</button>
+<button class="btn" onclick="document.getElementById('txt').value='';document.getElementById('b64').value=''" style="background:#E74C3C">Effacer</button></div>
+</div>
+<div class="faq"><h3>FAQ</h3><details><summary>Qu'est-ce que le Base64 ?</summary><p>Le Base64 est un encodage qui convertit des données binaires en caractères ASCII. Il est couramment utilisé pour transmettre des données via des protocoles textuels comme les emails ou les URLs.</p></details>
+<details><summary>Le Base64 est-il un chiffrement ?</summary><p>Non, le Base64 est un encodage, pas un chiffrement. Il ne fournit aucune sécurité. N'importe qui peut décoder un texte Base64.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Encodeur/Décodeur Base64 en Ligne</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Bande Passante - Convertir Unités</title>
+    <meta name="description" content="Convertissez bits/sec, Mbps, Gbps, octets - Calculatrice gratuite">
+    <meta name="keywords" content="calculatrice bande passante, convertir Mbps, unités vitesse">
+    <meta property="og:title" content="Calculatrice Bande Passante - Convertir Unités">
+    <meta property="og:description" content="Convertissez bits/sec, Mbps, Gbps, octets - Calculatrice gratuite">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Calculatrice Bande Passante - Convertir Unités</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour calculer et convertir la bande passante</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Calculatrice Bande Passante en Ligne</h2>
+<p>Convertissez et calculez votre bande passante en différentes unités.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Valeur :</label>
+        <input id="bwValue" type="number" placeholder="100" style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Unité :</label>
+        <select id="bwUnit" style="width: 100%;">
+            <option value="bps">bps (bits par seconde)</option>
+            <option value="kbps">Kbps (kilobits/sec)</option>
+            <option value="mbps">Mbps (mégabits/sec)</option>
+            <option value="gbps">Gbps (gigabits/sec)</option>
+            <option value="byteps">B/s (octets/sec)</option>
+            <option value="kbytes">KB/s (kilooctets/sec)</option>
+            <option value="mbytes">MB/s (mégaoctets/sec)</option>
+            <option value="gbytes">GB/s (gigaoctets/sec)</option>
+        </select>
+    </div>
+    <button onclick="calculateBW()" style="width: 100%;">Calculer</button>
+    <div id="bwResults" style="margin-top: 20px; padding: 15px; background: #1a1f3a; border-radius: 4px; display: none;">
+        <h3>Résultats de Conversion :</h3>
+        <div id="bwOutput" style="margin-top: 10px;"></div>
+    </div>
+</div>
+
+<h2>Guide des Unités Bande Passante</h2>
+<table>
+    <tr>
+        <th>Unité</th>
+        <th>Signification</th>
+        <th>Équivalent</th>
+    </tr>
+    <tr>
+        <td>bps</td>
+        <td>Bits par seconde</td>
+        <td>Unité de base</td>
+    </tr>
+    <tr>
+        <td>Kbps</td>
+        <td>Kilobits/sec</td>
+        <td>1,000 bps</td>
+    </tr>
+    <tr>
+        <td>Mbps</td>
+        <td>Mégabits/sec</td>
+        <td>1,000,000 bps</td>
+    </tr>
+    <tr>
+        <td>Gbps</td>
+        <td>Gigabits/sec</td>
+        <td>1,000,000,000 bps</td>
+    </tr>
+    <tr>
+        <td>B/s</td>
+        <td>Octets/sec</td>
+        <td>bps / 8</td>
+    </tr>
+    <tr>
+        <td>KB/s</td>
+        <td>Kilooctets/sec</td>
+        <td>B/s × 1,000</td>
+    </tr>
+</table>
+
+<h2>Cas d'Usage</h2>
+<ul style="margin-left: 20px;">
+    <li>Connexion ADSL typique : 10-20 Mbps</li>
+    <li>Connexion Fibre : 100-1000 Mbps</li>
+    <li>4G mobile : 20-100 Mbps</li>
+    <li>Streaming HD : 5-10 Mbps</li>
+    <li>Streaming 4K : 25+ Mbps</li>
+</ul>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ Bande Passante</h2>
+    <div class="faq-item">
+        <h4>Bits vs Octets, quelle différence ?</h4>
+        <div class="faq-answer">1 octet = 8 bits. Votre connexion Internet est en Mbps (mégabits), pas mégaoctets.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Ma connexion est "100 Mbps" mais je télécharge à 10 MB/s ?</h4>
+        <div class="faq-answer">Correct ! 100 Mbps ÷ 8 = 12.5 MB/s. C'est normal.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Quelle bande passante me suffit ?</h4>
+        <div class="faq-answer">50 Mbps pour un foyer. 100+ si plusieurs appareils simultanément.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Pourquoi mes vitesses sont inférieures ?</h4>
+        <div class="faq-answer">Interférence WiFi, distance du routeur, surcharge réseau du FAI.</div>
+    </div>
+</div>
+
+<script>
+function calculateBW() {
+    const val = parseFloat(document.getElementById('bwValue').value);
+    const unit = document.getElementById('bwUnit').value;
+    if (!val) { alert('Entrez une valeur'); return; }
+
+    const conversions = {
+        bps: val,
+        kbps: val * 1000,
+        mbps: val * 1000000,
+        gbps: val * 1000000000,
+        byteps: val * 8,
+        kbytes: val * 8000,
+        mbytes: val * 8000000,
+        gbytes: val * 8000000000
+    };
+
+    let output = '<p><strong>Conversions :</strong></p>';
+    for (let u in conversions) {
+        if (u !== unit) {
+            let label = u.replace(/ps$/, '/s');
+            output += `<p>${label}: ${conversions[u].toLocaleString()} ${u.includes('bytes') || u.includes('bpe') ? 'octets/s' : 'bits/s'}</p>`;
+        }
+    }
+    document.getElementById('bwOutput').innerHTML = output;
+    document.getElementById('bwResults').style.display = 'block';
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

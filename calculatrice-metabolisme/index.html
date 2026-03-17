@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculez votre TMB (Taux Métabolique Basal) avec les formules Harris-Benedict et Mifflin-St Jeor">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice Métabolisme Basal">
+    <meta property="og:description" content="Calculez votre TMB (Taux Métabolique Basal) avec les formules Harris-Benedict et Mifflin-St Jeor">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Métabolisme Basal | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice Métabolisme Basal</h1>
+        <p>Calculez votre TMB (Taux Métabolique Basal) avec les formules Harris-Benedict et Mifflin-St Jeor</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice du Métabolisme Basal</h2>
+                <p>Le métabolisme basal est le nombre de calories que votre corps brûle au repos.</p>
+
+                <div class="form-group">
+                    <label>Sexe:</label>
+                    <select id="sexe">
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Âge (années):</label>
+                    <input type="number" id="age" min="1" max="120" value="30">
+                </div>
+
+                <div class="form-group">
+                    <label>Poids (kg):</label>
+                    <input type="number" id="poids" min="1" max="300" step="0.1" value="70">
+                </div>
+
+                <div class="form-group">
+                    <label>Taille (cm):</label>
+                    <input type="number" id="taille" min="50" max="250" value="175">
+                </div>
+
+                <button onclick="calculerMbr()">Calculer mon TMB</button>
+
+                <div id="resultatMbr" class="result">
+                    <p style="margin-bottom: 1rem;"><strong>Résultats:</strong></p>
+                    <p>Formule Mifflin-St Jeor (plus moderne): <span id="mifflin" style="font-weight: bold; color: #26a69a;"></span> kcal/jour</p>
+                    <p style="margin-top: 0.5rem;">Formule Harris-Benedict: <span id="harris" style="font-weight: bold; color: #4db6ac;"></span> kcal/jour</p>
+                </div>
+            </div>
+
+            <h2>Qu'est-ce que le métabolisme basal?</h2>
+            <div class="guide-section">
+                <p>Le Taux Métabolique Basal (TMB) est la quantité d'énergie que votre corps dépense uniquement pour maintenir les fonctions vitales: respiration, circulation, digestion, maintenance cellulaire. C'est votre dépense énergétique minimum.</p>
+                <h3>Facteurs affectant le TMB</h3>
+                <p>L'âge, le sexe, le poids, la taille et la composition corporelle (masse musculaire vs masse grasse) influencent votre TMB. La masse musculaire brûle plus de calories au repos que la graisse. C'est pourquoi l'entraînement en résistance augmente votre métabolisme.</p>
+                <h3>Utilité du calcul TMB</h3>
+                <p>Connaître votre TMB vous aide à comprendre vos besoins caloriques minimums et à planifier une perte ou un gain de poids de manière saine et scientifique.</p>
+                <h3>Les deux formules</h3>
+                <p><strong>Mifflin-St Jeor:</strong> Plus moderne et précise, développée en 1990. <strong>Harris-Benedict:</strong> Classique mais légèrement moins précise, datant de 1919. La plupart des experts préfèrent Mifflin-St Jeor.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Différence entre TMB et TDEE?</h4>
+                    <p>TMB = calories brûlées au repos. TDEE = calories totales brûlées incluant l'activité. TDEE = TMB × facteur d'activité.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment augmenter mon TMB?</h4>
+                    <p>Augmentez votre masse musculaire par l'entraînement en résistance, dormez suffisamment et maintenez une alimentation équilibrée.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Pourquoi les hommes ont un TMB supérieur?</h4>
+                    <p>Les hommes ont généralement plus de masse musculaire et des niveaux d'hormones différents (testostérone) comparé aux femmes.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Le TMB change-t-il avec l'âge?</h4>
+                    <p>Oui, le TMB diminue d'environ 2-3% par décennie après 30 ans. C'est pourquoi l'activité physique devient plus importante en vieillissant.</p>
+                </div>
+            </div>
+
+            <script>
+                function calculerMbr() {
+                    const sexe = document.getElementById('sexe').value;
+                    const age = parseFloat(document.getElementById('age').value);
+                    const poids = parseFloat(document.getElementById('poids').value);
+                    const taille = parseFloat(document.getElementById('taille').value);
+
+                    // Mifflin-St Jeor
+                    let mifflin;
+                    if (sexe === 'homme') {
+                        mifflin = 10 * poids + 6.25 * taille - 5 * age + 5;
+                    } else {
+                        mifflin = 10 * poids + 6.25 * taille - 5 * age - 161;
+                    }
+
+                    // Harris-Benedict
+                    let harris;
+                    if (sexe === 'homme') {
+                        harris = 88.362 + (13.397 * poids) + (4.799 * taille) - (5.677 * age);
+                    } else {
+                        harris = 447.593 + (9.247 * poids) + (3.098 * taille) - (4.330 * age);
+                    }
+
+                    document.getElementById('mifflin').textContent = Math.round(mifflin);
+                    document.getElementById('harris').textContent = Math.round(harris);
+                    document.getElementById('resultatMbr').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

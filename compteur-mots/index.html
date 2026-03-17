@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Compteur de Mots en Ligne - Gratuit & Instantané</title>
+<meta name="description" content="Comptez les mots, caractères, phrases et paragraphes de votre texte instantanément. Outil gratuit et rapide.">
+<meta name="keywords" content="compteur de mots, compter mots, compteur caractères, nombre de mots">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="#">
+<meta property="og:title" content="Compteur de Mots en Ligne - Gratuit & Instantané">
+<meta property="og:description" content="Comptez les mots, caractères, phrases et paragraphes de votre texte instantanément. Outil gratuit et rapide.">
+<meta property="og:type" content="website">
+<!-- Monetag Ads -->
+
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.header{background:linear-gradient(135deg,#6C63FF,#1a1a2e);color:#fff;padding:20px 0;text-align:center}
+.header h1{font-size:clamp(1.4rem,3vw,2.2rem);margin-bottom:5px}
+.header p{opacity:.85;font-size:.95rem}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.main-grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.tool-card{background:#fff;border-radius:12px;padding:30px;box-shadow:0 2px 15px rgba(0,0,0,.06)}
+.sidebar{display:flex;flex-direction:column;gap:20px}
+.sidebar-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}
+.sidebar-card h3{color:#6C63FF;margin-bottom:10px;font-size:1rem}
+.btn{background:#6C63FF;color:#fff;border:none;padding:12px 28px;border-radius:8px;cursor:pointer;font-size:1rem;transition:transform .2s,opacity .2s}
+.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#6C63FF}
+.result{background:#f0f7ff;border-left:4px solid #6C63FF;padding:20px;border-radius:0 8px 8px 0;margin:20px 0;font-size:1.1rem}
+.footer{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}
+.footer a{color:#6C63FF;text-decoration:none}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;margin:20px 0}
+.related-item{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:transform .2s}
+.related-item:hover{transform:translateY(-3px)}
+.related-item h4{color:#6C63FF;margin-bottom:8px}
+.faq{margin:30px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}
+.faq summary{cursor:pointer;font-weight:600;color:#1a1a2e}
+.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.main-grid{grid-template-columns:1fr}.sidebar{order:-1}}
+</style>
+</head>
+<body>
+<div class="header"><div class="container"><h1>Compteur de Mots en Ligne - Gratuit & Instantané</h1><p>Comptez les mots, caractères, phrases et paragraphes de votre texte instantanément. Outil gratuit et rapide.</p></div></div>
+<div class="ad-container" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;">
+
+<script></script>
+</div>
+<div class="container"><div class="main-grid"><div class="content"><div class="tool-card">
+<h2 style="margin-bottom:15px">Compteur de Mots</h2>
+<textarea id="txt" rows="10" placeholder="Collez ou tapez votre texte ici..."></textarea>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0">
+<div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:8px"><div id="wc" style="font-size:2rem;font-weight:700;color:#6C63FF">0</div><div style="font-size:.85rem;color:#666">Mots</div></div>
+<div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:8px"><div id="cc" style="font-size:2rem;font-weight:700;color:#6C63FF">0</div><div style="font-size:.85rem;color:#666">Caractères</div></div>
+<div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:8px"><div id="sc" style="font-size:2rem;font-weight:700;color:#6C63FF">0</div><div style="font-size:.85rem;color:#666">Phrases</div></div>
+<div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:8px"><div id="pc" style="font-size:2rem;font-weight:700;color:#6C63FF">0</div><div style="font-size:.85rem;color:#666">Paragraphes</div></div>
+</div>
+<div style="display:flex;gap:10px"><button class="btn" onclick="document.getElementById('txt').value='';count()">Effacer</button><button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('txt').value)">Copier</button></div>
+</div>
+<script>
+const t=document.getElementById('txt');
+function count(){const v=t.value;document.getElementById('wc').textContent=v.trim()?v.trim().split(/\s+/).length:0;document.getElementById('cc').textContent=v.length;document.getElementById('sc').textContent=v.trim()?v.split(/[.!?]+/).filter(s=>s.trim()).length:0;document.getElementById('pc').textContent=v.trim()?v.split(/
+
++/).filter(p=>p.trim()).length:0}
+t.addEventListener('input',count);
+</script>
+<div class="faq"><h3 style="margin-bottom:10px">Questions fréquentes</h3>
+<details><summary>Comment fonctionne le compteur de mots ?</summary><p>Notre outil analyse votre texte en temps réel et compte les mots séparés par des espaces, les caractères individuels, les phrases (délimitées par . ! ?) et les paragraphes (séparés par des lignes vides).</p></details>
+<details><summary>Le compteur est-il précis ?</summary><p>Oui, notre algorithme utilise des expressions régulières avancées pour un comptage précis, même avec des textes complexes contenant de la ponctuation multiple.</p></details>
+<details><summary>Puis-je l'utiliser pour des essais universitaires ?</summary><p>Absolument ! C'est l'outil idéal pour vérifier que votre essai respecte les limites de mots imposées par votre université.</p></details>
+</div></div>
+
+
+<div class="sidebar"><div class="ad-sidebar" style="text-align:center;margin:15px 0;min-height:250px;">
+
+<script></script>
+</div>
+<div class="sidebar-card"><h3>Articles populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Guide complet 2026</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Astuces et conseils</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Comparatif détaillé</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">FAQ complète</a></li>
+</ul></div><div class="ad-sidebar" style="text-align:center;margin:15px 0;min-height:250px;">
+
+<script></script>
+</div></div></div></div>
+<div class="ad-container" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;">
+
+<script></script>
+</div>
+<div class="footer"><div class="container"><p>&copy; 2026 Compteur de Mots en Ligne - Gratuit & Instantané - Tous droits réservés</p><p style="margin-top:10px;font-size:.85rem;opacity:.7">Mentions légales | Politique de confidentialité | Contact</p></div></div>
+
+
+
+
+</body></html>

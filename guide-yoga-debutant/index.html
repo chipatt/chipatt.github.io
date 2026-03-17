@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apprenez le yoga: postures, bienfaits et conseils pour débuter">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Guide Yoga pour Débutants">
+    <meta property="og:description" content="Apprenez le yoga: postures, bienfaits et conseils pour débuter">
+    <meta property="og:type" content="website">
+    <title>Guide Yoga pour Débutants | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide Yoga pour Débutants</h1>
+        <p>Apprenez le yoga: postures, bienfaits et conseils pour débuter</p>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Guide Complet du Yoga pour Débutants</h2>
+            
+            <div class="guide-section">
+                <h3>Qu'est-ce que le yoga?</h3>
+                <p>Le yoga est une pratique ancienne originaire d'Inde qui combine exercices physiques (asanas), techniques de respiration (pranayama) et méditation. Contrairement aux idées reçues, le yoga n'est pas juste une série de postures étirées. C'est un système holistique qui vise l'harmonie du corps, de l'esprit et de l'âme.</p>
+                <p>Le yoga moderne comprend principalement Hatha, Vinyasa, Ashtanga, Bikram et Yin yoga. Chaque style a une intensité et une philosophie différentes. Les débutants commencent généralement par Hatha ou Vinyasa qui sont plus accessibles.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Bienfaits scientifiques du yoga</h3>
+                <p><strong>Flexibilité et mobilité:</strong> Le yoga augmente progressivement votre amplitude de mouvement. <strong>Force musculaire:</strong> Les poses de yoga développent force et endurance, particulièrement dans le noyau corporel. <strong>Équilibre et proprioception:</strong> Beaucoup de poses améliorent votre équilibre et conscience du corps.</p>
+                <p><strong>Réduction du stress:</strong> La combinaison de mouvement, respiration et méditation réduit significativement le stress et l'anxiété. <strong>Amélioration posturale:</strong> Le yoga renforce les muscles du dos et du noyau, améliorant la posture au quotidien. <strong>Santé cardiaque:</strong> La pratique régulière réduit la tension artérielle et améliore la santé cardiovasculaire.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Types de yoga pour débutants</h3>
+                <p><strong>Hatha Yoga:</strong> Style classique, fondamental. Les poses sont tenues plus longtemps, donnant le temps d'ajustements précis. Excellent pour débuter. <strong>Vinyasa Yoga:</strong> Flux dynamique où les poses s'enchaînent. Plus cardiovasculaire. Bon si vous aimez le mouvement continu.</p>
+                <p><strong>Yin Yoga:</strong> Poses tenues 3-5 minutes pour étirer le tissu conjonctif profond. Très relaxant. Parfait pour la flexibilité. <strong>Yoga Réparateur:</strong> Utilise des accessoires pour soutien. Très relaxant, adapté aux personnes fatiguées ou blessées.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Postures essentielles pour débuter</h3>
+                <div class="pose-item">
+                    <strong>Lotus (Padmasana):</strong> Jambes croisées, une bonne posture pour la méditation. Stretche les hanches et les genoux. Si c'est inconfortable, utilisez position tailleur.
+                </div>
+                <div class="pose-item">
+                    <strong>Montagne (Tadasana):</strong> Pieds à l'écart de la largeur des hanches, bras le long du corps. Posture fondamentale, base pour de nombreuses autres poses.
+                </div>
+                <div class="pose-item">
+                    <strong>Arbre (Vrksasana):</strong> Debout sur une jambe, l'autre pied sur la cuisse interne. Améliore l'équilibre et la concentration. Pose calmante.
+                </div>
+                <div class="pose-item">
+                    <strong>Enfant (Balasana):</strong> À genoux, fesses sur talons, front au sol. Pose très relaxante pour le repos. Étire le bas du dos et les épaules.
+                </div>
+                <div class="pose-item">
+                    <strong>Chat-Vache (Marjaryasana-Bitilasana):</strong> À quatre pattes, alternez arrondir et cambrer le dos. Échauffe la colonne vertébrale. Bonne pose échauffement.
+                </div>
+                <div class="pose-item">
+                    <strong>Cobra (Bhujangasana):</strong> Couché sur le ventre, mains sous les épaules, soulevez le buste. Étire la poitrine, renforce le dos.
+                </div>
+                <div class="pose-item">
+                    <strong>Chien Tête en Bas (Adho Mukha Svanasana):</strong> Forme de triangle inversé. Étire les ischio-jambiers, renforce les bras, calme l'esprit. Pose très importante en yoga.
+                </div>
+                <div class="pose-item">
+                    <strong>Warrior I (Virabhadrasana I):</strong> Position fente, bras levés. Renforce jambes et noyau. Pose dynamique d'équilibre.
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h3>Comment débuter votre pratique</h3>
+                <p><strong>Trouvez un cours:</strong> Rejoignez un studio local ou utilisez YouTube/apps (Down Dog, Yoga with Adriene). <strong>Investissez dans un tapis:</strong> Un bon tapis offre grip et rembourrage. <strong>Portez des vêtements confortables:</strong> Vêtements légers et ajustés qui ne vous gênent pas.</p>
+                <p><strong>Commencez lentement:</strong> Tenez les poses 3-5 respirations au début. Augmentez progressivement. <strong>Écoutez votre corps:</strong> Le yoga n'est pas compétitif. N'allez jamais au-delà de votre zone de confort. <strong>Soyez régulier:</strong> 3-4 sessions par semaine apportent les meilleurs résultats.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Respiration yogique (Pranayama)</h3>
+                <p>La respiration est centrale au yoga. <strong>Ujjayi (respiration victorieuse):</strong> Contournez la glotte pour créer un léger bruit "ha". Calme le système nerveux. <strong>Nadi Shodhana (respiration alternée):</strong> Inspirez par une narine, expirez par l'autre. Équilibre l'énergie mentale.</p>
+                <p><strong>Kapalabhati (respiration du crâne brillant):</strong> Expirations courtes et forcées, inspirations naturelles. Revitalise. Toujours faire avec modération.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je être flexible pour débuter le yoga?</h4>
+                    <p>Non! Le yoga développe la flexibilité. Si vous êtes raide, c'est une excellente raison de commencer. Vous verrez des améliorations rapides.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Puis-je faire du yoga si je suis blessé?</h4>
+                    <p>Oui, mais modifiez les poses ou consultez un instructeur. Yin Yoga ou yoga réparateur sont excellents en récupération.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Combien de fois par semaine?</h4>
+                    <p>3-4 fois par semaine est idéal. Même 2 fois apporte des bénéfices. La régularité est plus importante que la fréquence.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quand voir des résultats?</h4>
+                    <p>Flexibilité: 2-3 semaines. Force: 4-6 semaines. Réduction du stress: après chaque séance! Soyez patient.</p>
+                </div>
+            </div>
+
+            <script>
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

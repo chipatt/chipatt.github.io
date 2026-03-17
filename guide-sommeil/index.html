@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Améliorez la qualité de votre sommeil avec des stratégies basées sur la science">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Guide du Sommeil Réparateur">
+    <meta property="og:description" content="Améliorez la qualité de votre sommeil avec des stratégies basées sur la science">
+    <meta property="og:type" content="website">
+    <title>Guide du Sommeil Réparateur | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide du Sommeil Réparateur</h1>
+        <p>Améliorez la qualité de votre sommeil avec des stratégies basées sur la science</p>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Guide Complet du Sommeil Réparateur</h2>
+            
+            <div class="guide-section">
+                <h3>Pourquoi le sommeil est vital</h3>
+                <p>Le sommeil ne fait pas que vous reposer. C'est quand votre cerveau traite les informations, consolide les souvenirs, régule les hormones et répare les cellules. Un sommeil insuffisant est lié à l'obésité, diabète, maladies cardiaques, dépression et affaiblissement du système immunitaire. La plupart des adultes ont besoin de 7-9 heures par nuit.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Les quatre stades du sommeil</h3>
+                <p><strong>Stade 1 (Sommnolence):</strong> Transition veille-sommeil. Durée: quelques minutes. <strong>Stade 2 (Sommeil léger):</strong> Le corps se prépare au sommeil profond. Durée: 10-25 minutes. Constitue 45-55% du sommeil.</p>
+                <p><strong>Stade 3 (Sommeil profond):</strong> Le plus réparateur. Restitution physique. Durée: 20-40 minutes. Plus crucial pour la santé. <strong>REM (Sommeil paradoxal):</strong> Rêves vivides. Crucial pour apprentissage, mémoire émotionnelle. Durée: 10-60 minutes. Augmente au cours de la nuit.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Créer une hygiène du sommeil optimale</h3>
+                <p><strong>Horaire régulier:</strong> Couchez-vous et levez-vous à la même heure chaque jour, même les weekends. Stabilise votre rythme circadien. <strong>Environnement idéal:</strong> Chambre noire, silencieuse, fraîche (16-19°C est optimal). Utilisez des rideaux occultants, bouchons d'oreille si nécessaire.</p>
+                <p><strong>Matelas et oreillers:</strong> Investissez dans un bon matelas (dure 7-10 ans). Oreiller qui soutient votre cou. Un lit confortable fait une énorme différence. <strong>Sans écrans avant le lit:</strong> Lumière bleue supprime la mélatonine. Arrêtez 1-2 heures avant le coucher. Lisez, méditez ou prenez un bain à la place.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Habitudes diurnes impactant le sommeil</h3>
+                <p><strong>Lumière naturelle le matin:</strong> Sortez dehors au lever du soleil. Cela renforce votre rythme circadien. <strong>Exercice régulier:</strong> 30 minutes, 3-5 jours/semaine améliore le sommeil. Pas d'exercice intense après 19h. <strong>Caféine:</strong> Limitez à 200mg/jour. Arrêtez après 14h car demi-vie est 5-6 heures.</p>
+                <p><strong>Repas tard:</strong> Pas de repas lourds 3 heures avant lit. Peut causer reflux et inconfort. Collation légère OK. <strong>Alcool:</strong> Supprime REM, fragmente le sommeil. Limiter beaucoup.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Techniques pour s'endormir plus facilement</h3>
+                <p><strong>Respiration 4-7-8:</strong> Inspirez 4, retenez 7, expirez 8. Active votre système parasympathique. <strong>Scan corporel:</strong> Détendez progressivement chaque muscle de la tête aux pieds. Très efficace.</p>
+                <p><strong>Temps au lit limité:</strong> Pas de TV, scroll au lit. Votre cerveau doit associer lit avec sommeil, pas stimulation. <strong>Si vous ne dormez pas après 20min:</strong> Levez-vous, faites une activité calme ailleurs, revenez au lit quand somnolent.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Suppléments et médicaments</h3>
+                <p><strong>Mélatonine:</strong> Aide à réguler le rythme circadien. Efficace pour jet lag. 0.5-5mg avant coucher. <strong>Magnésium:</strong> Détend muscles, calme esprit. 200-400mg. <strong>Valériane, Passiflore:</strong> Herbes traditionnelles. Preuves modérées.</p>
+                <p><strong>Somnifères sur ordonnance:</strong> À court terme OK. Créent dépendance et tolerance. Demandez d'abord d'optimiser l'hygiène du sommeil. Consultez un médecin avant tout supplément ou médicament.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Traiter l'insomnie chronique</h3>
+                <p>Si vous avez insomnie pendant 3+ mois, consultez un professionnel. La thérapie cognitivo-comportementale pour l'insomnie (TCC-I) est très efficace. Peut inclure thérapie du contrôle du stimulus et restriction du temps au lit pour renforcer l'association lit-sommeil.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Combien de sommeil est suffisant?</h4>
+                    <p>7-9 heures pour la plupart des adultes. Les enfants et adolescents ont besoin de plus. Quelques personnes prospèrent avec 6, d'autres en besoin de 10. Écoutez votre corps.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Les siestes sont-elles bonnes ou mauvaises?</h4>
+                    <p>Courtes siestes (20-30 min) améliorent l'alerte. Longues siestes (>90 min) peuvent causer inertie. Évitez les siestes trop tard si vous avez insomnie.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Pourquoi je ronfle?</h4>
+                    <p>Ronflement courant quand relaxe gorge. Peut indiquer apnée du sommeil (problème sérieux). Consultez un médecin si fort ou accompagné d'apnées.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Pourquoi j'oublie mes rêves?</h4>
+                    <p>Rêves surviennent surtout en REM. Si vous vous réveillez pendant REM, vous vous souvenez. Sinon, oubli rapide. Normal et pas problématique.</p>
+                </div>
+            </div>
+
+            <script>
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trouvez des citations inspirantes pour vous motiver chaque jour">
+    <meta name="keywords" content="éducation, culture, apprentissage, français">
+    <meta name="author" content="Education Tools">
+    <meta property="og:title" content="Générateur de Citations Inspirantes">
+    <meta property="og:description" content="Trouvez des citations inspirantes pour vous motiver chaque jour">
+    <meta property="og:type" content="website">
+    <title>Générateur de Citations Inspirantes | Education Tools</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .result {
+            background: #f0f4ff;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #555;
+            display: none;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .ad-space {
+            background: #f5f5f5;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            color: #999;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            header {
+                padding: 20px;
+            }
+        }
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Générateur de Citations Inspirantes</h1>
+            <p>Trouvez des citations inspirantes pour vous motiver chaque jour</p>
+        </header>
+
+        <div class="main">
+            <div class="content">
+                
+<h2>Générateur de Citations Inspirantes</h2>
+
+<div class="input-group">
+    <label for="category">Catégorie:</label>
+    <select id="category">
+        <option value="motivation">Motivation</option>
+        <option value="sagesse">Sagesse</option>
+        <option value="apprentissage">Apprentissage</option>
+    </select>
+</div>
+
+<button onclick="generateQuote()">Générer une Citation</button>
+
+<div id="result" class="result">
+    <div id="quote-display" style="font-size: 1.3em; font-style: italic; color: #667eea; text-align: center; padding: 20px;"></div>
+    <button onclick="generateQuote()" style="width: 100%; margin-top: 15px;">Voir une Autre Citation</button>
+</div>
+
+<div class="faq">
+    <h2>Questions Fréquentes</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Comment utiliser ce générateur?</div>
+        <div class="faq-answer">Sélectionnez une catégorie de citations puis cliquez sur "Générer une Citation" pour voir une citation aléatoire.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Les citations sont-elles authentiques?</div>
+        <div class="faq-answer">Oui, toutes les citations sont authentiques et proviennent de personnes réputées pour leur sagesse.</div>
+    </div>
+</div>
+
+<script>
+const quotes = {"motivation": ["La pers\u00e9v\u00e9rance est la m\u00e8re du succ\u00e8s.", "Ce n'est pas parce que c'est difficile que nous n'osons pas, c'est parce que nous n'osons pas que c'est difficile.", "Le succ\u00e8s n'est pas final, l'\u00e9chec n'est pas fatal.", "L'\u00e9ducation est l'arme la plus puissante pour changer le monde.", "La connaissance est le pouvoir."], "sagesse": ["La sagesse c'est de savoir ce qu'il faut ignorer.", "Le silence est d'or, mais la parole peut \u00eatre d'argent.", "Celui qui pose une question est un imb\u00e9cile pendant cinq minutes; celui qui ne pose pas de questions est un imb\u00e9cile pour toujours.", "Nous n'apprenons pas pour l'\u00e9cole, mais pour la vie.", "Le vrai voyage de d\u00e9couverte ne consiste pas \u00e0 chercher de nouveaux paysages, mais \u00e0 avoir de nouveaux yeux."], "apprentissage": ["L'\u00e9ducation est ce que reste quand on a tout oubli\u00e9 ce qu'on a appris.", "Celui qui se croit trop sage pour apprendre des autres ne pourra pas apprendre d'autrui.", "L'apprentissage est une richesse qu'aucun voleur ne peut prendre.", "Chaque \u00e9tudiant peut \u00eatre un champion.", "Le meilleur moment pour planter un arbre \u00e9tait il y a 20 ans. Le deuxi\u00e8me meilleur moment est maintenant."]};
+
+function generateQuote() {
+    const category = document.getElementById('category').value;
+    const categoryQuotes = quotes[category];
+    const randomIndex = Math.floor(Math.random() * categoryQuotes.length);
+    const quote = categoryQuotes[randomIndex];
+
+    document.getElementById('quote-display').innerHTML = '"' + quote + '"';
+    document.getElementById('result').classList.add('show');
+}
+
+function toggleFAQ(element) {
+    element.nextElementSibling.classList.toggle('show');
+}
+</script>
+
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+            </aside>
+        </div>
+
+        
+
+<footer>
+            <p>&copy; 2026 Education Tools | Outils d'apprentissage en ligne gratuits</p>
+            <p><a href="#">Accueil</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Contact</a></p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

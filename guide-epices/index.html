@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Guide des Épices du Monde">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,guide-epices">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Guide des Épices du Monde">
+    <meta property="og:type" content="website">
+    <title>Guide des Épices du Monde | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide des Épices du Monde</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Guide des Épices du Monde</h2>
+    <p>Explorez les épices, leurs origines, utilisations et bienfaits.</p>
+
+    <h3>Les Grandes Épices</h3>
+
+    <h4>Safran</h4>
+    <p><strong>Origine:</strong> Perse/Iran. <strong>Goût:</strong> Fleuri, légèrement amer. <strong>Utilisation:</strong> Riz, soupes, pains. <strong>Bienfaits:</strong> Antioxydant, anti-inflammatoire. <strong>Stockage:</strong> Lieu frais et sec, 1-2 ans.</p>
+
+    <h4>Curcuma</h4>
+    <p><strong>Origine:</strong> Asie du Sud. <strong>Goût:</strong> Terreux, légèrement amer. <strong>Utilisation:</strong> Curries, riz, lait doré. <strong>Bienfaits:</strong> Anti-inflammatoire puissant. <strong>Stockage:</strong> Endroit frais, 2 ans.</p>
+
+    <h4>Cannelle</h4>
+    <p><strong>Origine:</strong> Sri Lanka/Indonésie. <strong>Goût:</strong> Sucré, chaleureux. <strong>Utilisation:</strong> Pâtisseries, fruits, café. <strong>Bienfaits:</strong> Stabilise glycémie. <strong>Stockage:</strong> Lieu sec, 1-2 ans.</p>
+
+    <h4>Cardamome</h4>
+    <p><strong>Origine:</strong> Inde. <strong>Goût:</strong> Épicé, floral, mentholé. <strong>Utilisation:</strong> Curries, café, pâtisseries. <strong>Bienfaits:</strong> Digestive. <strong>Stockage:</strong> Endroit frais, 1-2 ans.</p>
+
+    <h4>Clou de Girofle</h4>
+    <p><strong>Origine:</strong> Indonésie. <strong>Goût:</strong> Intense, piquant. <strong>Utilisation:</strong> Marinades, pains épicés, vin chaud. <strong>Bienfaits:</strong> Antiseptique. <strong>Stockage:</strong> Lieu sec, 2-3 ans.</p>
+
+    <h4>Noix de Muscade</h4>
+    <p><strong>Origine:</strong> Indonésie. <strong>Goût:</strong> Sucré, chaleureux. <strong>Utilisation:</strong> Sauces, soups, desserts. <strong>Bienfaits:</strong> Aide à la digestion. <strong>Stockage:</strong> Entière (plus longtemps), 3-4 ans.</p>
+
+    <h3>Conseil: Achetez Entières</h3>
+    <p>Les épices entières conservent leurs saveurs et arômes beaucoup plus longtemps que les épices moulues. Moudez-les juste avant utilisation pour meilleur résultat.</p>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Combien de temps se conservent les épices?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Les épices durent 1-2 ans si bien conservées dans un endroit frais et sec. Les épices moulues se dégradent plus rapidement que les épices entières.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment conserver les épices correctement?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Gardez les épices dans des contenants hermétiques, loin de la lumière, de la chaleur et de l'humidité. Un tiroir frais et sombre est idéal.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je moudre mes propres épices?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Oui! Moudre vos propres épices les rend plus aromatiques. Utilisez un moulin à café ou un mortier et pilon.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

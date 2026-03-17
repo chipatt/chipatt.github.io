@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testeur API REST en Ligne - Outil Gratuit</title>
+    <meta name="description" content="Testez vos APIs REST directement depuis le navigateur sans Postman">
+    <meta name="keywords" content="testeur API, REST API, test API, API tester">
+    <meta property="og:title" content="Testeur API REST en Ligne - Outil Gratuit">
+    <meta property="og:description" content="Testez vos APIs REST directement depuis le navigateur sans Postman">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Testeur API REST en Ligne - Outil Gratuit</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour tester et déboguer vos APIs REST</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Testeur d'API REST en Ligne</h2>
+<p>Testez vos APIs REST directement depuis le navigateur sans installation.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Méthode :</label>
+        <select id="method" style="width: 100%;">
+            <option>GET</option>
+            <option>POST</option>
+            <option>PUT</option>
+            <option>DELETE</option>
+            <option>PATCH</option>
+        </select>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">URL :</label>
+        <input id="apiUrl" type="text" placeholder="https://api.example.com/users" style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Headers (JSON) :</label>
+        <textarea id="headers" rows="3" placeholder='{"Authorization": "Bearer token"}' style="width: 100%;"></textarea>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Body (JSON) :</label>
+        <textarea id="body" rows="4" placeholder='{"name": "John"}' style="width: 100%;"></textarea>
+    </div>
+    <button onclick="testAPI()" style="width: 100%;">Envoyer Requête</button>
+    <div id="apiResults" style="margin-top: 20px; padding: 15px; background: #1a1f3a; border-radius: 4px; display: none;">
+        <h3>Réponse :</h3>
+        <p>Status : <span id="statusCode" style="color: #00ff88;">-</span></p>
+        <textarea id="responseBody" rows="8" readonly style="width: 100%; margin-top: 10px;"></textarea>
+    </div>
+</div>
+
+<h2>Codes HTTP Courants</h2>
+<ul style="margin-left: 20px;">
+    <li><span class="highlight">200</span> - OK (succès)</li>
+    <li><span class="highlight">201</span> - Created (créé)</li>
+    <li><span class="highlight">400</span> - Bad Request (requête invalide)</li>
+    <li><span class="highlight">401</span> - Unauthorized (non autorisé)</li>
+    <li><span class="highlight">404</span> - Not Found (non trouvé)</li>
+    <li><span class="highlight">500</span> - Internal Error (erreur serveur)</li>
+</ul>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ API Testing</h2>
+    <div class="faq-item">
+        <h4>Pourquoi tester les APIs ?</h4>
+        <div class="faq-answer">Pour vérifier le fonctionnement, déboguer les problèmes, valider les réponses.</div>
+    </div>
+    <div class="faq-item">
+        <h4>CORS peut bloquer les requêtes, comment contourner ?</h4>
+        <div class="faq-answer">L'API doit autoriser CORS. Utilisez Postman ou un proxy si nécessaire.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Comment inclure une authentification ?</h4>
+        <div class="faq-answer">Ajouter le header Authorization avec le token Bearer ou clé API.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Quel outil professionnel recommandez-vous ?</h4>
+        <div class="faq-answer">Postman, Insomnia, ou curl pour les développeurs avancés.</div>
+    </div>
+</div>
+
+<script>
+function testAPI() {
+    const method = document.getElementById('method').value;
+    const url = document.getElementById('apiUrl').value;
+    const headersStr = document.getElementById('headers').value;
+    const bodyStr = document.getElementById('body').value;
+
+    try {
+        let headers = headersStr ? JSON.parse(headersStr) : {};
+        let options = { method, headers };
+        if (bodyStr && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
+            options.body = bodyStr;
+        }
+
+        fetch(url, options)
+            .then(r => {
+                document.getElementById('statusCode').textContent = r.status + ' ' + r.statusText;
+                return r.text();
+            })
+            .then(data => {
+                try {
+                    document.getElementById('responseBody').value = JSON.stringify(JSON.parse(data), null, 2);
+                } catch {
+                    document.getElementById('responseBody').value = data;
+                }
+                document.getElementById('apiResults').style.display = 'block';
+            })
+            .catch(e => alert('Erreur : ' + e.message));
+    } catch(e) {
+        alert('Erreur de format : ' + e.message);
+    }
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

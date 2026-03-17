@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Analyseur de Similarité de Texte</title><meta name="description" content="Comparez deux textes et détectez les passages similaires"><meta name="keywords" content="comparateur texte, détecteur plagiat, similarité texte, texte dupliqué"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Analyseur de Similarité de Texte"><meta property="og:description" content="Comparez deux textes et détectez les passages similaires"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#6C5CE7,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#6C5CE7;margin-bottom:10px;font-size:1rem}
+.btn{background:#6C5CE7;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#6C5CE7}
+.res{background:#f0f7ff;border-left:4px solid #6C5CE7;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#6C5CE7;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Analyseur de Similarité de Texte</h1><p>Comparez deux textes et détectez les passages similaires</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Analyseur de Similarité</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div><h3 style="color:#6C5CE7;margin-bottom:8px">Texte 1</h3><textarea id="t1" rows="8" placeholder="Collez le premier texte..."></textarea></div>
+<div><h3 style="color:#6C5CE7;margin-bottom:8px">Texte 2</h3><textarea id="t2" rows="8" placeholder="Collez le second texte..."></textarea></div></div>
+<button class="btn" onclick="compare()" style="width:100%;margin-top:15px">Analyser la similarité</button>
+<div id="result" style="margin-top:20px"></div></div>
+<script>
+function ngrams(t,n){const w=t.toLowerCase().replace(/[^\w\s]/g,'').split(/\s+/).filter(Boolean);const g=[];for(let i=0;i<=w.length-n;i++)g.push(w.slice(i,i+n).join(' '));return g}
+function compare(){const a=document.getElementById('t1').value.trim(),b=document.getElementById('t2').value.trim();if(!a||!b){alert('Entrez les deux textes');return}
+const g1=new Set(ngrams(a,3)),g2=new Set(ngrams(b,3));let common=0;g1.forEach(g=>{if(g2.has(g))common++});
+const sim=g1.size+g2.size>0?((2*common)/(g1.size+g2.size)*100).toFixed(1):0;
+const col=sim>70?'#E74C3C':sim>40?'#F39C12':'#27AE60';const label=sim>70?'Forte similarité':sim>40?'Similarité modérée':'Faible similarité';
+const w1=a.split(/\s+/).length,w2=b.split(/\s+/).length;
+document.getElementById('result').innerHTML=`
+<div style="text-align:center;padding:30px;background:#f8f9fa;border-radius:12px">
+<div style="position:relative;width:150px;height:150px;margin:0 auto">
+<svg viewBox="0 0 36 36" style="transform:rotate(-90deg)"><path d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eee" stroke-width="3"/><path d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="${col}" stroke-width="3" stroke-dasharray="${sim}, 100"/></svg>
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:1.8rem;font-weight:700;color:${col}">${sim}%</div></div>
+<div style="font-size:1.2rem;font-weight:600;color:${col};margin-top:10px">${label}</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:15px">
+<div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-weight:700">${w1}</div><div style="font-size:.8rem;color:#666">Mots texte 1</div></div>
+<div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-weight:700">${w2}</div><div style="font-size:.8rem;color:#666">Mots texte 2</div></div>
+<div style="text-align:center;padding:10px;background:#fff;border-radius:8px"><div style="font-weight:700">${common}</div><div style="font-size:.8rem;color:#666">N-grams communs</div></div></div>`}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment fonctionne l'analyse ?</summary><p>L'outil compare les trigrammes (séquences de 3 mots) entre les deux textes pour calculer un indice de similarité basé sur le coefficient de Dice.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Analyseur de Similarité de Texte</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

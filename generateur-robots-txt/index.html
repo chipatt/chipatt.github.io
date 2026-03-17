@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur robots.txt - Créer Fichier Gratuit</title>
+    <meta name="description" content="Générez un fichier robots.txt pour contrôler les crawlers de votre site">
+    <meta name="keywords" content="générateur robots.txt, robots.txt generator, SEO robots">
+    <meta property="og:title" content="Générateur robots.txt - Créer Fichier Gratuit">
+    <meta property="og:description" content="Générez un fichier robots.txt pour contrôler les crawlers de votre site">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Générateur robots.txt - Créer Fichier Gratuit</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour créer votre fichier robots.txt</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Générateur de robots.txt</h2>
+<p>Créez votre fichier robots.txt pour contrôler l'accès des robots/crawlers à votre site.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Autoriser Googlebot :</label>
+        <select id="googlebot" style="width: 100%;">
+            <option value="allow">Oui (recommandé)</option>
+            <option value="disallow">Non</option>
+        </select>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Autoriser Bingbot :</label>
+        <select id="bingbot" style="width: 100%;">
+            <option value="allow">Oui</option>
+            <option value="disallow">Non</option>
+        </select>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Dossiers à Bloquer :</label>
+        <input id="blockedDirs" type="text" placeholder="/admin, /private" style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Sitemap URL :</label>
+        <input id="sitemapUrl" type="text" placeholder="https://example.com/sitemap.xml" style="width: 100%;">
+    </div>
+    <button onclick="generateRobots()" style="width: 100%;">Générer robots.txt</button>
+    <div id="robotsOutput" style="margin-top: 20px; padding: 15px; background: #1a1f3a; border-radius: 4px; display: none;">
+        <h3>Votre robots.txt :</h3>
+        <textarea id="robotsText" rows="12" readonly style="width: 100%; font-size: 0.85em; margin-top: 10px;"></textarea>
+        <button onclick="copyRobots()" style="width: 100%; margin-top: 10px;">📋 Copier</button>
+    </div>
+</div>
+
+<h2>Qu'est-ce que robots.txt ?</h2>
+<p>C'est un fichier placé à la racine de votre domaine (example.com/robots.txt) qui indique aux robots comment crawler votre site.</p>
+
+<h2>Directives Courantes</h2>
+<table>
+    <tr>
+        <th>Directive</th>
+        <th>Fonction</th>
+        <th>Exemple</th>
+    </tr>
+    <tr>
+        <td>User-agent</td>
+        <td>Spécifie le robot</td>
+        <td>User-agent: Googlebot</td>
+    </tr>
+    <tr>
+        <td>Disallow</td>
+        <td>Bloque l'accès</td>
+        <td>Disallow: /private/</td>
+    </tr>
+    <tr>
+        <td>Allow</td>
+        <td>Autorise l'accès</td>
+        <td>Allow: /public/</td>
+    </tr>
+    <tr>
+        <td>Crawl-delay</td>
+        <td>Délai entre crawls</td>
+        <td>Crawl-delay: 2</td>
+    </tr>
+    <tr>
+        <td>Sitemap</td>
+        <td>URL du sitemap</td>
+        <td>Sitemap: /sitemap.xml</td>
+    </tr>
+</table>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ robots.txt</h2>
+    <div class="faq-item">
+        <h4>robots.txt est-il obligatoire ?</h4>
+        <div class="faq-answer">Non, mais recommandé pour contrôler les crawlers.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Un robot peut-il ignorer robots.txt ?</h4>
+        <div class="faq-answer">Oui, c'est une suggestion pas une obligation. Google respecte, spam bots non.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Où placer le fichier robots.txt ?</h4>
+        <div class="faq-answer">À la racine : example.com/robots.txt</div>
+    </div>
+    <div class="faq-item">
+        <h4>Robots.txt cache-t-il une page dans Google ?</h4>
+        <div class="faq-answer">Non. Utilisez meta robots ou .htaccess pour cacher du cache Google.</div>
+    </div>
+</div>
+
+<script>
+function generateRobots() {
+    const gbot = document.getElementById('googlebot').value;
+    const bbot = document.getElementById('bingbot').value;
+    const blocked = document.getElementById('blockedDirs').value;
+    const sitemap = document.getElementById('sitemapUrl').value;
+
+    let robots = '# Googlebot\nUser-agent: Googlebot\n';
+    robots += gbot === 'disallow' ? 'Disallow: /\n' : 'Allow: /\n';
+    robots += '\n# Bingbot\nUser-agent: Bingbot\n';
+    robots += bbot === 'disallow' ? 'Disallow: /\n' : 'Allow: /\n';
+
+    if (blocked) {
+        robots += '\n# Chemins bloqués\nUser-agent: *\n';
+        const dirs = blocked.split(',').map(d => d.trim());
+        dirs.forEach(dir => {
+            if (dir) robots += `Disallow: ${dir}\n`;
+        });
+    }
+
+    if (sitemap) {
+        robots += `\nSitemap: ${sitemap}\n`;
+    }
+
+    document.getElementById('robotsText').value = robots;
+    document.getElementById('robotsOutput').style.display = 'block';
+}
+
+function copyRobots() {
+    document.getElementById('robotsText').select();
+    document.execCommand('copy');
+    alert('robots.txt copié !');
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

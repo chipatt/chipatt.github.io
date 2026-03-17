@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculez votre split optimal de protéines, glucides et lipides">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice Macronutriments">
+    <meta property="og:description" content="Calculez votre split optimal de protéines, glucides et lipides">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Macronutriments | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice Macronutriments</h1>
+        <p>Calculez votre split optimal de protéines, glucides et lipides</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice Macronutriments</h2>
+                <p>Découvrez votre distribution idéale de macros selon votre objectif.</p>
+
+                <div class="form-group">
+                    <label>Objectif principal:</label>
+                    <select id="objectif">
+                        <option value="perte">Perte de poids</option>
+                        <option value="maintien">Maintien</option>
+                        <option value="muscle">Gain musculaire</option>
+                        <option value="performance">Performance athlétique</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Vos calories quotidiennes estimées:</label>
+                    <input type="number" id="calories" min="1000" max="5000" value="2000">
+                    <small style="color: #888; margin-top: 0.25rem; display: block;">Utiliser la calculatrice TDEE au-dessus si incertain</small>
+                </div>
+
+                <button onclick="calculerMacros()">Calculer mes macros</button>
+
+                <div id="resultatMacros" class="result">
+                    <p style="margin-bottom: 1.5rem;"><strong>Votre split de macros idéal:</strong></p>
+                    <div style="background: white; padding: 1rem; border-radius: 6px;">
+                        <p style="margin-bottom: 1rem;">
+                            <strong style="color: #FF6B6B;">Protéines:</strong><br>
+                            <span id="protGrams"></span> grammes/jour<br>
+                            <small style="color: #888;"><span id="protCal"></span> calories</small>
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong style="color: #4ECDC4;">Glucides:</strong><br>
+                            <span id="glucGrams"></span> grammes/jour<br>
+                            <small style="color: #888;"><span id="glucCal"></span> calories</small>
+                        </p>
+                        <p>
+                            <strong style="color: #FFD93D;">Lipides:</strong><br>
+                            <span id="lipGrams"></span> grammes/jour<br>
+                            <small style="color: #888;"><span id="lipCal"></span> calories</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Comprendre les macronutriments</h2>
+            <div class="guide-section">
+                <h3>Les trois macros</h3>
+                <p><strong>Protéines (4 cal/g):</strong> Construisent et réparent muscles. Créent hormones et enzymes. Essentielles pour santé. <strong>Glucides (4 cal/g):</strong> Source d'énergie principale. Carburant pour cerveau et exercice. Fibres essentielles.</p>
+                <p><strong>Lipides (9 cal/g):</strong> Plus calorique mais essentiel. Supportent hormones, cerveau, absorption vitamine. Graisses saines sont vitales.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Splits par objectif</h3>
+                <p><strong>Perte de poids:</strong> Haute protéine (35-40%) pour préserver muscle. Moins glucides (30-35%). Lipides modérés (25-30%). <strong>Maintien:</strong> Équilibré. 30% protéine, 40% glucides, 30% lipides.</p>
+                <p><strong>Gain musculaire:</strong> Protéine très haute (35-40%). Glucides suffisants (45-50%) pour énergie. Lipides (20-25%). <strong>Performance:</strong> Très haute glucides (50-60%) pour énergie. Protéine modérée (20-25%). Lipides (20-25%).</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Ajuster vos macros</h3>
+                <p>Commencez avec le split calculé. Suivez comment vous vous sentez après 2 semaines. Trop fatigué? Augmentez glucides. Toujours affamé? Augmentez protéine. Les macros parfaites sont celles que vous pouvez suivre.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je compter les macros exactement?</h4>
+                    <p>Non, approximativement suffit. Être très proche est assez bon. L'important est la cohérence et atteindre environ votre objectif.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Les sources de macros importent-elles?</h4>
+                    <p>Oui! Les macros sont quantité, mais sources affectent santé. Préférez sources entières: œufs vs poudre, riz brun vs sucre blanc.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je sauter les graisses pour maigrir?</h4>
+                    <p>Non, graisses saines sont essentielles. Elles aident hormone, absorption vitamine, satiété. Limiter trop = problèmes.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Puis-je changer les macros si résultats pas bons?</h4>
+                    <p>Oui, mais donnez 2-3 semaines pour adapter. Changements trop fréquents = pas de données. Ajustez légèrement, pas radicalement.</p>
+                </div>
+            </div>
+
+            <script>
+                function calculerMacros() {
+                    const calories = parseFloat(document.getElementById('calories').value);
+                    const objectif = document.getElementById('objectif').value;
+
+                    let protPct, glucPct, lipPct;
+
+                    if (objectif === 'perte') {
+                        protPct = 0.37;
+                        glucPct = 0.33;
+                        lipPct = 0.30;
+                    } else if (objectif === 'maintien') {
+                        protPct = 0.30;
+                        glucPct = 0.40;
+                        lipPct = 0.30;
+                    } else if (objectif === 'muscle') {
+                        protPct = 0.37;
+                        glucPct = 0.48;
+                        lipPct = 0.25;
+                    } else {
+                        protPct = 0.23;
+                        glucPct = 0.55;
+                        lipPct = 0.22;
+                    }
+
+                    const protCal = calories * protPct;
+                    const glucCal = calories * glucPct;
+                    const lipCal = calories * lipPct;
+
+                    const protGrams = Math.round(protCal / 4);
+                    const glucGrams = Math.round(glucCal / 4);
+                    const lipGrams = Math.round(lipCal / 9);
+
+                    document.getElementById('protGrams').textContent = protGrams;
+                    document.getElementById('protCal').textContent = Math.round(protCal) + ' kcal';
+                    document.getElementById('glucGrams').textContent = glucGrams;
+                    document.getElementById('glucCal').textContent = Math.round(glucCal) + ' kcal';
+                    document.getElementById('lipGrams').textContent = lipGrams;
+                    document.getElementById('lipCal').textContent = Math.round(lipCal) + ' kcal';
+                    document.getElementById('resultatMacros').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

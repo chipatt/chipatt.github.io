@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Guide Conservation des Aliments">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,guide-conservation">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Guide Conservation des Aliments">
+    <meta property="og:type" content="website">
+    <title>Guide Conservation des Aliments | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide Conservation des Aliments</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Guide Conservation des Aliments</h2>
+    <p>Comment conserver vos aliments frais et sûrs à consommer.</p>
+
+    <h3>Durée de Conservation au Réfrigérateur</h3>
+    <table>
+        <tr><th>Aliment</th><th>Durée</th><th>Conseils</th></tr>
+        <tr><td>Viande Crue</td><td>1-2 jours</td><td>Couvrir, placer en bas du frigo</td></tr>
+        <tr><td>Poulet Cru</td><td>1-2 jours</td><td>Bien enveloppé, éviter contamination</td></tr>
+        <tr><td>Poisson</td><td>1-2 jours</td><td>Sur glaçons si possible</td></tr>
+        <tr><td>Lait</td><td>5-7 jours</td><td>Couvrir, éloigner de la porte</td></tr>
+        <tr><td>Yaourt</td><td>1-2 semaines</td><td>Date limite à vérifier</td></tr>
+        <tr><td>Fromage</td><td>1-4 semaines</td><td>Couvrir avec film transparent</td></tr>
+        <tr><td>Œufs</td><td>3-4 semaines</td><td>Dans emballage d'origine</td></tr>
+        <tr><td>Legumes</td><td>3-5 jours</td><td>Dans bac à légumes</td></tr>
+        <tr><td>Fruits</td><td>2-7 jours</td><td>Selon type, certains mûrissent</td></tr>
+        <tr><td>Beurre</td><td>1-3 mois</td><td>Couvrir</td></tr>
+        <tr><td>Restes Cuits</td><td>3-4 jours</td><td>Contenants fermés</td></tr>
+    </table>
+
+    <h3>Signes d'Aliment Avariés</h3>
+    <p><strong>Odeur:</strong> Odeur étrange ou désagréable. <strong>Apparence:</strong> Moisissure, décoloration, texture changée. <strong>Goût:</strong> Goût acide ou anormal (cracher et ne pas avaler). <strong>Emballage:</strong> Gonflé ou endommagé.</p>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Combien de temps les restes se conservent-ils?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Les restes couverts se conservent 3-4 jours au réfrigérateur. Congelez-les pour une durée plus longue.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment congeler les aliments correctement?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Utilisez des contenants hermétiques ou des sacs congélation. Étiquetez avec la date. Retirez l'air pour éviter les brûlures de congélation.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je recongeler un aliment décongelé?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Oui, si l'aliment a été décongelé au réfrigérateur (pas à température ambiante). La recongélation réduit la qualité.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

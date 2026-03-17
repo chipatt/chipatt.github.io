@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Testez vos connaissances avec notre quiz de culture générale">
+    <meta name="keywords" content="éducation, culture, apprentissage, français">
+    <meta name="author" content="Education Tools">
+    <meta property="og:title" content="Quiz Culture Générale">
+    <meta property="og:description" content="Testez vos connaissances avec notre quiz de culture générale">
+    <meta property="og:type" content="website">
+    <title>Quiz Culture Générale | Education Tools</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .result {
+            background: #f0f4ff;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #555;
+            display: none;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .ad-space {
+            background: #f5f5f5;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            color: #999;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            header {
+                padding: 20px;
+            }
+        }
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quiz Culture Générale</h1>
+            <p>Testez vos connaissances avec notre quiz de culture générale</p>
+        </header>
+
+        <div class="main">
+            <div class="content">
+                
+<h2>Quiz Culture Générale</h2>
+<p>Testez vos connaissances avec ce quiz amusant!</p>
+
+<div id="quiz-container">
+    <div id="question-display"></div>
+    <div id="options-display" style="margin-top: 20px;"></div>
+    <div style="margin-top: 20px;">
+        <button onclick="nextQuestion()" id="next-btn" style="display: none;">Question Suivante</button>
+    </div>
+</div>
+
+<div id="result" class="result">
+    <h3>Quiz Terminé!</h3>
+    <div id="score-display"></div>
+    <button onclick="restartQuiz()">Recommencer</button>
+</div>
+
+<div class="faq">
+    <h2>Questions Fréquentes</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Comment fonctionne le quiz?</div>
+        <div class="faq-answer">Répondez aux questions une par une. Chaque bonne réponse vous donne un point. À la fin, découvrez votre score.</div>
+    </div>
+</div>
+
+<script>
+const quizQuestions = [
+    {
+        question: "Quel est la capitale de la France?",
+        options: ["Lyon", "Paris", "Marseille", "Toulouse"],
+        correct: 1
+    },
+    {
+        question: "En quelle année l'homme a-t-il marché sur la Lune?",
+        options: ["1965", "1969", "1972", "1975"],
+        correct: 1
+    },
+    {
+        question: "Quel est le plus grand océan du monde?",
+        options: ["Atlantique", "Indien", "Pacifique", "Arctique"],
+        correct: 2
+    },
+    {
+        question: "Qui a écrit 'Les Misérables'?",
+        options: ["Dumas", "Hugo", "Zola", "Balzac"],
+        correct: 1
+    },
+    {
+        question: "Quel est le plus haut sommet du monde?",
+        options: ["K2", "Everest", "Kilimanjaro", "Denali"],
+        correct: 1
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function startQuiz() {
+    displayQuestion();
+}
+
+function displayQuestion() {
+    const q = quizQuestions[currentQuestion];
+    document.getElementById('question-display').innerHTML = '<h3>Question ' + (currentQuestion + 1) + ' sur ' + quizQuestions.length + '</h3><p>' + q.question + '</p>';
+
+    let optionsHTML = '';
+    q.options.forEach((option, idx) => {
+        optionsHTML += '<button onclick="selectAnswer(' + idx + ')" style="display: block; width: 100%; margin-bottom: 10px; padding: 15px; text-align: left; background: #f0f4ff; color: #333; border: 2px solid #667eea;">' + option + '</button>';
+    });
+    document.getElementById('options-display').innerHTML = optionsHTML;
+}
+
+function selectAnswer(idx) {
+    if (idx === quizQuestions[currentQuestion].correct) {
+        score++;
+    }
+    nextQuestion();
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizQuestions.length) {
+        displayQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
+function endQuiz() {
+    document.getElementById('quiz-container').style.display = 'none';
+    const percentage = Math.round((score / quizQuestions.length) * 100);
+    document.getElementById('score-display').innerHTML = '<p><strong>Votre Score: ' + score + '/' + quizQuestions.length + ' (' + percentage + '%)</strong></p>';
+    document.getElementById('result').classList.add('show');
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('result').classList.remove('show');
+    startQuiz();
+}
+
+function toggleFAQ(element) {
+    element.nextElementSibling.classList.toggle('show');
+}
+
+startQuiz();
+</script>
+
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+            </aside>
+        </div>
+
+        
+
+<footer>
+            <p>&copy; 2026 Education Tools | Outils d'apprentissage en ligne gratuits</p>
+            <p><a href="#">Accueil</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Contact</a></p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

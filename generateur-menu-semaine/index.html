@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Générateur Menu de la Semaine">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,generateur-menu">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Générateur Menu de la Semaine">
+    <meta property="og:type" content="website">
+    <title>Générateur Menu de la Semaine | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Générateur Menu de la Semaine</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Générateur Menu de la Semaine</h2>
+    <p>Générez automatiquement un menu varié pour votre semaine.</p>
+
+    <div class="ingredient-form">
+        <h3>Générer un Menu</h3>
+        <label>Type de cuisine:</label>
+        <select id="cuisine_type">
+            <option value="francaise">Française</option>
+            <option value="italienne">Italienne</option>
+            <option value="asiatique">Asiatique</option>
+            <option value="mediterra">Méditerranéenne</option>
+            <option value="mixte">Mixte</option>
+        </select>
+
+        <button onclick="genererMenu()">Générer Menu</button>
+    </div>
+
+    <div id="resultat_menu" class="result">
+        <h3>Menu de la Semaine</h3>
+        <table id="menu_table">
+            <tr><th>Jour</th><th>Petit-Déj</th><th>Déjeuner</th><th>Dîner</th></tr>
+        </table>
+    </div>
+
+    <script>
+        const menus = {
+            francaise: {
+                dej: ['Oeufs Brouillés', 'Crêpes', 'Yaourt Miel', 'Pain Beurre', 'Croissants'],
+                dej_menu: ['Coq au Vin', 'Blanquette de Veau', 'Pot-au-Feu', 'Gratin Dauphinois', 'Bouillabaisse'],
+                diner: ['Soupe à l'Oignon', 'Moules Marinière', 'Côte d'Agneau', 'Ratatouille', 'Escalope Milanaise']
+            },
+            italienne: {
+                dej: ['Cappuccino Biscotti', 'Granita', 'Panettone', 'Fruit', 'Yogurt'],
+                dej_menu: ['Spaghetti Bolognese', 'Risotto Ai Funghi', 'Lasagna', 'Osso Buco', 'Pasta Carbonara'],
+                diner: ['Minestrone', 'Ravioli Ricotta', 'Gnocchi Pesto', 'Tilapia Limone', 'Pizza Margherita']
+            },
+            asiatique: {
+                dej: ['Congee', 'Dim Sum', 'Noodles Soupe', 'Omelette Asiatique', 'Porridge'],
+                dej_menu: ['Pad Thai', 'Curry Rouge', 'Riz Sauté', 'Nouilles Udon', 'Riz Gluant Poulet'],
+                diner: ['Soupe Miso', 'Bao Porc', 'Brochettes Satay', 'Rouleau Printemps', 'Tom Yum']
+            },
+            mediterra: {
+                dej: ['Granola Miel', 'Fromage Blanc', 'Fruits Frais', 'Olives Pain', 'Œuf Poché'],
+                dej_menu: ['Salade Grecque', 'Pita Houmous', 'Moussaka', 'Souvlaki', 'Branzino Grillé'],
+                diner: ['Salade Mixte', 'Calamars Grillés', 'Falafel', 'Tabboulé', 'Pâtes Ail Huile']
+            },
+            mixte: {
+                dej: ['Oeufs Bacon', 'Porridge', 'Fruit Yogurt', 'Toast Avocat', 'Crêpe'],
+                dej_menu: ['Poulet Rôti', 'Tacos Poisson', 'Steak Frites', 'Curry Poulet', 'Burger Gourmet'],
+                diner: ['Soupe Jour', 'Poisson Vapeur', 'Pâtes', 'Légumes Sautés', 'Oeufs Cocotte']
+            }
+        };
+
+        function genererMenu() {
+            const type = document.getElementById('cuisine_type').value;
+            const menu = menus[type];
+            const jours = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+
+            let html = '<tr><th>Jour</th><th>Petit-Déj</th><th>Déjeuner</th><th>Dîner</th></tr>';
+
+            for (let i = 0; i < 7; i++) {
+                const dej = menu.dej[Math.floor(Math.random() * menu.dej.length)];
+                const dejm = menu.dej_menu[Math.floor(Math.random() * menu.dej_menu.length)];
+                const din = menu.diner[Math.floor(Math.random() * menu.diner.length)];
+                html += `<tr><td>${jours[i]}</td><td>${dej}</td><td>${dejm}</td><td>${din}</td></tr>`;
+            }
+
+            document.getElementById('menu_table').innerHTML = html;
+            document.getElementById('resultat_menu').classList.add('show');
+        }
+    </script>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je régénérer un menu si je n'aime pas la suggestion?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Oui! Cliquez simplement sur "Générer Menu" à nouveau pour obtenir une nouvelle suggestion.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je personnaliser les recettes?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Oui, vous pouvez modifier chaque repas manuellement pour adapter le menu selon vos préférences alimentaires.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je imprimer mon menu?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Oui, utilisez Ctrl+P pour imprimer votre menu généré.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

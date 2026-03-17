@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Compteur de Caractères pour Réseaux Sociaux</title><meta name="description" content="Vérifiez la longueur de vos posts Twitter/X, Instagram, LinkedIn et plus"><meta name="keywords" content="compteur caractères, limite twitter, limite instagram, compteur post"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Compteur de Caractères pour Réseaux Sociaux"><meta property="og:description" content="Vérifiez la longueur de vos posts Twitter/X, Instagram, LinkedIn et plus"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#1DA1F2,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#1DA1F2;margin-bottom:10px;font-size:1rem}
+.btn{background:#1DA1F2;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#1DA1F2}
+.res{background:#f0f7ff;border-left:4px solid #1DA1F2;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#1DA1F2;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Compteur de Caractères pour Réseaux Sociaux</h1><p>Vérifiez la longueur de vos posts Twitter/X, Instagram, LinkedIn et plus</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Compteur de Caractères Réseaux Sociaux</h2>
+<textarea id="txt" rows="6" placeholder="Tapez ou collez votre texte ici..." oninput="count()"></textarea>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:15px">
+<div style="padding:15px;background:#f0f8ff;border-radius:10px;text-align:center"><div style="font-weight:700;color:#1DA1F2" id="tw">0/280</div><div style="font-size:.8rem;color:#666">Twitter/X</div><div id="twb" style="height:4px;background:#e0e0e0;border-radius:2px;margin-top:5px"><div id="twp" style="height:100%;background:#1DA1F2;border-radius:2px;width:0;transition:width .2s"></div></div></div>
+<div style="padding:15px;background:#fdf0f5;border-radius:10px;text-align:center"><div style="font-weight:700;color:#E1306C" id="ig">0/2200</div><div style="font-size:.8rem;color:#666">Instagram</div><div style="height:4px;background:#e0e0e0;border-radius:2px;margin-top:5px"><div id="igp" style="height:100%;background:#E1306C;border-radius:2px;width:0;transition:width .2s"></div></div></div>
+<div style="padding:15px;background:#f0f4f8;border-radius:10px;text-align:center"><div style="font-weight:700;color:#0077B5" id="li">0/3000</div><div style="font-size:.8rem;color:#666">LinkedIn</div><div style="height:4px;background:#e0e0e0;border-radius:2px;margin-top:5px"><div id="lip" style="height:100%;background:#0077B5;border-radius:2px;width:0;transition:width .2s"></div></div></div>
+<div style="padding:15px;background:#f5f0ff;border-radius:10px;text-align:center"><div style="font-weight:700;color:#5865F2" id="dc">0/2000</div><div style="font-size:.8rem;color:#666">Discord</div><div style="height:4px;background:#e0e0e0;border-radius:2px;margin-top:5px"><div id="dcp" style="height:100%;background:#5865F2;border-radius:2px;width:0;transition:width .2s"></div></div></div>
+<div style="padding:15px;background:#f0fff0;border-radius:10px;text-align:center"><div style="font-weight:700;color:#25D366" id="wa">0/65536</div><div style="font-size:.8rem;color:#666">WhatsApp</div></div>
+<div style="padding:15px;background:#f8f8f0;border-radius:10px;text-align:center"><div style="font-weight:700;color:#FF4500" id="rd">0/40000</div><div style="font-size:.8rem;color:#666">Reddit</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px">
+<div style="text-align:center;padding:10px;background:#f8f9fa;border-radius:8px"><div id="wc" style="font-size:1.3rem;font-weight:700">0</div><div style="font-size:.75rem;color:#666">Mots</div></div>
+<div style="text-align:center;padding:10px;background:#f8f9fa;border-radius:8px"><div id="sc" style="font-size:1.3rem;font-weight:700">0</div><div style="font-size:.75rem;color:#666">Phrases</div></div>
+<div style="text-align:center;padding:10px;background:#f8f9fa;border-radius:8px"><div id="pc" style="font-size:1.3rem;font-weight:700">0</div><div style="font-size:.75rem;color:#666">Paragraphes</div></div>
+<div style="text-align:center;padding:10px;background:#f8f9fa;border-radius:8px"><div id="rt" style="font-size:1.3rem;font-weight:700">0s</div><div style="font-size:.75rem;color:#666">Temps lecture</div></div></div></div>
+<script>
+function count(){const v=document.getElementById('txt').value,l=v.length;
+function upd(id,max,pid){document.getElementById(id).textContent=l+'/'+max;if(pid){const p=Math.min(l/max*100,100);document.getElementById(pid).style.width=p+'%';document.getElementById(pid).style.background=p>90?'#E74C3C':p>70?'#F39C12':document.getElementById(pid).style.background}}
+upd('tw',280,'twp');upd('ig',2200,'igp');upd('li',3000,'lip');upd('dc',2000,'dcp');document.getElementById('wa').textContent=l+'/65536';document.getElementById('rd').textContent=l+'/40000';
+document.getElementById('wc').textContent=v.trim()?v.trim().split(/\s+/).length:0;document.getElementById('sc').textContent=v.trim()?v.split(/[.!?]+/).filter(s=>s.trim()).length:0;
+document.getElementById('pc').textContent=v.trim()?v.split(/
+
++/).filter(p=>p.trim()).length:0;const w=v.trim()?v.trim().split(/\s+/).length:0;const s=Math.ceil(w/200*60);document.getElementById('rt').textContent=s>60?Math.floor(s/60)+'m'+s%60+'s':s+'s'}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Quelles sont les limites de caractères des réseaux sociaux ?</summary><p>Twitter/X: 280, Instagram: 2200, LinkedIn: 3000, Discord: 2000, WhatsApp: 65536, Reddit: 40000 caractères.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Compteur de Caractères pour Réseaux Sociaux</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utilisez notre minuteur interactif avec sons ambients pour votre méditation">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Minuteur de Méditation en Ligne">
+    <meta property="og:description" content="Utilisez notre minuteur interactif avec sons ambients pour votre méditation">
+    <meta property="og:type" content="website">
+    <title>Minuteur de Méditation en Ligne | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Minuteur de Méditation en Ligne</h1>
+        <p>Utilisez notre minuteur interactif avec sons ambients pour votre méditation</p>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Minuteur de Méditation Interactif</h2>
+            
+            <div class="calculator">
+                <p>Définissez votre durée de méditation et écoutez les sons relaxants.</p>
+
+                <div class="form-group">
+                    <label>Durée de méditation (minutes):</label>
+                    <input type="number" id="duree" min="1" max="120" value="10">
+                </div>
+
+                <div class="form-group">
+                    <label>Son ambiant:</label>
+                    <select id="son">
+                        <option value="silence">Silence (cloche de fin)</option>
+                        <option value="ocean">Océan/Vagues</option>
+                        <option value="foret">Forêt/Oiseaux</option>
+                        <option value="pluie">Pluie douce</option>
+                        <option value="feu">Feu de camp</option>
+                        <option value="stream">Ruisseau</option>
+                    </select>
+                </div>
+
+                <button onclick="demarrerMeditaton()">Commencer</button>
+
+                <div id="resultatTimer" class="result">
+                    <div style="font-size: 3.5rem; font-weight: bold; color: #26a69a; text-align: center; margin: 2rem 0;">
+                        <span id="affichageTemps">10:00</span>
+                    </div>
+                    <p style="text-align: center; margin: 1rem 0;">
+                        <button onclick="pauserTimer()" style="margin-right: 1rem;">Pause</button>
+                        <button onclick="reprendreTimer()" style="margin-right: 1rem;">Reprendre</button>
+                        <button onclick="arreterTimer()">Arrêter</button>
+                    </p>
+                    <p style="text-align: center; color: #666; margin-top: 2rem;">
+                        💡 Conseil: Respirez profondément. Écoutez les sons sans jugement. Accueillez vos pensées.
+                    </p>
+                </div>
+            </div>
+
+            <h2>Guide de Méditation avec Minuteur</h2>
+            <div class="guide-section">
+                <h3>Comment utiliser le minuteur</h3>
+                <p>Sélectionnez votre durée (commencez par 5-10 minutes). Choisissez un son qui vous détend. Trouvez un endroit calme et confortable. Cliquez sur "Commencer" et suivez vos conseils de respiration. Vous pouvez mettre en pause si nécessaire.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Progression recommandée</h3>
+                <p><strong>Semaine 1-2:</strong> 5-10 minutes. Installez la routine. <strong>Semaine 3-4:</strong> 10-15 minutes. Accroissez la profondeur. <strong>Mois 2+:</strong> 20-30 minutes. Expériences plus profondes.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quel son choisir si je débute?</h4>
+                    <p>Commencez par Silence pour vous habituer à la méditation. Ou Océan/Forêt si le silence est trop difficile. Expérimentez pour voir vos préférences.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment puis-je éviter de m'endormir?</h4>
+                    <p>Méditez en position assise, jamais couchée. Gardez les yeux légèrement fermés, pas hermétiquement. Méditez le matin plutôt que le soir.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Puis-je utiliser cela pendant le yoga?</h4>
+                    <p>Oui! Beaucoup utilisent le minuteur après leur séance de yoga comme shavasana (pose finale). C'est une excellente combinaison.</p>
+                </div>
+            </div>
+
+            <script>
+                let timerInterval = null;
+                let tempsRestant = 0;
+                let enCours = false;
+
+                function demarrerMeditaton() {
+                    const duree = parseInt(document.getElementById('duree').value);
+                    tempsRestant = duree * 60;
+                    enCours = true;
+                    afficherTemps();
+                    document.getElementById('resultatTimer').classList.add('show');
+                    
+                    timerInterval = setInterval(() => {
+                        if (tempsRestant > 0) {
+                            tempsRestant--;
+                            afficherTemps();
+                        } else {
+                            arreterTimer();
+                            alert('Votre méditation est terminée. Bien fait!');
+                        }
+                    }, 1000);
+                }
+
+                function afficherTemps() {
+                    const minutes = Math.floor(tempsRestant / 60);
+                    const secondes = tempsRestant % 60;
+                    document.getElementById('affichageTemps').textContent = 
+                        String(minutes).padStart(2, '0') + ':' + String(secondes).padStart(2, '0');
+                }
+
+                function pauserTimer() {
+                    clearInterval(timerInterval);
+                    enCours = false;
+                }
+
+                function reprendreTimer() {
+                    if (!enCours && tempsRestant > 0) {
+                        enCours = true;
+                        timerInterval = setInterval(() => {
+                            if (tempsRestant > 0) {
+                                tempsRestant--;
+                                afficherTemps();
+                            } else {
+                                arreterTimer();
+                                alert('Votre méditation est terminée. Bien fait!');
+                            }
+                        }, 1000);
+                    }
+                }
+
+                function arreterTimer() {
+                    clearInterval(timerInterval);
+                    enCours = false;
+                    tempsRestant = 0;
+                    document.getElementById('resultatTimer').classList.remove('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

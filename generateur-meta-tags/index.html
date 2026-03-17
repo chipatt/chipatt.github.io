@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Meta Tags SEO - Outil Gratuit</title>
+    <meta name="description" content="Générez les meta tags HTML pour améliorer votre SEO">
+    <meta name="keywords" content="générateur meta tags, SEO meta tags, générateur SEO, meta description">
+    <meta property="og:title" content="Générateur de Meta Tags SEO - Outil Gratuit">
+    <meta property="og:description" content="Générez les meta tags HTML pour améliorer votre SEO">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Générateur de Meta Tags SEO - Outil Gratuit</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour générer meta tags optimisés pour le SEO</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Générateur de Meta Tags SEO</h2>
+<p>Générez automatiquement les meta tags HTML pour optimiser votre SEO.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Titre de la Page :</label>
+        <input id="pageTitle" type="text" placeholder="Mon Awesome Article" style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Description :</label>
+        <textarea id="pageDesc" rows="3" placeholder="Description courte et percutante..." style="width: 100%;"></textarea>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">Keywords (séparés par virgule) :</label>
+        <input id="pageKeywords" type="text" placeholder="SEO, marketing, web" style="width: 100%;">
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; color: #00ff88;">URL Canonique :</label>
+        <input id="pageUrl" type="text" placeholder="https://monsite.com/article" style="width: 100%;">
+    </div>
+    <button onclick="generateMeta()" style="width: 100%;">Générer Tags</button>
+    <div id="metaOutput" style="margin-top: 20px; padding: 15px; background: #1a1f3a; border-radius: 4px; display: none;">
+        <h3>Meta Tags générés :</h3>
+        <textarea id="metaTags" rows="10" readonly style="width: 100%; font-size: 0.85em; margin-top: 10px;"></textarea>
+        <button onclick="copyMeta()" style="width: 100%; margin-top: 10px;">📋 Copier Tous</button>
+    </div>
+</div>
+
+<h2>Meta Tags Essentiels pour le SEO</h2>
+<table>
+    <tr>
+        <th>Tag</th>
+        <th>Importance</th>
+        <th>Longueur Optimale</th>
+    </tr>
+    <tr>
+        <td>&lt;title&gt;</td>
+        <td>⭐⭐⭐⭐⭐</td>
+        <td>50-60 caractères</td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>⭐⭐⭐⭐</td>
+        <td>120-160 caractères</td>
+    </tr>
+    <tr>
+        <td>keywords</td>
+        <td>⭐⭐</td>
+        <td>5-10 mots-clés</td>
+    </tr>
+    <tr>
+        <td>canonical</td>
+        <td>⭐⭐⭐</td>
+        <td>URL complète</td>
+    </tr>
+    <tr>
+        <td>og:title</td>
+        <td>⭐⭐⭐</td>
+        <td>Même que title</td>
+    </tr>
+</table>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ Meta Tags</h2>
+    <div class="faq-item">
+        <h4>Combien de keywords puis-je mettre ?</h4>
+        <div class="faq-answer">Pas plus de 5-10. Google ignore les listes longues.</div>
+    </div>
+    <div class="faq-item">
+        <h4>La description affecte-t-elle le classement ?</h4>
+        <div class="faq-answer">Non directement, mais elle affecte le CTR (taux de clic).</div>
+    </div>
+    <div class="faq-item">
+        <h4>Qu'est-ce qu'un tag canonical ?</h4>
+        <div class="faq-answer">Indique à Google quelle est l'URL "principale" si duplicata existe.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Open Graph est-il obligatoire ?</h4>
+        <div class="faq-answer">Non, mais fortement recommandé pour les réseaux sociaux.</div>
+    </div>
+</div>
+
+<script>
+function generateMeta() {
+    const title = document.getElementById('pageTitle').value;
+    const desc = document.getElementById('pageDesc').value;
+    const keywords = document.getElementById('pageKeywords').value;
+    const url = document.getElementById('pageUrl').value;
+
+    let tags = `<title>${title}</title>
+<meta name="description" content="${desc}">
+<meta name="keywords" content="${keywords}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="${url}">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${url}">
+<meta property="og:type" content="website">`;
+
+    document.getElementById('metaTags').value = tags;
+    document.getElementById('metaOutput').style.display = 'block';
+}
+
+function copyMeta() {
+    document.getElementById('metaTags').select();
+    document.execCommand('copy');
+    alert('Meta tags copiés !');
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

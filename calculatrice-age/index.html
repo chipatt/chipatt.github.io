@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calculatrice d'Âge Exacte</title><meta name="description" content="Calculez votre âge exact en années, mois, jours, heures et minutes"><meta name="keywords" content="calculer âge, âge exact, calculatrice anniversaire, date naissance"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Calculatrice d'Âge Exacte"><meta property="og:description" content="Calculez votre âge exact en années, mois, jours, heures et minutes"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#A29BFE,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#A29BFE;margin-bottom:10px;font-size:1rem}
+.btn{background:#A29BFE;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#A29BFE}
+.res{background:#f0f7ff;border-left:4px solid #A29BFE;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#A29BFE;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Calculatrice d'Âge Exacte</h1><p>Calculez votre âge exact en années, mois, jours, heures et minutes</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Calculatrice d'Âge</h2>
+<label>Date de naissance:</label><input type="date" id="dob" value="1995-06-15" onchange="calcAge()">
+<label>Date de référence:</label><input type="date" id="ref" onchange="calcAge()">
+<div id="result" style="margin-top:20px"></div></div>
+<script>
+document.getElementById('ref').value=new Date().toISOString().split('T')[0];
+function calcAge(){const d=new Date(document.getElementById('dob').value),r=new Date(document.getElementById('ref').value);if(isNaN(d)||isNaN(r))return;
+let y=r.getFullYear()-d.getFullYear(),m=r.getMonth()-d.getMonth(),dy=r.getDate()-d.getDate();if(dy<0){m--;const prev=new Date(r.getFullYear(),r.getMonth(),0);dy+=prev.getDate()}if(m<0){y--;m+=12}
+const diff=r-d,totalDays=Math.floor(diff/864e5),totalWeeks=Math.floor(totalDays/7),totalHours=Math.floor(diff/36e5),totalMin=Math.floor(diff/6e4);
+const nextBday=new Date(r.getFullYear(),d.getMonth(),d.getDate());if(nextBday<=r)nextBday.setFullYear(r.getFullYear()+1);const daysUntil=Math.ceil((nextBday-r)/864e5);
+document.getElementById('result').innerHTML=`
+<div style="text-align:center;padding:25px;background:#f0f0ff;border-radius:12px;margin-bottom:15px"><div style="font-size:3rem;font-weight:700;color:#A29BFE">${y} ans</div><div style="font-size:1.2rem;color:#666">${m} mois et ${dy} jours</div></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">
+<div style="text-align:center;padding:15px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:1.5rem;font-weight:700;color:#A29BFE">${totalDays.toLocaleString()}</div><div style="font-size:.8rem;color:#666">Jours</div></div>
+<div style="text-align:center;padding:15px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:1.5rem;font-weight:700;color:#A29BFE">${totalWeeks.toLocaleString()}</div><div style="font-size:.8rem;color:#666">Semaines</div></div>
+<div style="text-align:center;padding:15px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:1.5rem;font-weight:700;color:#A29BFE">${totalHours.toLocaleString()}</div><div style="font-size:.8rem;color:#666">Heures</div></div>
+<div style="text-align:center;padding:15px;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.05)"><div style="font-size:1.5rem;font-weight:700;color:#A29BFE">${totalMin.toLocaleString()}</div><div style="font-size:.8rem;color:#666">Minutes</div></div>
+</div>
+<div class="res" style="margin-top:15px;text-align:center">🎂 Prochain anniversaire dans <strong>${daysUntil} jours</strong></div>`}calcAge();
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment l'âge exact est-il calculé ?</summary><p>Nous calculons la différence précise entre votre date de naissance et la date de référence en tenant compte des mois de longueurs différentes et des années bissextiles.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Calculatrice d'Âge Exacte</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estimez votre poids idéal selon différentes formules reconnus par la science">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice Poids Idéal">
+    <meta property="og:description" content="Estimez votre poids idéal selon différentes formules reconnus par la science">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Poids Idéal | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice Poids Idéal</h1>
+        <p>Estimez votre poids idéal selon différentes formules reconnus par la science</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice du Poids Idéal</h2>
+                <p>Découvrez votre gamme de poids idéal selon plusieurs formules.</p>
+
+                <div class="form-group">
+                    <label>Sexe:</label>
+                    <select id="sexe">
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Taille (cm):</label>
+                    <input type="number" id="taille" min="50" max="250" value="175">
+                </div>
+
+                <button onclick="calculerPoidsIdeal()">Calculer poids idéal</button>
+
+                <div id="resultatPoids" class="result">
+                    <p style="margin-bottom: 1rem;"><strong>Résultats:</strong></p>
+                    <div style="background: white; padding: 1rem; border-radius: 6px;">
+                        <p style="margin-bottom: 0.75rem;"><strong>Formule Lorentz:</strong> <span id="lorentz"></span> kg</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>Formule Creff:</strong> <span id="creff"></span> kg</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>Formule Devine:</strong> <span id="devine"></span> kg</p>
+                        <p style="margin-bottom: 0.75rem;"><strong>IMC cible (18.5-24.9):</strong> <span id="imc"></span> kg</p>
+                    </div>
+                    <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        💡 Ces formules sont des estimations. Le poids idéal varie selon la masse musculaire, composition corporelle et facteurs génétiques.
+                    </p>
+                </div>
+            </div>
+
+            <h2>Comprendre le poids idéal</h2>
+            <div class="guide-section">
+                <h3>Au-delà du poids sur la balance</h3>
+                <p>Le poids seul ne raconte pas toute l'histoire. Une personne musclée peut "peser trop" par les tables standards. La composition corporelle (ratio muscle/graisse) est plus importante que le simple poids. L'indice de masse corporelle (IMC) est un bon outil de départ mais a des limites.</p>
+                <h3>Les trois formules</h3>
+                <p><strong>Lorentz:</strong> Formule simple et populaire. Homme: 75 + 1.5*(T-150). Femme: 75 + 1.5*(T-150) - 2.5. <strong>Creff:</strong> Plus moderne. Considère l'âge et morphologie. Généralement plus précis.</p>
+                <p><strong>Devine:</strong> Basée sur la surface corporelle. Utilisée cliniquement. Homme: 50 + 2.3*(T/2.54 - 60). Femme: 45.5 + 2.3*(T/2.54 - 60).</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Facteurs affectant le poids idéal</h3>
+                <p><strong>Âge:</strong> Le métabolisme ralentit avec l'âge, augmentant le poids naturel. <strong>Genre:</strong> Les femmes ont naturellement plus de graisse corporelle pour fonctions reproductives. <strong>Génétique:</strong> Certaines familles sont naturellement plus grandes ou petites.</p>
+                <p><strong>Type de corps:</strong> Ectomorphe (fin naturellement), Mésomorphe (musclé), Endomorphe (stocke facilement graisse). Chaque type a un poids idéal différent.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment puis-je savoir si mon poids est sain?</h4>
+                    <p>Regardez votre IMC, tour de taille (moins de 88cm femmes, 102cm hommes), et surtout comment vous vous sentez. Énergique? Actif? C'est plus important que le nombre.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je atteindre exactement le "poids idéal"?</h4>
+                    <p>Non, ce sont des gammes estimées. ±5kg peut être "idéal" pour vous selon votre composition corporelle et comment vous vous sentez.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Pourquoi les formules donnent résultats différents?</h3>
+                    <p>Chaque formule utilise différentes variables et a été développée sur différentes populations. Utilisez-les comme points de départ, pas absolu.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je m'inquiéter si je suis 10kg au-dessus du "idéal"?</h4>
+                    <p>Pas nécessairement. Si vous êtes en bonne santé, actif et vous sentez bien, ce poids peut être votre "idéal" personnel.</p>
+                </div>
+            </div>
+
+            <script>
+                function calculerPoidsIdeal() {
+                    const sexe = document.getElementById('sexe').value;
+                    const taille = parseFloat(document.getElementById('taille').value);
+
+                    let lorentz, creff, devine;
+
+                    if (sexe === 'homme') {
+                        lorentz = 75 + 1.5 * (taille - 150);
+                        creff = taille - 100 - (taille - 150) / 2.5;
+                        devine = 50 + 2.3 * (taille / 2.54 - 60);
+                    } else {
+                        lorentz = 75 + 1.5 * (taille - 150) - 2.5;
+                        creff = taille - 100 - (taille - 150) / 2.5;
+                        devine = 45.5 + 2.3 * (taille / 2.54 - 60);
+                    }
+
+                    const imcMin = 18.5 * (taille / 100) ** 2;
+                    const imcMax = 24.9 * (taille / 100) ** 2;
+
+                    document.getElementById('lorentz').textContent = Math.round(lorentz) + ' kg';
+                    document.getElementById('creff').textContent = Math.round(creff) + ' kg';
+                    document.getElementById('devine').textContent = Math.round(devine) + ' kg';
+                    document.getElementById('imc').textContent = Math.round(imcMin) + '-' + Math.round(imcMax) + ' kg';
+                    document.getElementById('resultatPoids').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

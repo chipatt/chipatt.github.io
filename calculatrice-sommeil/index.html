@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trouvez l'heure idéale pour vous coucher ou vous réveiller en fonction des cycles de sommeil">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice de Cycles de Sommeil">
+    <meta property="og:description" content="Trouvez l'heure idéale pour vous coucher ou vous réveiller en fonction des cycles de sommeil">
+    <meta property="og:type" content="website">
+    <title>Calculatrice de Cycles de Sommeil | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice de Cycles de Sommeil</h1>
+        <p>Trouvez l'heure idéale pour vous coucher ou vous réveiller en fonction des cycles de sommeil</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice de Cycles de Sommeil</h2>
+                <p>Un cycle de sommeil dure environ 90 minutes. Calculez vos heures optimales.</p>
+
+                <div class="form-group">
+                    <label>Vous voulez calculer:</label>
+                    <select id="mode" onchange="changerMode()">
+                        <option value="reveil">Heure de coucher (pour vous réveiller à une heure donnée)</option>
+                        <option value="coucher">Heure de réveil (pour vous coucher à une heure donnée)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label id="labelHeure">À quelle heure voulez-vous vous réveiller?</label>
+                    <input type="time" id="heure" value="07:00">
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre de cycles (généralement 5-6):</label>
+                    <input type="number" id="cycles" min="1" max="10" value="5">
+                </div>
+
+                <button onclick="calculerSommeil()">Calculer</button>
+
+                <div id="resultatSommeil" class="result">
+                    <p id="messageReveil" style="margin-bottom: 1rem;"></p>
+                    <div style="background: white; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <p><strong>Heures recommandées:</strong></p>
+                        <p id="heures" style="font-size: 1.1rem; margin-top: 0.5rem;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Comprendre les cycles de sommeil</h2>
+            <div class="guide-section">
+                <p>Le sommeil n'est pas un état uniforme. Il se compose de cycles d'environ 90 minutes, alternant entre sommeil léger, profond et REM (rêves). Un sommeil réparateur nécessite 4-6 cycles complets.</p>
+                <h3>Les phases du sommeil</h3>
+                <p><strong>Sommeil léger (N1-N2):</strong> Transition vers le sommeil profond. <strong>Sommeil profond (N3):</strong> Phase la plus réparatrice, essentielle pour la récupération physique. <strong>Sommeil REM:</strong> Crucial pour la consolidation de la mémoire et la santé mentale.</p>
+                <h3>Conseils pour un meilleur sommeil</h3>
+                <p>Couchez-vous à des heures régulières, créez une routine avant le coucher, évitez les écrans 1 heure avant de dormir, gardez votre chambre fraîche et sombre. Un sommeil adéquat améliore la santé, l'humeur et la productivité.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Pourquoi les cycles de sommeil durent 90 minutes?</h4>
+                    <p>C'est l'ultradian rhythm naturel du corps humain. Chaque cycle progresse à travers différentes étapes, du sommeil léger au sommeil profond puis au REM.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quel est le nombre idéal de cycles?</h4>
+                    <p>Pour la plupart des adultes, 5-6 cycles (7h30-9 heures) sont recommandés. Cependant, chacun est unique; écoutez votre corps.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Se réveiller pendant un cycle est-il mauvais?</h4>
+                    <p>Oui, se réveiller au milieu d'un cycle vous rend groggy. C'est pourquoi se réveiller entre les cycles vous laisse plus alerte.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment puis-je suivre mes cycles?</h4>
+                    <p>Certaines montres intelligentes et applications suivent les cycles de sommeil, mais cette calculatrice vous donne une estimation précise basée sur la science.</p>
+                </div>
+            </div>
+
+            <script>
+                function changerMode() {
+                    const label = document.getElementById('labelHeure');
+                    const mode = document.getElementById('mode').value;
+                    if (mode === 'reveil') {
+                        label.textContent = 'À quelle heure voulez-vous vous réveiller?';
+                    } else {
+                        label.textContent = 'À quelle heure voulez-vous vous coucher?';
+                    }
+                }
+
+                function calculerSommeil() {
+                    const mode = document.getElementById('mode').value;
+                    const heure = document.getElementById('heure').value;
+                    const cycles = parseInt(document.getElementById('cycles').value);
+                    const minutes = cycles * 90;
+
+                    const [h, m] = heure.split(':').map(Number);
+                    let date = new Date();
+                    date.setHours(h, m);
+
+                    let dateResultat;
+                    if (mode === 'reveil') {
+                        dateResultat = new Date(date.getTime() - minutes * 60000);
+                    } else {
+                        dateResultat = new Date(date.getTime() + minutes * 60000);
+                    }
+
+                    const heureFin = String(dateResultat.getHours()).padStart(2, '0') + ':' +
+                                     String(dateResultat.getMinutes()).padStart(2, '0');
+
+                    const heures = Math.floor(minutes / 60);
+                    const mins = minutes % 60;
+
+                    const message = mode === 'reveil'
+                        ? `Couchez-vous à ${heureFin} pour vous réveiller à ${heure} (${heures}h${mins})`
+                        : `Vous vous réveillerez à ${heureFin} si vous vous couchez à ${heure} (${heures}h${mins})`;
+
+                    document.getElementById('messageReveil').textContent = message;
+                    document.getElementById('heures').textContent = `${heureFin} → ${mode === 'reveil' ? heure : heureFin}`;
+                    document.getElementById('resultatSommeil').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

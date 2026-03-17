@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Commencez la course: conseils, plans d'entraînement et prévention blessures">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Guide Course à Pied Débutant">
+    <meta property="og:description" content="Commencez la course: conseils, plans d'entraînement et prévention blessures">
+    <meta property="og:type" content="website">
+    <title>Guide Course à Pied Débutant | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide Course à Pied Débutant</h1>
+        <p>Commencez la course: conseils, plans d'entraînement et prévention blessures</p>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Guide Complet de la Course à Pied pour Débutants</h2>
+            
+            <div class="guide-section">
+                <h3>Pourquoi courir?</h3>
+                <p>La course améliore la santé cardiovasculaire, renforce os et muscles, améliore santé mentale et réduit stress. C'est gratuit, accessible n'importe où et peut être sociable. La course est aussi méditative; c'est pourquoi beaucoup l'adorent.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Commencer: Équipement essentiel</h3>
+                <p><strong>Chaussures de course:</strong> C'est L'achat clé. Allez chez un spécialiste qui analyse votre foulée. Bonnes chaussures préviennent blessures. <strong>Vêtements:</strong> Tissus humides qui sèchent vite (évitez 100% coton). Vêtements libres mais pas trop amples.</p>
+                <p><strong>Montre GPS:</strong> Optionnelle au début. Utile pour suivre distance/vitesse. <strong>Soutien-gorge sportif (femmes):</strong> Support crucial pour confort et prévention blessures.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Plan débutant: Semaines 1-8</h3>
+                <p><strong>Semaine 1-2:</strong> Alternez course légère (5min) et marche (2min). 3 fois/semaine. Ex: 5min course, 2min marche, répétez 3 fois. <strong>Semaine 3-4:</strong> Augmentez à 7min course, 2min marche. Même 3x/semaine.</p>
+                <p><strong>Semaine 5-6:</strong> 10min course, 2min marche. <strong>Semaine 7-8:</strong> 15-20min course continue sans pause. Vous avez débuté!</p>
+                <p>Un jour off entre courtes sessions. Votre corps s'adapte et se répare pendant repos.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Technique de course appropriée</h3>
+                <p><strong>Posture:</strong> Tête relevée, épaules détendues, bras à 90°. Pas de tension. <strong>Respiration:</strong> Respirez naturellement. Rythme régulier. Essayez rythme 3-3 (inspirer 3 pas, expirer 3 pas).</p>
+                <p><strong>Foulée:</strong> Frappez avec le milieu du pied, pas talons. Pas trop longs, ni trop courts. Fréquence 160-180 pas/min est optimal. <strong>Bras:</strong> Balancez naturellement. Mains détendues. Aide propulsion.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Prévention des blessures courantes</h3>
+                <p><strong>Augmentez progressivement:</strong> Règle 10%. Augmentez distance/vitesse de 10% max par semaine. <strong>Échauffez et étirements:</strong> 5min marche avant courir. 10min étirements après (jamais avant, muscles froids).</p>
+                <p><strong>Reposez-vous:</strong> Au moins 1 jour off par semaine. Trop d'entraînement = blessure inévitable. <strong>Bonnes chaussures:</strong> Remplacez tous 500-800km. Chaussures usées = risque blessure.</p>
+                <p><strong>Force et stabilité:</strong> Entraînement en résistance 2x/semaine renforce os, articulations. Prévient blessures.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Blessures courantes et récupération</h3>
+                <p><strong>Genou du coureur:</strong> Douleur autour genou. Rest, glaçage, compression. Force hanches/cuisse. <strong>Fracture de stress:</strong> Douleur intense localisée. STOP exercice. Voir médecin. Repos obligatoire.</p>
+                <p><strong>Tendinite d'Achille:</strong> Douleur talon. Stretching régulier, glaçage. Renforcement mollet. <strong>Entorse de cheville:</strong> Repos, glaçage, surélévation. Exercices stabilité après guérison.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Nutrition et hydratation pour coureurs</h3>
+                <p>Buvez régulièrement mais pas trop à la fois (500ml/heure). Pour courses +60min, boissons de sport avec électrolytes. Après course, mangez protéines + glucides dans 30min pour récupération.</p>
+                <p>Petit déjeuner léger 2-3h avant courir. Banane, yaourt, toast. Pas trop lourd. Évitez alcool la veille de longues courses.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>C'est douloureux au début?</h4>
+                    <p>Muscles seront fatigués les premiers jours. Normal. Mais douleur aiguë au genou/hanche = arrêtez. La distinction: fatigue = OK, douleur = non.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Je suis trop lourd/hors forme pour courir?</h4>
+                    <p>Non! Commencez avec plan débutant: marche/course alternée. Votre corps s'adapte. Le poids baisse avec exercice régulier + alimentation saine.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quand puis-je courir une vraie course/5K?</h4>
+                    <p>Après 2-3 mois d'entraînement régulier avec plan comme décrit. 5K est réaliste pour débutant après ce temps.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment rester motivé?</h4>
+                    <p>Courez avec des amis. Définissez objectifs (5K, 10K). Suivez votre progrès. Changerez routes. Écoutez musique/podcasts. La motivation vient de la routine.</p>
+                </div>
+            </div>
+
+            <script>
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

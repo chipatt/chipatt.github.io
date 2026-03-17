@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chronomètre en Ligne - Précis & Gratuit</title><meta name="description" content="Chronomètre en ligne précis avec tours, compte à rebours et minuteur"><meta name="keywords" content="chronomètre, timer, minuteur, compte à rebours"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Chronomètre en Ligne - Précis & Gratuit"><meta property="og:description" content="Chronomètre en ligne précis avec tours, compte à rebours et minuteur"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#3498DB,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#3498DB;margin-bottom:10px;font-size:1rem}
+.btn{background:#3498DB;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#3498DB}
+.res{background:#f0f7ff;border-left:4px solid #3498DB;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#3498DB;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Chronomètre en Ligne - Précis & Gratuit</h1><p>Chronomètre en ligne précis avec tours, compte à rebours et minuteur</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Chronomètre</h2>
+<div style="text-align:center;padding:30px;background:#f8f9fa;border-radius:12px;margin-bottom:20px">
+<div id="time" style="font-family:monospace;font-size:3.5rem;font-weight:700;color:#3498DB">00:00:00.00</div></div>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<button class="btn" onclick="startS()">▶ Démarrer</button><button class="btn" onclick="stopS()" style="background:#E74C3C">⏸ Pause</button>
+<button class="btn" onclick="lapS()" style="background:#F39C12">🏁 Tour</button><button class="btn" onclick="resetS()" style="background:#636E72">↺ Reset</button></div>
+<div id="laps" style="margin-top:20px;max-height:200px;overflow-y:auto"></div>
+<h3 style="margin:25px 0 10px">Compte à Rebours</h3>
+<div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap">
+<div><label>Min:</label><input type="number" id="cdm" value="5" min="0" style="width:80px"></div>
+<div><label>Sec:</label><input type="number" id="cds" value="0" min="0" max="59" style="width:80px"></div>
+<button class="btn" onclick="startCD()">Démarrer</button><button class="btn" onclick="stopCD()" style="background:#E74C3C">Stop</button></div>
+<div id="cdtime" style="text-align:center;font-family:monospace;font-size:2.5rem;color:#E74C3C;margin-top:15px;padding:20px;background:#fff5f5;border-radius:10px">00:00</div>
+</div>
+<script>
+let ms=0,run=false,iv;function pad(n,d=2){return String(n).padStart(d,'0')}
+function disp(){const h=Math.floor(ms/3600000),m=Math.floor(ms%3600000/60000),s=Math.floor(ms%60000/1000),c=Math.floor(ms%1000/10);document.getElementById('time').textContent=pad(h)+':'+pad(m)+':'+pad(s)+'.'+pad(c)}
+function startS(){if(!run){run=true;const st=Date.now()-ms;iv=setInterval(()=>{ms=Date.now()-st;disp()},10)}}
+function stopS(){run=false;clearInterval(iv)}function resetS(){stopS();ms=0;disp();document.getElementById('laps').innerHTML=''}
+function lapS(){if(run){const d=document.createElement('div');d.style.cssText='padding:8px;border-bottom:1px solid #eee;display:flex;justify-content:space-between';d.innerHTML='<span>Tour '+(document.getElementById('laps').children.length+1)+'</span><span style="font-family:monospace">'+document.getElementById('time').textContent+'</span>';document.getElementById('laps').prepend(d)}}
+let cdiv,cdms=0;function startCD(){stopCD();cdms=(+document.getElementById('cdm').value*60+ +document.getElementById('cds').value)*1000;if(cdms<=0)return;const st=Date.now();cdiv=setInterval(()=>{const left=cdms-(Date.now()-st);if(left<=0){clearInterval(cdiv);document.getElementById('cdtime').textContent='00:00';document.getElementById('cdtime').style.animation='flash .5s 5 alternate';return}const m=Math.floor(left/60000),s=Math.floor(left%60000/1000);document.getElementById('cdtime').textContent=pad(m)+':'+pad(s)},100)}
+function stopCD(){clearInterval(cdiv)}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Le chronomètre est-il précis ?</summary><p>Oui, il utilise Date.now() du navigateur pour une précision au centième de seconde.</p></details>
+<details><summary>Puis-je enregistrer des tours ?</summary><p>Oui, cliquez sur "Tour" pendant que le chronomètre tourne pour enregistrer le temps de chaque tour.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Chronomètre en Ligne - Précis & Gratuit</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

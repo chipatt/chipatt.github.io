@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Générateur de Favicon - Texte & Emoji</title><meta name="description" content="Créez un favicon personnalisé pour votre site web à partir de texte ou emoji"><meta name="keywords" content="favicon generator, créer favicon, icône site, favicon en ligne"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Générateur de Favicon - Texte & Emoji"><meta property="og:description" content="Créez un favicon personnalisé pour votre site web à partir de texte ou emoji"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#E17055,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#E17055;margin-bottom:10px;font-size:1rem}
+.btn{background:#E17055;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#E17055}
+.res{background:#f0f7ff;border-left:4px solid #E17055;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#E17055;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Générateur de Favicon - Texte & Emoji</h1><p>Créez un favicon personnalisé pour votre site web à partir de texte ou emoji</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Générateur de Favicon</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div><label>Texte / Emoji:</label><input type="text" id="text" value="🚀" maxlength="2" style="font-size:2rem;text-align:center">
+<label>Couleur de fond:</label><input type="color" id="bg" value="#6C5CE7" oninput="gen()" style="height:40px">
+<label>Couleur texte:</label><input type="color" id="fg" value="#ffffff" oninput="gen()" style="height:40px">
+<label>Taille police:</label><input type="range" id="fs" min="16" max="56" value="40" oninput="gen()">
+<label>Arrondi:</label><input type="range" id="rad" min="0" max="32" value="8" oninput="gen()">
+<button class="btn" onclick="gen()" style="width:100%;margin-top:10px">Générer</button></div>
+<div style="text-align:center"><h3 style="margin-bottom:15px">Aperçu</h3>
+<canvas id="cvs" width="64" height="64" style="border:2px solid #eee;border-radius:8px;image-rendering:pixelated;width:128px;height:128px"></canvas>
+<div style="display:flex;gap:10px;justify-content:center;margin-top:15px">
+<canvas id="c16" width="16" height="16" style="border:1px solid #eee;width:32px;height:32px;image-rendering:pixelated"></canvas>
+<canvas id="c32" width="32" height="32" style="border:1px solid #eee;width:48px;height:48px;image-rendering:pixelated"></canvas>
+</div>
+<a id="dl" class="btn" style="display:inline-block;margin-top:15px;text-decoration:none" download="favicon.png">Télécharger PNG</a>
+<br><a id="dlico" class="btn" style="display:inline-block;margin-top:8px;background:#333;text-decoration:none" download="favicon.ico">Télécharger ICO</a>
+</div></div></div>
+<script>
+function gen(){const c=document.getElementById('cvs'),ctx=c.getContext('2d');const bg=document.getElementById('bg').value,fg=document.getElementById('fg').value,txt=document.getElementById('text').value,fs=+document.getElementById('fs').value,rad=+document.getElementById('rad').value;
+ctx.clearRect(0,0,64,64);ctx.fillStyle=bg;ctx.beginPath();ctx.roundRect(0,0,64,64,rad);ctx.fill();ctx.fillStyle=fg;ctx.font=fs+'px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(txt,32,35);
+[['c16',16],['c32',32]].forEach(([id,s])=>{const cv=document.getElementById(id),cx=cv.getContext('2d');cx.clearRect(0,0,s,s);cx.drawImage(c,0,0,s,s)});
+document.getElementById('dl').href=c.toDataURL('image/png');document.getElementById('dlico').href=c.toDataURL('image/png')}gen();
+document.getElementById('text').addEventListener('input',gen);
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment installer le favicon ?</summary><p>Téléchargez le fichier et placez-le à la racine de votre site. Ajoutez &lt;link rel="icon" href="/favicon.png"&gt; dans votre &lt;head&gt;.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Générateur de Favicon - Texte & Emoji</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

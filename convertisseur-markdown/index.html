@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur Markdown ↔ HTML en Ligne</title>
+    <meta name="description" content="Convertissez Markdown en HTML et vice versa avec preview temps réel">
+    <meta name="keywords" content="convertisseur markdown, markdown html, conversion markdown">
+    <meta property="og:title" content="Convertisseur Markdown ↔ HTML en Ligne">
+    <meta property="og:description" content="Convertissez Markdown en HTML et vice versa avec preview temps réel">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Convertisseur Markdown ↔ HTML en Ligne</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour convertir entre Markdown et HTML</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Convertisseur Markdown ↔ HTML</h2>
+<p>Convertissez du Markdown en HTML et vice versa avec preview en temps réel.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+            <label style="display: block; margin-bottom: 10px; color: #00ff88;">Markdown :</label>
+            <textarea id="mdInput" rows="12" placeholder="# Titre&#10;## Sous-titre&#10;**gras** *italique*&#10;- Liste&#10;- Item" style="width: 100%;"></textarea>
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 10px; color: #00ff88;">HTML :</label>
+            <textarea id="htmlInput" rows="12" readonly style="width: 100%; background: #1a1f3a;"></textarea>
+        </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+        <button onclick="mdToHtml()">MD → HTML</button>
+        <button onclick="htmlToMd()">HTML → MD</button>
+    </div>
+</div>
+
+<h2>Syntaxe Markdown de Base</h2>
+<table>
+    <tr>
+        <th>Syntaxe</th>
+        <th>Résultat</th>
+    </tr>
+    <tr>
+        <td><code># Titre</code></td>
+        <td>Titre H1</td>
+    </tr>
+    <tr>
+        <td><code>## Sous-titre</code></td>
+        <td>Titre H2</td>
+    </tr>
+    <tr>
+        <td><code>**gras**</code></td>
+        <td><strong>gras</strong></td>
+    </tr>
+    <tr>
+        <td><code>*italique*</code></td>
+        <td><em>italique</em></td>
+    </tr>
+    <tr>
+        <td><code>[lien](url)</code></td>
+        <td>Lien hypertexte</td>
+    </tr>
+</table>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ Markdown</h2>
+    <div class="faq-item">
+        <h4>Pourquoi utiliser Markdown ?</h4>
+        <div class="faq-answer">Markdown est simple, lisible, et peut être converti en HTML, PDF, ou d'autres formats.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Qui utilise Markdown ?</h4>
+        <div class="faq-answer">Développeurs, rédacteurs, chercheurs. Utilisé dans GitHub, Reddit, Discord, etc.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Y a-t-il différentes versions ?</h4>
+        <div class="faq-answer">Oui : CommonMark, GFM (GitHub Flavored Markdown), MultiMarkdown, etc.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Puis-je inclure du HTML dans Markdown ?</h4>
+        <div class="faq-answer">Oui, la plupart des convertisseurs acceptent du HTML brut.</div>
+    </div>
+</div>
+
+<script>
+function mdToHtml() {
+    let md = document.getElementById('mdInput').value;
+    let html = md
+        .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/^- (.*?)$/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+        .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+        .replace(/\n/g, '<br>');
+    document.getElementById('htmlInput').value = html;
+}
+
+function htmlToMd() {
+    let html = document.getElementById('htmlInput').value;
+    let md = html
+        .replace(/<h1>(.*?)<\/h1>/g, '# $1')
+        .replace(/<h2>(.*?)<\/h2>/g, '## $1')
+        .replace(/<h3>(.*?)<\/h3>/g, '### $1')
+        .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+        .replace(/<em>(.*?)<\/em>/g, '*$1*')
+        .replace(/<li>(.*?)<\/li>/g, '- $1')
+        .replace(/<a href="(.*?)">(.*?)<\/a>/g, '[$2]($1)');
+    document.getElementById('mdInput').value = md;
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

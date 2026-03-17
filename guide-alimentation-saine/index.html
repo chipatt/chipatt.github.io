@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apprenez les principes de la nutrition moderne et construisez des habitudes alimentaires saines">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Guide Alimentation Saine 2026">
+    <meta property="og:description" content="Apprenez les principes de la nutrition moderne et construisez des habitudes alimentaires saines">
+    <meta property="og:type" content="website">
+    <title>Guide Alimentation Saine 2026 | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Guide Alimentation Saine 2026</h1>
+        <p>Apprenez les principes de la nutrition moderne et construisez des habitudes alimentaires saines</p>
+    </header>
+    <div class="container">
+        <main>
+            <h2>Guide Complet de l'Alimentation Saine en 2026</h2>
+            
+            <div class="guide-section">
+                <h3>Les fondements de la nutrition saine</h3>
+                <p>Une alimentation saine n'est pas un régime restrictif. C'est construire des habitudes durables que vous pouvez maintenir indéfiniment. La nutrition saine met l'accent sur la qualité, la variété et la modération des aliments entiers plutôt que transformés.</p>
+                <p>Les recherches actuelles montrent que les régimes qui fonctionnent à long terme sont ceux que vous pouvez suivre. La flexibilité, la satisfaction et la durabilité sont clés. Il n'existe pas un "meilleur" régime universel; trouvez ce qui fonctionne pour votre corps et style de vie.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Les cinq groupes alimentaires</h3>
+                <p><strong>Fruits et légumes:</strong> Riche en vitamines, minéraux, fibres et antioxydants. Visez 5+ portions/jour de variétés colorées. Chaque couleur offre différents nutriments. <strong>Grains entiers:</strong> Riz brun, avoine, riz sauvage, seigle, quignon complet. Fournissent énergie, fibres et B vitamines.</p>
+                <p><strong>Protéines:</strong> Viande maigre, poisson, œufs, légumineuses, noix, graines. Essentielles pour réparation musculaire et fonctions corporelles. <strong>Produits laitiers ou alternatives:</strong> Lait, yaourt, fromage ou alternatives fortifiées (soja, amande). Source de calcium et D vitamine.</p>
+                <p><strong>Graisses saines:</strong> Olive, avocado, noix, poisson gras. Les graisses ne sont pas l'ennemi; les bonnes graisses soutiennent la santé cérébrale et hormonale.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Macronutriments et équilibre</h3>
+                <p>Votre assiette idéale: 50% légumes/fruits, 25% grains entiers, 25% protéines. Pour les macros, une approche flexible: 45-65% glucides, 10-35% protéines, 20-35% lipides. Ces gammes permettent flexibilité basée sur vos objectifs.</p>
+                <p>Si vous construisez du muscle: accent sur les protéines. Si vous avez une maladie cardiaque: accent sur les graisses saines et fibres. Pas besoin de compter chaque calorie; les aliments entiers aident automatiquement à la régulation calorique.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Hydratation et boissons</h3>
+                <p>L'eau est votre meilleure amie. Buvez de l'eau régulièrement tout au long de la journée. Le thé vert, non sucré, offre antioxydants. Limitez les sodas, jus sucrés et alcool qui ajoutent calories vides. Un verre de vin rouge avec le repas peut faire partie d'une alimentation équilibrée.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Lire les étiquettes nutritionnelles</h3>
+                <p>Vérifiez le poids de portion d'abord. Les sucres ajoutés ne devraient pas dépasser 25-36g/jour. Cherchez aliments avec moins de 5g de sucre ajouté par portion. Visez plus de 3g de fibres par portion. Les ingrédients sont listés par poids; si sucre est parmi les premiers, c'est un signal d'alerte.</p>
+                <p>Sodium: limitez à moins de 2300mg/jour. Graisses trans: évitez complètement (cherchez 0g). Graisses saturées: moins de 10% des calories.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Construire de meilleures habitudes alimentaires</h3>
+                <p><strong>Planifiez vos repas:</strong> Savoir ce que vous mangez prévient les décisions impulsives. <strong>Cuisinez à la maison:</strong> Plus sain que restaurants. <strong>Mangez lentement:</strong> Mâchez bien. Cela prend 20 minutes pour la satiété. <strong>Écoutez votre faim:</strong> Mangez quand affamé, arrêtez quand rassasié.</p>
+                <p><strong>Gardez des collations saines:</strong> Noix, yaourt, fruits. Pas de "aliments interdits"; modération. <strong>Restez flexible:</strong> Les repas "libres" sont OK. Une seule pizza ne ruine pas votre alimentation.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Superaliments à intégrer</h3>
+                <p><strong>Baies:</strong> Myrtilles, framboises. Riches en antioxydants. <strong>Oeufs:</strong> Protéine complète, économique, polyvalent. <strong>Poisson gras:</strong> Saumon, sardines. Oméga-3 pour cœur/cerveau. <strong>Légumes crucifères:</strong> Brocoli, chou. Prévention du cancer.</p>
+                <p><strong>Légumineuses:</strong> Lentilles, pois chiches. Protéine + fibres. <strong>Avocado:</strong> Graisses monoinsaturées saines. <strong>Yaourt grec:</strong> Protéine haute, probiotiques. <strong>Noix:</strong> Graisses saines, minéraux.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Est-ce que les glucides font grossir?</h4>
+                    <p>Non, les excès caloriques font grossir. Les glucides entiers (riz brun, avoine) sont sains. C'est les glucides raffinés + excès qui sont problématiques.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Puis-je manger sainement avec un budget serré?</h4>
+                    <p>Oui! Oeufs, riz, haricots, bananes, carottes sont bon marché et nutritifs. Achetez en vrac. Les aliments entiers sont moins chers que transformés.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Dois-je éliminer tous les aliments "mauvais"?</h4>
+                    <p>Non. L'équilibre est clé. 80% alimentaire entière, 20% flexibilité/plaisir. Vous pouvez profiter de la vie tout en étant sain.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Les suppléments sont-ils nécessaires?</h4>
+                    <p>Pas toujours. Cherchez d'abord des aliments. Si carences (B12 vegan, D hiver), supplémentez. Consultez un professionnel.</p>
+                </div>
+            </div>
+
+            <script>
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

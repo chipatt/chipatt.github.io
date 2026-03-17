@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Minuteur Pomodoro - Boostez votre Productivité</title><meta name="description" content="Technique Pomodoro en ligne : 25 min de focus, 5 min de pause. Gratuit et sans inscription."><meta name="keywords" content="pomodoro, minuteur productivité, technique pomodoro, timer focus, concentration"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Minuteur Pomodoro - Boostez votre Productivité"><meta property="og:description" content="Technique Pomodoro en ligne : 25 min de focus, 5 min de pause. Gratuit et sans inscription."><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#D63031,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#D63031;margin-bottom:10px;font-size:1rem}
+.btn{background:#D63031;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#D63031}
+.res{background:#f0f7ff;border-left:4px solid #D63031;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#D63031;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Minuteur Pomodoro - Boostez votre Productivité</h1><p>Technique Pomodoro en ligne : 25 min de focus, 5 min de pause. Gratuit et sans inscription.</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Minuteur Pomodoro</h2>
+<div style="text-align:center;padding:30px;background:#fff5f5;border-radius:15px;margin-bottom:20px">
+<div id="mode" style="font-size:1.2rem;color:#D63031;font-weight:600;margin-bottom:10px">Focus</div>
+<div id="timer" style="font-family:monospace;font-size:4rem;font-weight:700;color:#D63031">25:00</div>
+<div id="count" style="margin-top:10px;color:#666">Session 1 / 4</div></div>
+<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<button class="btn" onclick="startP()">▶ Démarrer</button><button class="btn" onclick="pauseP()" style="background:#F39C12">⏸ Pause</button>
+<button class="btn" onclick="resetP()" style="background:#636E72">↺ Reset</button><button class="btn" onclick="skipP()" style="background:#6C5CE7">⏭ Passer</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:20px">
+<div><label>Focus (min):</label><input type="number" id="focusT" value="25" min="1" max="60" onchange="resetP()"></div>
+<div><label>Pause courte:</label><input type="number" id="shortT" value="5" min="1" max="30" onchange="resetP()"></div>
+<div><label>Pause longue:</label><input type="number" id="longT" value="15" min="1" max="60" onchange="resetP()"></div></div>
+<div style="margin-top:20px;padding:15px;background:#f8f9fa;border-radius:10px"><h4>Historique</h4><div id="hist" style="max-height:150px;overflow-y:auto;margin-top:10px"><p style="color:#999">Aucune session complétée</p></div></div>
+</div>
+<script>
+let iv,sec=25*60,running=false,session=1,isFocus=true;
+function pad(n){return String(n).padStart(2,'0')}function disp(){document.getElementById('timer').textContent=pad(Math.floor(sec/60))+':'+pad(sec%60)}
+function startP(){if(!running){running=true;iv=setInterval(()=>{sec--;disp();if(sec<=0){clearInterval(iv);running=false;const now=new Date().toLocaleTimeString();const h=document.getElementById('hist');if(h.querySelector('p'))h.innerHTML='';const d=document.createElement('div');d.style.cssText='padding:5px 0;border-bottom:1px solid #eee;font-size:.9rem';d.textContent=(isFocus?'✅ Focus':'☕ Pause')+' terminé à '+now;h.prepend(d);if(isFocus){if(session%4===0){isFocus=false;sec=+document.getElementById('longT').value*60;document.getElementById('mode').textContent='Pause longue'}else{isFocus=false;sec=+document.getElementById('shortT').value*60;document.getElementById('mode').textContent='Pause courte'}}else{session++;isFocus=true;sec=+document.getElementById('focusT').value*60;document.getElementById('mode').textContent='Focus'}document.getElementById('count').textContent='Session '+session+' / 4';disp();try{new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU'+btoa(String.fromCharCode(...new Array(2e3).fill(0).map((_,i)=>128+127*Math.sin(i/5))))).play()}catch(e){}}},1000)}}
+function pauseP(){running=false;clearInterval(iv)}function resetP(){pauseP();session=1;isFocus=true;sec=+document.getElementById('focusT').value*60;document.getElementById('mode').textContent='Focus';document.getElementById('count').textContent='Session 1 / 4';disp()}
+function skipP(){pauseP();sec=0;startP()}disp();
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Qu'est-ce que la technique Pomodoro ?</summary><p>Créée par Francesco Cirillo, cette technique divise le travail en intervalles de 25 minutes (pomodoros) séparés par de courtes pauses de 5 minutes. Après 4 pomodoros, prenez une pause longue de 15-30 minutes.</p></details>
+<details><summary>Pourquoi 25 minutes ?</summary><p>25 minutes est la durée optimale pour maintenir une concentration intense sans fatigue mentale. C'est assez long pour avancer significativement, mais assez court pour rester motivé.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Minuteur Pomodoro - Boostez votre Productivité</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

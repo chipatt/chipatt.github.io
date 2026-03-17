@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculez l'aire, le périmètre et le volume des formes">
+    <meta name="keywords" content="éducation, culture, apprentissage, français">
+    <meta name="author" content="Education Tools">
+    <meta property="og:title" content="Calculatrice Géométrie">
+    <meta property="og:description" content="Calculez l'aire, le périmètre et le volume des formes">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Géométrie | Education Tools</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .result {
+            background: #f0f4ff;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #555;
+            display: none;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .ad-space {
+            background: #f5f5f5;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            color: #999;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            header {
+                padding: 20px;
+            }
+        }
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calculatrice Géométrie</h1>
+            <p>Calculez l'aire, le périmètre et le volume des formes</p>
+        </header>
+
+        <div class="main">
+            <div class="content">
+                
+<h2>Calculatrice Géométrie</h2>
+<p>Calculez l'aire, le périmètre et le volume des formes géométriques.</p>
+
+<div class="input-group">
+    <label for="shape-type">Sélectionnez une forme:</label>
+    <select id="shape-type" onchange="updateShapeInputs()">
+        <option value="">-- Choisissez une forme --</option>
+        <option value="circle">Cercle</option>
+        <option value="rectangle">Rectangle</option>
+        <option value="triangle">Triangle</option>
+        <option value="sphere">Sphère</option>
+        <option value="cube">Cube</option>
+        <option value="cylinder">Cylindre</option>
+    </select>
+</div>
+
+<div id="shape-inputs"></div>
+<button onclick="calculateGeometry()" id="calc-btn" style="display: none;">Calculer</button>
+
+<div id="result" class="result">
+    <h3>Résultat</h3>
+    <div id="geometry-result"></div>
+</div>
+
+<div class="faq">
+    <h2>Questions Fréquentes</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Quelle est la différence entre aire et périmètre?</div>
+        <div class="faq-answer">L'aire est la surface totale d'une forme (en m²), tandis que le périmètre est la longueur du contour (en m).</div>
+    </div>
+</div>
+
+<script>
+function updateShapeInputs() {
+    const shape = document.getElementById('shape-type').value;
+    let html = '';
+
+    switch(shape) {
+        case 'circle':
+            html = '<div class="input-group"><label>Rayon:</label><input type="number" id="param1" placeholder="Rayon" step="any"></div>';
+            break;
+        case 'rectangle':
+            html = '<div class="input-group"><label>Longueur:</label><input type="number" id="param1" placeholder="Longueur" step="any"></div><div class="input-group"><label>Largeur:</label><input type="number" id="param2" placeholder="Largeur" step="any"></div>';
+            break;
+        case 'triangle':
+            html = '<div class="input-group"><label>Base:</label><input type="number" id="param1" placeholder="Base" step="any"></div><div class="input-group"><label>Hauteur:</label><input type="number" id="param2" placeholder="Hauteur" step="any"></div>';
+            break;
+        case 'sphere':
+            html = '<div class="input-group"><label>Rayon:</label><input type="number" id="param1" placeholder="Rayon" step="any"></div>';
+            break;
+        case 'cube':
+            html = '<div class="input-group"><label>Côté:</label><input type="number" id="param1" placeholder="Côté" step="any"></div>';
+            break;
+        case 'cylinder':
+            html = '<div class="input-group"><label>Rayon:</label><input type="number" id="param1" placeholder="Rayon" step="any"></div><div class="input-group"><label>Hauteur:</label><input type="number" id="param2" placeholder="Hauteur" step="any"></div>';
+            break;
+    }
+
+    document.getElementById('shape-inputs').innerHTML = html;
+    document.getElementById('calc-btn').style.display = shape ? 'block' : 'none';
+}
+
+function calculateGeometry() {
+    const shape = document.getElementById('shape-type').value;
+    const p1 = parseFloat(document.getElementById('param1').value);
+    const p2 = parseFloat(document.getElementById('param2')?.value) || 0;
+
+    if (isNaN(p1) || p1 <= 0) {
+        alert('Entrez des valeurs valides');
+        return;
+    }
+
+    let result = '';
+
+    switch(shape) {
+        case 'circle':
+            const area = Math.PI * p1 * p1;
+            const perimeter = 2 * Math.PI * p1;
+            result = '<p>Aire: ' + area.toFixed(2) + ' m²</p><p>Périmètre: ' + perimeter.toFixed(2) + ' m</p>';
+            break;
+        case 'rectangle':
+            result = '<p>Aire: ' + (p1 * p2).toFixed(2) + ' m²</p><p>Périmètre: ' + (2 * (p1 + p2)).toFixed(2) + ' m</p>';
+            break;
+        case 'triangle':
+            result = '<p>Aire: ' + ((p1 * p2) / 2).toFixed(2) + ' m²</p>';
+            break;
+        case 'sphere':
+            const sphereArea = 4 * Math.PI * p1 * p1;
+            const sphereVolume = (4/3) * Math.PI * p1 * p1 * p1;
+            result = '<p>Surface: ' + sphereArea.toFixed(2) + ' m²</p><p>Volume: ' + sphereVolume.toFixed(2) + ' m³</p>';
+            break;
+        case 'cube':
+            result = '<p>Surface: ' + (6 * p1 * p1).toFixed(2) + ' m²</p><p>Volume: ' + (p1 * p1 * p1).toFixed(2) + ' m³</p>';
+            break;
+        case 'cylinder':
+            const cylArea = 2 * Math.PI * p1 * (p1 + p2);
+            const cylVolume = Math.PI * p1 * p1 * p2;
+            result = '<p>Surface: ' + cylArea.toFixed(2) + ' m²</p><p>Volume: ' + cylVolume.toFixed(2) + ' m³</p>';
+            break;
+    }
+
+    document.getElementById('geometry-result').innerHTML = result;
+    document.getElementById('result').classList.add('show');
+}
+
+function toggleFAQ(element) {
+    element.nextElementSibling.classList.toggle('show');
+}
+</script>
+
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+            </aside>
+        </div>
+
+        
+
+<footer>
+            <p>&copy; 2026 Education Tools | Outils d'apprentissage en ligne gratuits</p>
+            <p><a href="#">Accueil</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Contact</a></p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estimez votre date d'accouchement probable basée sur le premier jour de vos dernières règles">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice Date d'Accouchement">
+    <meta property="og:description" content="Estimez votre date d'accouchement probable basée sur le premier jour de vos dernières règles">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Date d'Accouchement | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice Date d'Accouchement</h1>
+        <p>Estimez votre date d'accouchement probable basée sur le premier jour de vos dernières règles</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice DPA (Date Prévue d'Accouchement)</h2>
+                <p>Entrez le premier jour de vos dernières règles pour estimer votre date d'accouchement.</p>
+
+                <div class="form-group">
+                    <label>Premier jour des dernières règles:</label>
+                    <input type="date" id="dateRegles">
+                </div>
+
+                <div class="form-group">
+                    <label>Durée du cycle menstruel (jours):</label>
+                    <input type="number" id="cycleMenstruel" min="21" max="35" value="28">
+                </div>
+
+                <button onclick="calculerDPA()">Calculer DPA</button>
+
+                <div id="resultatGrossesse" class="result">
+                    <p style="margin-bottom: 1rem;"><strong>Résultats de votre grossesse:</strong></p>
+                    <div style="background: white; padding: 1rem; border-radius: 6px;">
+                        <p style="margin-bottom: 0.75rem;"><strong>Date d'accouchement estimée:</strong> <span id="dpaDate" style="color: #26a69a; font-weight: bold;"></span></p>
+                        <p style="margin-bottom: 0.75rem;"><strong>Semaines de grossesse (aujourd'hui):</strong> <span id="semaines" style="color: #4db6ac; font-weight: bold;"></span></p>
+                        <p style="margin-bottom: 0.75rem;"><strong>Trimestre:</strong> <span id="trimestre" style="font-weight: bold;"></span></p>
+                        <p><strong>Jours jusqu'à l'accouchement:</strong> <span id="joursRestants" style="color: #f57c00; font-weight: bold;"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Suivi de la grossesse</h2>
+            <div class="guide-section">
+                <h3>Calculer votre DPA</h3>
+                <p>La DPA (Date Prévue d'Accouchement) est calculée en ajoutant 280 jours (40 semaines) à la date du premier jour de vos dernières règles. C'est une estimation; seuls 5% des bébés naissent à la date exacte. La plupart naissent dans les 2 semaines avant ou après.</p>
+                <h3>Trimestres de grossesse</h3>
+                <p><strong>Premier trimestre (0-12 semaines):</strong> Formation des organes. Risque de fausse couche plus élevé au début. <strong>Deuxième trimestre (13-27 semaines):</strong> Croissance rapide. Beaucoup de femmes se sentent meilleures. <strong>Troisième trimestre (28-40 semaines):</strong> Préparation à l'accouchement. Inconfort possible.</p>
+            </div>
+
+            <div class="guide-section">
+                <h3>Soins prénataux essentiels</h3>
+                <p>Consultez régulièrement votre gynécologue ou sage-femme. Prenez acide folique quotidiennement. Maintenez une alimentation saine avec protéines, calcium et fer. Restez active avec exercice doux comme marche, yoga prénatal. Évitez l'alcool, tabac et drogues.</p>
+                <p>Dormez suffisamment. Gérez le stress. Rejoignez des cours prénatals. Préparez votre maison et votre esprit pour l'arrivée du bébé.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>La DPA est-elle exacte?</h4>
+                    <p>Non, c'est une estimation. Seuls 5% accouchent à la date exacte. Votre médecin affinera cette estimation avec une échographie du premier trimestre.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quand dois-je informer mon employeur?</h4>
+                    <p>Généralement au 2e trimestre (semaine 12-13) pour planifier le congé maternité. Les exigences légales varient selon votre pays.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment puis-je m'impliquer dans les décisions d'accouchement?</h4>
+                    <p>Discutez avec votre médecin de vos préférences. Créez un plan de naissance. Prenez des cours prénatals. Impliquez votre partenaire. Posez des questions.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Quand puis-je révéler mon sexe du bébé?</h4>
+                    <p>Les échographies peuvent généralement détecter le sexe autour de 18-20 semaines. Certaines parents attendent la naissance.</p>
+                </div>
+            </div>
+
+            <script>
+                function calculerDPA() {
+                    const dateInput = document.getElementById('dateRegles').value;
+                    const cycleMenstruel = parseInt(document.getElementById('cycleMenstruel').value);
+                    
+                    if (!dateInput) {
+                        alert('Veuillez sélectionner une date');
+                        return;
+                    }
+
+                    const dateRegles = new Date(dateInput);
+                    const dpa = new Date(dateRegles);
+                    dpa.setDate(dpa.getDate() + 280);
+
+                    const aujourd = new Date();
+                    const semaines = Math.floor((aujourd - dateRegles) / (7 * 24 * 60 * 60 * 1000));
+                    const joursRestants = Math.ceil((dpa - aujourd) / (24 * 60 * 60 * 1000));
+
+                    let trimestre = '';
+                    if (semaines < 12) trimestre = '1er trimestre';
+                    else if (semaines < 27) trimestre = '2e trimestre';
+                    else trimestre = '3e trimestre';
+
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    const dpaBelle = dpa.toLocaleDateString('fr-FR', options);
+
+                    document.getElementById('dpaDate').textContent = dpaBelle;
+                    document.getElementById('semaines').textContent = semaines + ' semaines';
+                    document.getElementById('trimestre').textContent = trimestre;
+                    document.getElementById('joursRestants').textContent = Math.max(0, joursRestants) + ' jours';
+                    document.getElementById('resultatGrossesse').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+
+                // Définir la date d'aujourd'hui comme valeur par défaut
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('dateRegles').value = today;
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

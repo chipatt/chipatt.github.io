@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calculatrice IMC - Indice de Masse Corporelle</title><meta name="description" content="Calculez votre IMC et découvrez votre poids idéal selon votre taille et votre âge"><meta name="keywords" content="calculatrice imc, indice masse corporelle, poids idéal, bmi"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Calculatrice IMC - Indice de Masse Corporelle"><meta property="og:description" content="Calculez votre IMC et découvrez votre poids idéal selon votre taille et votre âge"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#FD79A8,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#FD79A8;margin-bottom:10px;font-size:1rem}
+.btn{background:#FD79A8;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#FD79A8}
+.res{background:#f0f7ff;border-left:4px solid #FD79A8;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#FD79A8;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Calculatrice IMC - Indice de Masse Corporelle</h1><p>Calculez votre IMC et découvrez votre poids idéal selon votre taille et votre âge</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Calculatrice IMC</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div><label>Taille (cm):</label><input type="number" id="h" value="175" min="100" max="250"></div>
+<div><label>Poids (kg):</label><input type="number" id="w" value="70" min="20" max="300"></div>
+<div><label>Âge:</label><input type="number" id="a" value="30" min="15" max="120"></div>
+<div><label>Sexe:</label><select id="sex"><option value="m">Homme</option><option value="f">Femme</option></select></div></div>
+<button class="btn" onclick="calcIMC()" style="margin-top:15px;width:100%">Calculer mon IMC</button>
+<div id="result" style="margin-top:20px"></div>
+<div style="margin-top:20px;background:#f8f9fa;padding:15px;border-radius:10px">
+<h4 style="margin-bottom:10px">Tableau de référence IMC</h4>
+<table style="width:100%;border-collapse:collapse;font-size:.9rem">
+<tr style="background:#FD79A8;color:#fff"><th style="padding:8px;text-align:left">Catégorie</th><th style="padding:8px">IMC</th></tr>
+<tr style="border-bottom:1px solid #eee"><td style="padding:8px">Maigreur</td><td style="padding:8px;text-align:center">&lt; 18.5</td></tr>
+<tr style="border-bottom:1px solid #eee;background:#f0fff4"><td style="padding:8px">Normal</td><td style="padding:8px;text-align:center">18.5 - 24.9</td></tr>
+<tr style="border-bottom:1px solid #eee"><td style="padding:8px">Surpoids</td><td style="padding:8px;text-align:center">25 - 29.9</td></tr>
+<tr style="border-bottom:1px solid #eee"><td style="padding:8px">Obésité modérée</td><td style="padding:8px;text-align:center">30 - 34.9</td></tr>
+<tr><td style="padding:8px">Obésité sévère</td><td style="padding:8px;text-align:center">≥ 35</td></tr>
+</table></div></div>
+<script>
+function calcIMC(){const h=+document.getElementById('h').value/100,w=+document.getElementById('w').value;const imc=(w/(h*h)).toFixed(1);let cat,col,icon;if(imc<18.5){cat='Maigreur';col='#3498DB';icon='⚠️'}else if(imc<25){cat='Poids normal';col='#27AE60';icon='✅'}else if(imc<30){cat='Surpoids';col='#F39C12';icon='⚠️'}else if(imc<35){cat='Obésité modérée';col='#E74C3C';icon='⚠️'}else{cat='Obésité sévère';col='#C0392B';icon='⚠️'}
+const ideal_low=(18.5*h*h).toFixed(1),ideal_high=(24.9*h*h).toFixed(1);
+document.getElementById('result').innerHTML=`<div class="res" style="border-color:${col}"><div style="font-size:2rem;font-weight:700;color:${col}">${icon} IMC: ${imc}</div><div style="font-size:1.2rem;margin-top:5px;color:${col}">${cat}</div><div style="margin-top:10px;color:#555">Poids idéal pour votre taille: <strong>${ideal_low} - ${ideal_high} kg</strong></div></div>`}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment l'IMC est-il calculé ?</summary><p>L'IMC = poids (kg) / taille² (m²). Par exemple, pour 70 kg et 1.75 m : 70 / (1.75²) = 22.9.</p></details>
+<details><summary>L'IMC est-il fiable ?</summary><p>L'IMC est un indicateur général. Il ne tient pas compte de la masse musculaire, de la densité osseuse ou de la répartition des graisses. Consultez un professionnel de santé pour une évaluation complète.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Calculatrice IMC - Indice de Masse Corporelle</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

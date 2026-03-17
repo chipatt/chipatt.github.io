@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculez vos besoins en eau quotidiens selon votre poids et activité">
+    <meta name="keywords" content="santé, bien-être, calculatrice, guide">
+    <meta name="author" content="Bien-être Santé">
+    <meta property="og:title" content="Calculatrice d'Hydratation">
+    <meta property="og:description" content="Calculez vos besoins en eau quotidiens selon votre poids et activité">
+    <meta property="og:type" content="website">
+    <title>Calculatrice d'Hydratation | Bien-être Santé</title>
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .ad-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .calculator {
+            background: #f9fff9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #26a69a;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #26a69a;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0f2f1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #26a69a;
+        }
+        button {
+            background: linear-gradient(135deg, #26a69a 0%, #4db6ac 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(38, 166, 154, 0.3);
+        }
+        .result {
+            background: #e8f5e9;
+            border: 2px solid #26a69a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1b5e57;
+            margin-bottom: 0.5rem;
+        }
+        .result-unit {
+            font-size: 1rem;
+            color: #666;
+        }
+        h2 {
+            color: #26a69a;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #80cbc4;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #4db6ac;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        .faq {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: #f0f8f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border-left: 4px solid #4db6ac;
+        }
+        .faq-item h4 {
+            color: #26a69a;
+            margin-bottom: 0.5rem;
+        }
+        .faq-item p {
+            display: none;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+        footer {
+            background: #263238;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #80cbc4;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .guide-section {
+            margin-bottom: 2rem;
+        }
+        .guide-section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .pose-item {
+            background: #f9fff9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #26a69a;
+        }
+        .pose-item strong {
+            color: #26a69a;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            main {
+                padding: 1.5rem;
+            }
+            .sidebar {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .ad-box {
+                flex: 1;
+                min-width: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice d'Hydratation</h1>
+        <p>Calculez vos besoins en eau quotidiens selon votre poids et activité</p>
+    </header>
+    <div class="container">
+        <main>
+            <div class="calculator">
+                <h2>Calculatrice d'Hydratation</h2>
+                <p>Découvrez la quantité d'eau que vous devez boire chaque jour pour rester bien hydraté.</p>
+
+                <div class="form-group">
+                    <label>Poids (kg):</label>
+                    <input type="number" id="poids" min="1" max="300" step="0.1" value="70">
+                </div>
+
+                <div class="form-group">
+                    <label>Niveau d'activité:</label>
+                    <select id="activite">
+                        <option value="sedentaire">Sédentaire</option>
+                        <option value="leger">Léger (0-3h exercice/semaine)</option>
+                        <option value="modere">Modéré (3-5h exercice/semaine)</option>
+                        <option value="intensif">Intensif (>5h exercice/semaine)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Climat:</label>
+                    <select id="climat">
+                        <option value="tempere">Tempéré</option>
+                        <option value="chaud">Chaud/Tropical</option>
+                        <option value="tres">Très chaud</option>
+                    </select>
+                </div>
+
+                <button onclick="calculerEau()">Calculer mes besoins</button>
+
+                <div id="resultatEau" class="result">
+                    <div class="result-value" id="litres">0</div>
+                    <div class="result-unit">litres d'eau par jour</div>
+                    <p style="margin-top: 1rem; color: #555;">
+                        Soit environ <strong id="verres">0</strong> verres de 250ml
+                    </p>
+                </div>
+            </div>
+
+            <h2>L'importance de l'hydratation</h2>
+            <div class="guide-section">
+                <p>L'eau est essentielle à la vie. Elle régule la température corporelle, transporte les nutriments, élimine les déchets et maintient l'équilibre électrolytique. Une hydratation adéquate améliore la concentration, l'énergie et la performance physique.</p>
+                <h3>Signes de déshydratation</h3>
+                <p>La soif est un signe tardif de déshydratation. D'autres signes incluent: fatigue, sécheresse buccale, urine foncée, maux de tête et vertiges. Buvez régulièrement tout au long de la journée plutôt que d'attendre d'avoir soif.</p>
+                <h3>Recommandations</h3>
+                <p>Buvez avant, pendant et après l'exercice. Augmentez votre consommation d'eau dans les environnements chauds ou en altitude. Écoutez votre corps et ajustez en fonction de vos besoins individuels.</p>
+            </div>
+
+            <div class="faq">
+                <h2>Questions Fréquentes</h2>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Est-ce que 8 verres d'eau par jour suffisent?</h4>
+                    <p>Cette règle générale varie selon votre poids, activité et climat. Utilisez cette calculatrice pour obtenir une estimation plus personnalisée.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Peut-on boire trop d'eau?</h4>
+                    <p>Oui, boire de très grandes quantités en peu de temps peut causer une hyponatrémie (intoxication à l'eau). Buvez régulièrement et modérément.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Les autres liquides comptent-ils?</h4>
+                    <p>Oui, thé, café, jus et aliments riches en eau (fruits, légumes) contribuent à votre hydratation totale.</p>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <h4>Comment savoir si je suis bien hydraté?</h4>
+                    <p>La couleur de votre urine est un bon indicateur. Elle devrait être claire ou jaune pâle. Une urine foncée indique une déshydratation.</p>
+                </div>
+            </div>
+
+            <script>
+                function calculerEau() {
+                    const poids = parseFloat(document.getElementById('poids').value);
+                    const activite = document.getElementById('activite').value;
+                    const climat = document.getElementById('climat').value;
+
+                    let base = poids * 0.033;
+
+                    const facteurActivite = {
+                        sedentaire: 0,
+                        leger: 0.5,
+                        modere: 1.0,
+                        intensif: 1.5
+                    };
+
+                    const facteurClimat = {
+                        tempere: 0,
+                        chaud: 0.5,
+                        tres: 1.0
+                    };
+
+                    const total = base + facteurActivite[activite] + facteurClimat[climat];
+                    const verres = Math.round(total * 4);
+
+                    document.getElementById('litres').textContent = total.toFixed(1);
+                    document.getElementById('verres').textContent = verres;
+                    document.getElementById('resultatEau').classList.add('show');
+                }
+
+                function toggleFaq(element) {
+                    element.classList.toggle('active');
+                }
+            </script>
+        </main>
+        <aside class="sidebar">
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+            <div class="ad-box">
+                
+                <script>
+                    
+                </script>
+            </div>
+        </aside>
+    </div>
+    
+
+<footer>
+        <p>&copy; 2026 Bien-être Santé. Tous droits réservés.</p>
+        <p><a href="#">Accueil</a> | <a href="#">À propos</a> | <a href="#">Contact</a></p>
+    </footer>
+
+
+</body>
+</html>

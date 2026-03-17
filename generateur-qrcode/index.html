@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Générateur de QR Code Gratuit</title><meta name="description" content="Créez des QR codes personnalisés pour vos liens, textes, WiFi et contacts"><meta name="keywords" content="générateur qr code, créer qr code, qr code gratuit, qr code en ligne"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Générateur de QR Code Gratuit"><meta property="og:description" content="Créez des QR codes personnalisés pour vos liens, textes, WiFi et contacts"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#636E72,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#636E72;margin-bottom:10px;font-size:1rem}
+.btn{background:#636E72;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#636E72}
+.res{background:#f0f7ff;border-left:4px solid #636E72;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#636E72;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Générateur de QR Code Gratuit</h1><p>Créez des QR codes personnalisés pour vos liens, textes, WiFi et contacts</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Générateur de QR Code</h2>
+<select id="type" onchange="toggleFields()"><option value="url">URL / Lien</option><option value="text">Texte</option><option value="wifi">WiFi</option><option value="email">Email</option><option value="tel">Téléphone</option></select>
+<div id="f_url"><label>URL:</label><input type="url" id="url" value="https://example.com" placeholder="https://..."></div>
+<div id="f_text" style="display:none"><label>Texte:</label><textarea id="text_v" rows="3" placeholder="Votre texte..."></textarea></div>
+<div id="f_wifi" style="display:none"><label>Réseau:</label><input type="text" id="ssid" placeholder="Nom du réseau"><label>Mot de passe:</label><input type="text" id="wifipass" placeholder="Mot de passe"><label>Sécurité:</label><select id="wifisec"><option>WPA</option><option>WEP</option><option>nopass</option></select></div>
+<div id="f_email" style="display:none"><label>Email:</label><input type="email" id="em" placeholder="email@example.com"><label>Sujet:</label><input type="text" id="emsub" placeholder="Sujet"></div>
+<div id="f_tel" style="display:none"><label>Téléphone:</label><input type="tel" id="tel" placeholder="+33 6 12 34 56 78"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0"><div><label>Taille:</label><select id="sz"><option value="200">Petit</option><option value="300" selected>Moyen</option><option value="500">Grand</option></select></div>
+<div><label>Couleur:</label><input type="color" id="qrcol" value="#000000" style="height:40px"></div></div>
+<button class="btn" onclick="genQR()" style="width:100%">Générer le QR Code</button>
+<div style="text-align:center;margin-top:20px"><div id="qr"></div><br><a id="dl" href="#" download="qrcode.png" style="display:none" class="btn">Télécharger PNG</a></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+function toggleFields(){const t=document.getElementById('type').value;['url','text','wifi','email','tel'].forEach(f=>document.getElementById('f_'+f).style.display=f===t?'block':'none')}
+function getData(){const t=document.getElementById('type').value;switch(t){case'url':return document.getElementById('url').value;case'text':return document.getElementById('text_v').value;case'wifi':return`WIFI:T:${document.getElementById('wifisec').value};S:${document.getElementById('ssid').value};P:${document.getElementById('wifipass').value};;`;case'email':return`mailto:${document.getElementById('em').value}?subject=${document.getElementById('emsub').value}`;case'tel':return`tel:${document.getElementById('tel').value}`}}
+function genQR(){const el=document.getElementById('qr');el.innerHTML='';const sz=+document.getElementById('sz').value;new QRCode(el,{text:getData(),width:sz,height:sz,colorDark:document.getElementById('qrcol').value,colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});setTimeout(()=>{const c=el.querySelector('canvas');if(c){const a=document.getElementById('dl');a.href=c.toDataURL('image/png');a.style.display='inline-block'}},200)}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment scanner un QR code ?</summary><p>Ouvrez l'appareil photo de votre smartphone et pointez-le vers le QR code. La plupart des téléphones modernes détectent automatiquement les QR codes.</p></details>
+<details><summary>Le QR code expire-t-il ?</summary><p>Non, nos QR codes sont statiques et ne expirent jamais. Les données sont encodées directement dans l'image.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Générateur de QR Code Gratuit</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

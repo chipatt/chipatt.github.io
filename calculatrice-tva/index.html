@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculatrice TVA en Ligne</title><meta name="description" content="Calculez la TVA, le prix HT et TTC instantanément"><meta name="keywords" content="calculatrice tva, calcul tva, prix ht ttc, taux tva france"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hd{background:linear-gradient(135deg,#E74C3C,#1a1a2e);color:#fff;padding:25px 0;text-align:center}.hd h1{font-size:clamp(1.3rem,3vw,2rem)}.hd p{opacity:.85;font-size:.9rem}
+.w{max-width:1100px;margin:0 auto;padding:20px}.g{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.c{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}
+.sb{display:flex;flex-direction:column;gap:20px}.sbc{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sbc h3{color:#E74C3C;margin-bottom:10px;font-size:1rem}
+.btn{background:#E74C3C;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus{outline:none;border-color:#E74C3C}
+.rs{background:#f0f7ff;border-left:4px solid #E74C3C;padding:20px;border-radius:0 8px 8px 0;margin:15px 0}
+.ft{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.g{grid-template-columns:1fr}}
+</style></head><body>
+<div class="hd"><div class="w"><h1>Calculatrice TVA en Ligne</h1><p>Calculez la TVA, le prix HT et TTC instantanément</p></div></div><div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+<div class="w"><div class="g"><div><div class="c"><h2 style="margin-bottom:15px">Calculatrice TVA</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div><label>Montant:</label><input type="number" id="amt" value="100" oninput="calc()"></div>
+<div><label>Taux TVA:</label><select id="rate" onchange="calc()"><option value="20">20% (Normal)</option><option value="10">10% (Intermédiaire)</option><option value="5.5">5.5% (Réduit)</option><option value="2.1">2.1% (Super réduit)</option></select></div></div>
+<div style="display:flex;gap:10px;margin:15px 0">
+<button class="btn" onclick="mode='ht';calc()">HT → TTC</button>
+<button class="btn" onclick="mode='ttc';calc()" style="background:#333">TTC → HT</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px" id="res"></div></div>
+<script>let mode='ht';function calc(){const a=+document.getElementById('amt').value,r=+document.getElementById('rate').value;
+let ht,tva,ttc;if(mode==='ht'){ht=a;tva=a*r/100;ttc=a+tva}else{ttc=a;ht=a/(1+r/100);tva=ttc-ht}
+document.getElementById('res').innerHTML=`
+<div style="text-align:center;padding:20px;background:#f0f7ff;border-radius:10px"><div style="font-size:2rem;font-weight:700;color:#3498DB">${ht.toFixed(2)} €</div><div>Prix HT</div></div>
+<div style="text-align:center;padding:20px;background:#fff0f0;border-radius:10px"><div style="font-size:2rem;font-weight:700;color:#E74C3C">${tva.toFixed(2)} €</div><div>TVA (${r}%)</div></div>
+<div style="text-align:center;padding:20px;background:#d4edda;border-radius:10px"><div style="font-size:2rem;font-weight:700;color:#27AE60">${ttc.toFixed(2)} €</div><div>Prix TTC</div></div>`}calc();</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Quels sont les taux de TVA en France ?</summary><p>20% (taux normal), 10% (restauration, travaux), 5.5% (alimentation, livres) et 2.1% (médicaments remboursés, presse).</p></details></div></div>
+
+
+<div class="sb"><div style="text-align:center;margin:15px 0;min-height:250px;"></div><div class="sbc"><h3>Articles populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Guide complet 2026</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Conseils d'experts</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">FAQ détaillée</a></li></ul></div><div style="text-align:center;margin:15px 0;min-height:250px;"></div></div></div></div><div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+
+
+<div class="ft"><div class="w"><p>&copy; 2026 Calculatrice TVA en Ligne</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+
+
+</body></html>

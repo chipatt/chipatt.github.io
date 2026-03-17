@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Formateur JSON en Ligne</title><meta name="description" content="Formatez, validez et minifiez votre JSON en un clic"><meta name="keywords" content="json formatter, json beautifier, valider json, formater json"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Formateur JSON en Ligne"><meta property="og:description" content="Formatez, validez et minifiez votre JSON en un clic"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#00CEC9,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#00CEC9;margin-bottom:10px;font-size:1rem}
+.btn{background:#00CEC9;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#00CEC9}
+.res{background:#f0f7ff;border-left:4px solid #00CEC9;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#00CEC9;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Formateur JSON en Ligne</h1><p>Formatez, validez et minifiez votre JSON en un clic</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Formateur JSON</h2>
+<textarea id="input" rows="10" placeholder='Collez votre JSON ici... ex: {"name":"test","value":123}' style="font-family:monospace;font-size:.9rem"></textarea>
+<div style="display:flex;gap:10px;margin:15px 0;flex-wrap:wrap">
+<button class="btn" onclick="fmt()">Formater</button><button class="btn" onclick="mini()" style="background:#636E72">Minifier</button>
+<button class="btn" onclick="validate()" style="background:#27AE60">Valider</button><button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('output').textContent)" style="background:#333">Copier</button>
+<button class="btn" onclick="document.getElementById('input').value='';document.getElementById('output').textContent=''" style="background:#E74C3C">Effacer</button></div>
+<div id="msg" style="display:none;padding:10px;border-radius:8px;margin-bottom:10px"></div>
+<pre id="output" style="background:#1a1a2e;color:#00CEC9;padding:20px;border-radius:10px;overflow-x:auto;max-height:400px;font-size:.85rem;line-height:1.6"></pre>
+</div>
+<script>
+function showMsg(t,ok){const m=document.getElementById('msg');m.style.display='block';m.style.background=ok?'#d4edda':'#f8d7da';m.style.color=ok?'#155724':'#721c24';m.textContent=t;setTimeout(()=>m.style.display='none',3000)}
+function fmt(){try{const j=JSON.parse(document.getElementById('input').value);document.getElementById('output').textContent=JSON.stringify(j,null,2);showMsg('✅ JSON valide et formaté !',true)}catch(e){showMsg('❌ JSON invalide: '+e.message,false)}}
+function mini(){try{const j=JSON.parse(document.getElementById('input').value);document.getElementById('output').textContent=JSON.stringify(j);showMsg('✅ JSON minifié !',true)}catch(e){showMsg('❌ JSON invalide: '+e.message,false)}}
+function validate(){try{JSON.parse(document.getElementById('input').value);showMsg('✅ JSON valide !',true)}catch(e){showMsg('❌ Erreur: '+e.message,false)}}
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Qu'est-ce que JSON ?</summary><p>JSON (JavaScript Object Notation) est un format de données léger et lisible, largement utilisé pour les APIs web et la configuration.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Formateur JSON en Ligne</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

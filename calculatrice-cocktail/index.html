@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Calculatrice de Cocktails">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,calculatrice-cocktail">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Calculatrice de Cocktails">
+    <meta property="og:type" content="website">
+    <title>Calculatrice de Cocktails | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice de Cocktails</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Calculatrice de Cocktails</h2>
+    <p>Ajustez les recettes de cocktails pour servir plusieurs personnes.</p>
+
+    <div class="ingredient-form">
+        <h3>Calculer Portions Cocktail</h3>
+        <label>Nombre de verres:</label>
+        <input type="number" id="cocktail_verres" value="1" min="1" max="50">
+
+        <label>Type de cocktail:</label>
+        <select id="cocktail_type">
+            <option value="mojito">Mojito</option>
+            <option value="margarita">Margarita</option>
+            <option value="daiquiri">Daïquiri</option>
+            <option value="martini">Martini</option>
+            <option value="cosmopolitan">Cosmopolitan</option>
+        </select>
+
+        <button onclick="calculerCocktail()">Calculer</button>
+    </div>
+
+    <div id="resultat_cocktail" class="result">
+        <h3>Ingrédients Nécessaires</h3>
+        <table id="cocktail_ingredients"></table>
+    </div>
+
+    <script>
+        const recettes = {
+            mojito: [
+                {nom: 'Rhum Blanc', quantite: 45, unite: 'ml'},
+                {nom: 'Citron Frais', quantite: 0.5, unite: ''},
+                {nom: 'Menthe Fraîche', quantite: 6, unite: 'feuilles'},
+                {nom: 'Sucre Canne', quantite: 15, unite: 'g'},
+                {nom: 'Glaçons', quantite: 50, unite: 'g'},
+                {nom: 'Eau Gazeuse', quantite: 100, unite: 'ml'}
+            ],
+            margarita: [
+                {nom: 'Tequila', quantite: 45, unite: 'ml'},
+                {nom: 'Liqueur Cointreau', quantite: 30, unite: 'ml'},
+                {nom: 'Jus Citron Frais', quantite: 25, unite: 'ml'},
+                {nom: 'Sirop Simple', quantite: 15, unite: 'ml'},
+                {nom: 'Sel Fin', quantite: 5, unite: 'g'},
+                {nom: 'Glaçons', quantite: 150, unite: 'g'}
+            ],
+            daiquiri: [
+                {nom: 'Rhum Blanc', quantite: 45, unite: 'ml'},
+                {nom: 'Jus Citron Frais', quantite: 25, unite: 'ml'},
+                {nom: 'Sirop Simple', quantite: 15, unite: 'ml'},
+                {nom: 'Glaçons', quantite: 150, unite: 'g'}
+            ],
+            martini: [
+                {nom: 'Vodka', quantite: 60, unite: 'ml'},
+                {nom: 'Vermouth Sec', quantite: 10, unite: 'ml'},
+                {nom: 'Olives', quantite: 2, unite: ''},
+                {nom: 'Glaçons', quantite: 150, unite: 'g'}
+            ],
+            cosmopolitan: [
+                {nom: 'Vodka', quantite: 45, unite: 'ml'},
+                {nom: 'Liqueur Cranberry', quantite: 20, unite: 'ml'},
+                {nom: 'Jus Citron Frais', quantite: 15, unite: 'ml'},
+                {nom: 'Jus Cranberry', quantite: 30, unite: 'ml'},
+                {nom: 'Glaçons', quantite: 150, unite: 'g'}
+            ]
+        };
+
+        function calculerCocktail() {
+            const verres = parseInt(document.getElementById('cocktail_verres').value);
+            const type = document.getElementById('cocktail_type').value;
+            const recette = recettes[type];
+
+            let html = '<tr><th>Ingrédient</th><th>Quantité</th><th>Unité</th></tr>';
+            recette.forEach(ing => {
+                const qty = (ing.quantite * verres).toFixed(1);
+                html += `<tr><td>${ing.nom}</td><td>${qty}</td><td>${ing.unite}</td></tr>`;
+            });
+
+            document.getElementById('cocktail_ingredients').innerHTML = html;
+            document.getElementById('resultat_cocktail').classList.add('show');
+        }
+    </script>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment adapter une recette de cocktail?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Entrez le nombre de verres désirés et les proportions s'ajusteront automatiquement.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qu'est-ce qu'un jigger?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Un jigger est un mesureur en forme de sablier utilisé par les bartenders. Les tailles courantes sont 25ml et 50ml.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je préparer des cocktails à l'avance?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Certains cocktails se préparent à l'avance, d'autres pas. Les cocktails avec des ingrédients frais doivent être préparés au moment de servir.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

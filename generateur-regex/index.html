@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur Regex - Testeur Expressions Régulières</title>
+    <meta name="description" content="Créez et testez des expressions régulières avec preview instantané">
+    <meta name="keywords" content="générateur regex, testeur regex, expressions régulières, pattern">
+    <meta property="og:title" content="Générateur Regex - Testeur Expressions Régulières">
+    <meta property="og:description" content="Créez et testez des expressions régulières avec preview instantané">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Générateur Regex - Testeur Expressions Régulières</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour générer et tester vos regex</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Générateur et Testeur d'Expressions Régulières</h2>
+<p>Construisez et testez des expressions régulières interactivement avec preview instantanée.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <label style="display: block; margin-bottom: 10px; color: #00ff88;">Expression Régulière :</label>
+    <input id="regexInput" type="text" placeholder="/^[a-z]+@[a-z]+\.[a-z]{2,}$/" style="width: 100%; margin-bottom: 15px;">
+    <label style="display: block; margin-bottom: 10px; color: #00ff88;">Texte à Tester :</label>
+    <textarea id="testText" rows="6" placeholder="user@example.com" style="width: 100%; margin-bottom: 15px;"></textarea>
+    <button onclick="testRegex()" style="width: 100%;">Tester Regex</button>
+    <div id="regexResults" style="margin-top: 20px; padding: 15px; background: #1a1f3a; border-radius: 4px; display: none;">
+        <h3>Résultats :</h3>
+        <p>Correspondances trouvées : <span id="matchCount" style="color: #00ff88;">0</span></p>
+        <p>Matches : <span id="matches" style="color: #00d4ff; word-break: break-all;">-</span></p>
+    </div>
+</div>
+
+<h2>Patterns Regex Courants</h2>
+<table>
+    <tr>
+        <th>Pattern</th>
+        <th>Signification</th>
+    </tr>
+    <tr>
+        <td><code>^</code></td>
+        <td>Début de chaîne</td>
+    </tr>
+    <tr>
+        <td><code>$</code></td>
+        <td>Fin de chaîne</td>
+    </tr>
+    <tr>
+        <td><code>.</code></td>
+        <td>Tout caractère</td>
+    </tr>
+    <tr>
+        <td><code>[abc]</code></td>
+        <td>a ou b ou c</td>
+    </tr>
+    <tr>
+        <td><code>[a-z]</code></td>
+        <td>Toute lettre minuscule</td>
+    </tr>
+    <tr>
+        <td><code>+</code></td>
+        <td>1 ou plus</td>
+    </tr>
+    <tr>
+        <td><code>*</code></td>
+        <td>0 ou plus</td>
+    </tr>
+    <tr>
+        <td><code>?</code></td>
+        <td>0 ou 1</td>
+    </tr>
+</table>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">FAQ Regex</h2>
+    <div class="faq-item">
+        <h4>Regex est compliqué, par où commencer ?</h4>
+        <div class="faq-answer">Commencez simple : test des emails, URLs. Montez progressivement en complexité.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Y a-t-il un référence Regex rapide ?</h4>
+        <div class="faq-answer">Oui, regex101.com est excellent pour apprendre et tester.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Regex est-elle la même dans tous les langages ?</h4>
+        <div class="faq-answer">Principalement oui, mais il y a des variantes (PCRE, JavaScript, Python, etc).</div>
+    </div>
+    <div class="faq-item">
+        <h4>Comment matcher une email valide ?</h4>
+        <div class="faq-answer">Pattern : /^[^\s@]+@[^\s@]+\.[^\s@]+$/</div>
+    </div>
+</div>
+
+<script>
+function testRegex() {
+    const pattern = document.getElementById('regexInput').value;
+    const text = document.getElementById('testText').value;
+    try {
+        const flags = pattern.includes('g') ? 'g' : '';
+        const regex = new RegExp(pattern.replace(/^\/|\/$/, ''), flags);
+        const matches = text.match(regex) || [];
+        document.getElementById('matchCount').textContent = matches.length;
+        document.getElementById('matches').textContent = matches.join(', ');
+        document.getElementById('regexResults').style.display = 'block';
+    } catch(e) {
+        alert('Regex invalide : ' + e.message);
+    }
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

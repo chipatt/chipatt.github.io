@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Prompts ChatGPT 2026</title>
+    <meta name="description" content="Créez des prompts ChatGPT optimisés pour meilleures réponses">
+    <meta name="keywords" content="générateur prompts, ChatGPT prompts, IA prompts, optimisation">
+    <meta property="og:title" content="Générateur de Prompts ChatGPT 2026">
+    <meta property="og:description" content="Créez des prompts ChatGPT optimisés pour meilleures réponses">
+    <meta property="og:type" content="website">
+    <meta name="author" content="TechIA Hub">
+    <!-- Monetag Ads -->
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%); border-bottom: 2px solid #00d4ff; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,212,255,0.2); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #00d4ff; margin: 20px 0; font-size: 2.5em; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        h2 { color: #00ff88; margin-top: 30px; margin-bottom: 15px; font-size: 1.8em; }
+        h3 { color: #00d4ff; margin-top: 20px; margin-bottom: 10px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 30px; margin-top: 30px; }
+        .main-content { min-height: 400px; }
+        .sidebar { padding: 20px; background: #0f1419; border-radius: 8px; border: 1px solid #00d4ff; }
+        .ad-c { background: #0f1419; padding: 10px; border-radius: 4px; border: 1px solid #1a3a4a; }
+        footer { background: #0a0e27; border-top: 2px solid #00d4ff; padding: 30px 0; margin-top: 50px; text-align: center; color: #00ff88; }
+        .faq { margin-top: 40px; }
+        .faq-item { margin: 20px 0; padding: 15px; background: #0f1419; border-left: 4px solid #00ff88; border-radius: 4px; cursor: pointer; }
+        .faq-item h4 { color: #00ff88; margin-bottom: 10px; }
+        .faq-answer { display: none; color: #c0c0c0; margin-top: 10px; }
+        .faq-item.active .faq-answer { display: block; }
+        input, textarea, select, button { background: #0f1419; color: #e0e0e0; border: 1px solid #00d4ff; padding: 10px; border-radius: 4px; font-family: monospace; }
+        button { background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%); color: #000; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #1a3a4a; color: #00ff88; padding: 10px; border: 1px solid #00d4ff; }
+        table td { padding: 10px; border: 1px solid #00d4ff; }
+        table tr:hover { background: #0f1419; }
+        .highlight { background: #1a3a4a; padding: 2px 6px; border-radius: 3px; }
+        @media (max-width: 768px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⚡ Générateur de Prompts ChatGPT 2026</h1>
+            <p style="color: #00ff88; font-size: 0.95em;">Outil gratuit pour générer des prompts ChatGPT efficaces</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+<h2>Générateur de Prompts Optimisés</h2>
+<p>Créez des prompts ChatGPT optimisés pour obtenir les meilleures réponses possibles.</p>
+
+<div style="background: #0f1419; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #00d4ff;">
+    <label style="display: block; margin-bottom: 10px; color: #00ff88;">Sélectionnez une catégorie :</label>
+    <select id="category" onchange="generatePrompt()" style="width: 100%; margin-bottom: 15px;">
+        <option value="">-- Choisir --</option>
+        <option value="writing">✍️ Écriture</option>
+        <option value="code">💻 Programmation</option>
+        <option value="marketing">📢 Marketing</option>
+        <option value="education">📚 Éducation</option>
+        <option value="analysis">📊 Analyse</option>
+    </select>
+    <div id="promptOutput" style="background: #1a1f3a; padding: 15px; border-radius: 4px; display: none; margin-top: 15px; border-left: 4px solid #00ff88;">
+        <p style="color: #00ff88; margin-bottom: 10px; font-weight: bold;">Votre prompt optimisé :</p>
+        <textarea id="promptText" rows="6" readonly style="width: 100%;"></textarea>
+        <button onclick="copyPrompt()" style="width: 100%; margin-top: 10px;">📋 Copier</button>
+    </div>
+</div>
+
+<h2>Template de Prompts Efficaces</h2>
+<p>Un bon prompt comprend :</p>
+<ul style="margin-left: 20px;">
+    <li><span class="highlight">Contexte</span> - Expliquez la situation</li>
+    <li><span class="highlight">Rôle</span> - Définissez le rôle de l'IA</li>
+    <li><span class="highlight">Tâche</span> - Soyez spécifique</li>
+    <li><span class="highlight">Format</span> - Demandez un format précis</li>
+    <li><span class="highlight">Contraintes</span> - Limitez la longueur ou le style</li>
+</ul>
+
+<div class="faq">
+    <h2 style="color: #00ff88;">Questions Fréquentes</h2>
+    <div class="faq-item">
+        <h4>Pourquoi certains prompts fonctionnent mieux ?</h4>
+        <div class="faq-answer">Les prompts spécifiques avec contexte donnent de meilleures résultats que les demandes vagues.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Puis-je utiliser ces templates pour d'autres modèles ?</h4>
+        <div class="faq-answer">Oui, ces principes fonctionnent avec Claude, Gemini, et autres modèles.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Comment améliorer progressivement mes prompts ?</h4>
+        <div class="faq-answer">Testez, itérez et ajoutez du contexte. Les modèles apprennent de vos retours.</div>
+    </div>
+    <div class="faq-item">
+        <h4>Y a-t-il une longueur optimale ?</h4>
+        <div class="faq-answer">Entre 50-500 mots généralement. Plus long ne signifie pas toujours mieux.</div>
+    </div>
+</div>
+
+<script>
+const templates = {
+    writing: "Tu es un expert en rédaction créative. Écris un texte sur [SUJET] en [STYLE]. Limite-toi à [NOMBRE] mots. Format: [FORMAT DEMANDÉ]",
+    code: "Tu es un développeur senior. Écris du code [LANGAGE] pour [FONCTIONNALITÉ]. Ajoute des commentaires. Format: [FORMAT]",
+    marketing: "Tu es un copywriter expert. Crée une [TYPE] pour [PRODUIT] ciblant [AUDIENCE]. Sois persuasif mais honnête.",
+    education: "Tu es un professeur expérimenté. Explique [CONCEPT] simplement pour un niveau [NIVEAU]. Inclus des exemples.",
+    analysis: "Tu es un analyste expert. Analyse [DONNÉES/TEXTE]. Fournis: résumé, points clés, recommandations."
+};
+
+function generatePrompt() {
+    const cat = document.getElementById('category').value;
+    if (!cat) return;
+    document.getElementById('promptText').value = templates[cat] || '';
+    document.getElementById('promptOutput').style.display = 'block';
+}
+
+function copyPrompt() {
+    document.getElementById('promptText').select();
+    document.execCommand('copy');
+    alert('Prompt copié !');
+}
+</script>
+
+            </div>
+            <aside class="sidebar">
+                <h3 style="text-align: center; color: #00ff88;">📊 Publicités</h3>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+                <div style="text-align:center;margin:15px 0;min-height:250px;"></div>
+            </aside>
+        </div>
+        <div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+    </div>
+
+    
+
+<footer>
+        <div class="container">
+            <p>&copy; 2026 TechIA Hub. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #00d4ff;">Innovation technologique et intelligence artificielle</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil de cuisine pratique - Calculatrice Boulangerie">
+    <meta name="keywords" content="cuisine,recettes,outils cuisine,calculatrice-boulangerie">
+    <meta name="author" content="Cuisine & Lifestyle">
+    <meta property="og:title" content="Calculatrice Boulangerie">
+    <meta property="og:type" content="website">
+    <title>Calculatrice Boulangerie | Cuisine & Lifestyle</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #fff9f5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(210, 105, 30, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-left: 5px solid #d2691e;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .ad-block {
+            background: #fff0e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px dashed #daa520;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .ad-label {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ad-code {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            color: #d2691e;
+        }
+
+        h2 {
+            color: #d2691e;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #daa520;
+        }
+
+        h3 {
+            color: #cd853f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 2px solid #daa520;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #d2691e;
+            box-shadow: 0 0 8px rgba(210, 105, 30, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            background: linear-gradient(135deg, #ffe6d5 0%, #fff0e6 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #d2691e;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #daa520;
+        }
+
+        tr:nth-child(even) {
+            background: #fff9f5;
+        }
+
+        tr:hover {
+            background: #ffe6d5;
+        }
+
+        .faq {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: #fff9f5;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 6px;
+            border-left: 4px solid #daa520;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: #ffe6d5;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            color: #d2691e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #666;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+            color: #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 4px solid #d2691e;
+        }
+
+        footer a {
+            color: #daa520;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .timer-item {
+            background: #fff0e6;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px solid #daa520;
+        }
+
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d2691e;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .ingredient-form {
+            background: #fff9f5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice Boulangerie</h1>
+        <p>Votre outil pratique de cuisine</p>
+    </header>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main">
+                
+    <h2>Calculatrice Boulangerie - Pourcentage Boulanger</h2>
+    <p>Calculs professionnels utilisés par les boulangers mondialement.</p>
+
+    <div class="ingredient-form">
+        <h3>Calculateur Pourcentage Boulanger</h3>
+        <label>Quantité de Farine (en grammes):</label>
+        <input type="number" id="farine_qty" placeholder="Ex: 1000" min="0" step="10">
+
+        <label>Pourcentage Hydratation (%):</label>
+        <input type="number" id="hydra_pct" value="65" min="0" max="100" step="1">
+
+        <label>Pourcentage Sel (%):</label>
+        <input type="number" id="sel_pct" value="2" min="0" max="5" step="0.1">
+
+        <label>Pourcentage Levain (%):</label>
+        <input type="number" id="levain_pct" value="20" min="0" max="100" step="1">
+
+        <button onclick="calculerBoulangerie()">Calculer</button>
+    </div>
+
+    <div id="resultat_boulangerie" class="result">
+        <h3>Résultats</h3>
+        <table>
+            <tr><th>Ingrédient</th><th>Grammes</th><th>Pourcentage</th></tr>
+            <tr><td>Farine</td><td id="farine_g">-</td><td>100%</td></tr>
+            <tr><td>Eau</td><td id="eau_g">-</td><td id="hydra_g">-</td></tr>
+            <tr><td>Sel</td><td id="sel_g">-</td><td id="sel_g_pct">-</td></tr>
+            <tr><td>Levain</td><td id="levain_g">-</td><td id="levain_g_pct">-</td></tr>
+            <tr><th>Total Pâte</th><th id="total_g">-</th><th>-</th></tr>
+        </table>
+    </div>
+
+    <script>
+        function calculerBoulangerie() {
+            const farine = parseFloat(document.getElementById('farine_qty').value);
+            const hydra = parseFloat(document.getElementById('hydra_pct').value);
+            const sel = parseFloat(document.getElementById('sel_pct').value);
+            const levain = parseFloat(document.getElementById('levain_pct').value);
+
+            if (isNaN(farine) || farine <= 0) {
+                alert('Veuillez entrer une quantité valide de farine');
+                return;
+            }
+
+            const eau = farine * (hydra / 100);
+            const sel_g = farine * (sel / 100);
+            const levain_g = farine * (levain / 100);
+            const total = farine + eau + sel_g + levain_g;
+
+            document.getElementById('farine_g').textContent = farine.toFixed(0);
+            document.getElementById('eau_g').textContent = eau.toFixed(1);
+            document.getElementById('hydra_g').textContent = hydra.toFixed(1) + '%';
+            document.getElementById('sel_g').textContent = sel_g.toFixed(1);
+            document.getElementById('sel_g_pct').textContent = sel.toFixed(1) + '%';
+            document.getElementById('levain_g').textContent = levain_g.toFixed(1);
+            document.getElementById('levain_g_pct').textContent = levain.toFixed(1) + '%';
+            document.getElementById('total_g').textContent = total.toFixed(1);
+
+            document.getElementById('resultat_boulangerie').classList.add('show');
+        }
+    </script>
+    
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+                <div class="ad-block">
+                    <div class="ad-label">Publicité</div>
+                    <div class="ad-code"></div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="faq">
+            <h2>Questions Fréquemment Posées</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qu'est-ce que le pourcentage boulanger?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Le pourcentage boulanger exprime tous les ingrédients en pourcentage de la farine. La farine = toujours 100%. Utilisé par les boulangers professionnels.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Pourquoi utiliser les pourcentages boulanger?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Cela permet de redimensionner les recettes facilement tout en maintenant les mêmes proportions et la même qualité du pain.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment puis-je convertir de recettes normales?</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="faq-answer">Divisez chaque ingrédient par la quantité de farine et multipliez par 100 pour obtenir le pourcentage.</div>
+            </div>
+        
+        </section>
+    </div>
+
+    
+
+<footer>
+        <p>&copy; 2026 Cuisine & Lifestyle. Tous droits réservés.</p>
+        <p>
+            <a href="#">Accueil</a>
+            <a href="#">Outils</a>
+            <a href="#">Recettes</a>
+            <a href="#">Contact</a>
+            <a href="#">Mentions Légales</a>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const answer = this.querySelector('.faq-answer');
+                const icon = this.querySelector('.toggle-icon');
+                answer.classList.toggle('show');
+                icon.textContent = answer.classList.contains('show') ? '−' : '+';
+            });
+        });
+    </script>
+
+
+</body>
+</html>

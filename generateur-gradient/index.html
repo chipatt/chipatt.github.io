@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Générateur de Dégradé CSS</title><meta name="description" content="Créez de magnifiques dégradés CSS avec code prêt à copier"><meta name="keywords" content="css gradient, dégradé css, gradient generator, background gradient"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Générateur de Dégradé CSS"><meta property="og:description" content="Créez de magnifiques dégradés CSS avec code prêt à copier"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#E84393,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#E84393;margin-bottom:10px;font-size:1rem}
+.btn{background:#E84393;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#E84393}
+.res{background:#f0f7ff;border-left:4px solid #E84393;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#E84393;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Générateur de Dégradé CSS</h1><p>Créez de magnifiques dégradés CSS avec code prêt à copier</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Générateur de Dégradé CSS</h2>
+<div id="preview" style="height:200px;border-radius:12px;margin-bottom:20px;background:linear-gradient(135deg,#E84393,#6C5CE7)"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
+<div><label>Couleur 1:</label><input type="color" id="c1" value="#E84393" oninput="upd()" style="height:40px;cursor:pointer"></div>
+<div><label>Couleur 2:</label><input type="color" id="c2" value="#6C5CE7" oninput="upd()" style="height:40px;cursor:pointer"></div>
+<div><label>Direction:</label><select id="dir" onchange="upd()"><option value="to right">→ Droite</option><option value="to left">← Gauche</option><option value="to bottom">↓ Bas</option><option value="to top">↑ Haut</option><option value="135deg" selected>↘ Diagonal</option><option value="45deg">↗ Diagonal</option><option value="to right, circle">◉ Radial</option></select></div>
+<div><label>Type:</label><select id="type" onchange="upd()"><option value="linear">Linéaire</option><option value="radial">Radial</option></select></div></div>
+<div style="margin-top:15px;padding:15px;background:#1a1a2e;border-radius:10px;font-family:monospace;color:#00CEC9;font-size:.9rem;word-break:break-all" id="code"></div>
+<div style="display:flex;gap:10px;margin-top:10px"><button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('code').textContent)">Copier le CSS</button>
+<button class="btn" onclick="document.getElementById('c1').value='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');document.getElementById('c2').value='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');upd()" style="background:#636E72">Aléatoire</button></div>
+<h3 style="margin:20px 0 10px">Dégradés populaires</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px" id="presets"></div></div>
+<script>
+function upd(){const c1=document.getElementById('c1').value,c2=document.getElementById('c2').value,d=document.getElementById('dir').value,t=document.getElementById('type').value;
+const css=t==='radial'?`radial-gradient(circle, ${c1}, ${c2})`:`linear-gradient(${d}, ${c1}, ${c2})`;
+document.getElementById('preview').style.background=css;document.getElementById('code').textContent=`background: ${css};`}
+const presets=[['#667eea','#764ba2'],['#f093fb','#f5576c'],['#4facfe','#00f2fe'],['#43e97b','#38f9d7'],['#fa709a','#fee140'],['#a18cd1','#fbc2eb'],['#ffecd2','#fcb69f'],['#ff9a9e','#fecfef'],['#a1c4fd','#c2e9fb'],['#d4fc79','#96e6a1'],['#84fab0','#8fd3f4'],['#ffc3a0','#ffafbd']];
+const pel=document.getElementById('presets');presets.forEach(([a,b])=>{const d=document.createElement('div');d.style.cssText=`height:60px;border-radius:8px;cursor:pointer;background:linear-gradient(135deg,${a},${b})`;d.onclick=()=>{document.getElementById('c1').value=a;document.getElementById('c2').value=b;upd()};pel.appendChild(d)});upd();
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment utiliser le dégradé ?</summary><p>Copiez le code CSS généré et collez-le dans la propriété background de votre élément HTML.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Générateur de Dégradé CSS</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

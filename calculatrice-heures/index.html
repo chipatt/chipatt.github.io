@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calculatrice d'Heures de Travail</title><meta name="description" content="Calculez vos heures travaillées, heures supplémentaires et salaire"><meta name="keywords" content="calculer heures travail, heures supplémentaires, calculatrice salaire, temps travail"><meta name="robots" content="index,follow">
+<meta property="og:title" content="Calculatrice d'Heures de Travail"><meta property="og:description" content="Calculez vos heures travaillées, heures supplémentaires et salaire"><!-- Monetag Ads -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
+.hdr{background:linear-gradient(135deg,#00B894,#1a1a2e);color:#fff;padding:20px 0;text-align:center}.hdr h1{font-size:clamp(1.4rem,3vw,2rem)}.hdr p{opacity:.85;font-size:.9rem}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
+.card{background:#fff;border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb{display:flex;flex-direction:column;gap:20px}
+.sb-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 15px rgba(0,0,0,.06)}.sb-card h3{color:#00B894;margin-bottom:10px;font-size:1rem}
+.btn{background:#00B894;color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:1rem;transition:all .2s}.btn:hover{opacity:.9;transform:translateY(-1px)}
+input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;margin:6px 0 14px}input:focus,select:focus,textarea:focus{outline:none;border-color:#00B894}
+.res{background:#f0f7ff;border-left:4px solid #00B894;padding:20px;border-radius:0 8px 8px 0;margin:15px 0;font-size:1.1rem}
+.ftr{background:#1a1a2e;color:#fff;text-align:center;padding:30px 20px;margin-top:40px}.ftr a{color:#00B894;text-decoration:none}
+.faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.sb{order:-1}}
+</style></head><body>
+<div class="hdr"><div class="wrap"><h1>Calculatrice d'Heures de Travail</h1><p>Calculez vos heures travaillées, heures supplémentaires et salaire</p></div></div>
+<div class="wrap"><div class="grid"><div class="content"><div class="card"><h2 style="margin-bottom:15px">Calculatrice d'Heures de Travail</h2>
+<div id="days"></div>
+<button class="btn" onclick="addDay()" style="margin:10px 0;background:#636E72">+ Ajouter un jour</button>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0">
+<div><label>Taux horaire (€):</label><input type="number" id="rate" value="15" oninput="calc()"></div>
+<div><label>Heures sup après:</label><input type="number" id="otAfter" value="35" oninput="calc()"></div></div>
+<button class="btn" onclick="calc()" style="width:100%">Calculer</button>
+<div id="result" style="margin-top:20px"></div></div>
+<script>
+const days=['Lundi','Mardi','Mercredi','Jeudi','Vendredi'];let dayCount=5;
+function renderDays(){const c=document.getElementById('days');c.innerHTML='';for(let i=0;i<dayCount;i++){c.innerHTML+=`<div style="display:grid;grid-template-columns:100px 1fr 1fr 1fr;gap:8px;align-items:center;margin-bottom:8px"><strong>${days[i]||'Jour '+(i+1)}</strong><div><label style="font-size:.8rem">Début:</label><input type="time" class="start" value="09:00" onchange="calc()"></div><div><label style="font-size:.8rem">Fin:</label><input type="time" class="end" value="17:00" onchange="calc()"></div><div><label style="font-size:.8rem">Pause (min):</label><input type="number" class="brk" value="60" min="0" onchange="calc()"></div></div>`}}
+function addDay(){dayCount++;renderDays();calc()}renderDays();
+function calc(){const starts=document.querySelectorAll('.start'),ends=document.querySelectorAll('.end'),brks=document.querySelectorAll('.brk');
+let total=0;const daily=[];for(let i=0;i<starts.length;i++){const s=starts[i].value.split(':').map(Number),e=ends[i].value.split(':').map(Number),b=+brks[i].value;
+const h=(e[0]*60+e[1]-s[0]*60-s[1]-b)/60;daily.push(Math.max(0,h));total+=Math.max(0,h)}
+const rate=+document.getElementById('rate').value,otAfter=+document.getElementById('otAfter').value;
+const regular=Math.min(total,otAfter),ot=Math.max(0,total-otAfter);
+document.getElementById('result').innerHTML=`
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">
+<div style="text-align:center;padding:15px;background:#d4edda;border-radius:10px"><div style="font-size:1.8rem;font-weight:700;color:#00B894">${total.toFixed(1)}h</div><div style="font-size:.85rem;color:#666">Total</div></div>
+<div style="text-align:center;padding:15px;background:#d4edda;border-radius:10px"><div style="font-size:1.8rem;font-weight:700;color:#00B894">${regular.toFixed(1)}h</div><div style="font-size:.85rem;color:#666">Normales</div></div>
+<div style="text-align:center;padding:15px;background:#fff3cd;border-radius:10px"><div style="font-size:1.8rem;font-weight:700;color:#F39C12">${ot.toFixed(1)}h</div><div style="font-size:.85rem;color:#666">Supplémentaires</div></div>
+<div style="text-align:center;padding:15px;background:#f0f0ff;border-radius:10px"><div style="font-size:1.8rem;font-weight:700;color:#6C5CE7">${(regular*rate+ot*rate*1.25).toFixed(2)}€</div><div style="font-size:.85rem;color:#666">Salaire brut</div></div>
+</div>
+<div style="margin-top:15px;font-size:.9rem;color:#666"><strong>Détail journalier:</strong> ${daily.map((h,i)=>(days[i]||'J'+(i+1))+': '+h.toFixed(1)+'h').join(' | ')}</div>`}calc();
+</script>
+<div class="faq"><h3>FAQ</h3><details><summary>Comment sont calculées les heures supplémentaires ?</summary><p>Les heures au-delà du seuil que vous définissez (35h par défaut) sont majorées de 25% pour le calcul du salaire.</p></details></div></div>
+<div class="sb"><div class="sb-card"><h3>Outils populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Compteur de mots</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Convertisseur d'unités</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Calculatrice pourcentage</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">Générateur mot de passe</a></li>
+</ul></div></div></div></div>
+<div class="ftr"><div class="wrap"><p>&copy; 2026 Calculatrice d'Heures de Travail</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>

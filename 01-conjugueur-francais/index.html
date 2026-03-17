@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outil gratuit pour conjuguer les verbes français dans tous les temps">
+    <meta name="keywords" content="éducation, culture, apprentissage, français">
+    <meta name="author" content="Education Tools">
+    <meta property="og:title" content="Conjugueur de Verbes Français">
+    <meta property="og:description" content="Outil gratuit pour conjuguer les verbes français dans tous les temps">
+    <meta property="og:type" content="website">
+    <title>Conjugueur de Verbes Français | Education Tools</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .result {
+            background: #f0f4ff;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #667eea;
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #555;
+            display: none;
+        }
+        .faq-answer.show {
+            display: block;
+        }
+        .ad-space {
+            background: #f5f5f5;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            color: #999;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            header {
+                padding: 20px;
+            }
+        }
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conjugueur de Verbes Français</h1>
+            <p>Outil gratuit pour conjuguer les verbes français dans tous les temps</p>
+        </header>
+
+        <div class="main">
+            <div class="content">
+                
+<h2>Entrez un verbe français</h2>
+<div class="input-group">
+    <label for="verb">Verbe:</label>
+    <select id="verb">
+        <option value="">-- Sélectionnez un verbe --</option>
+        <option value="aller">aller</option>
+        <option value="être">être</option>
+        <option value="avoir">avoir</option>
+        <option value="faire">faire</option>
+        <option value="pouvoir">pouvoir</option>
+        <option value="vouloir">vouloir</option>
+        <option value="devoir">devoir</option>
+        <option value="parler">parler</option>
+        <option value="prendre">prendre</option>
+        <option value="venir">venir</option>
+        <option value="savoir">savoir</option>
+    </select>
+</div>
+<button onclick="conjugateVerb()">Conjuguer</button>
+
+<div id="result" class="result">
+    <div id="conjugation-table"></div>
+</div>
+
+<div class="faq">
+    <h2>Questions Fréquentes</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Quels sont les différents temps de conjugaison?</div>
+        <div class="faq-answer">Il existe plusieurs temps: le présent, le passé composé, l'imparfait, le futur, le conditionnel et le subjonctif. Chaque temps a ses propres formes et usages.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Pourquoi les verbes changent-ils selon la personne?</div>
+        <div class="faq-answer">Les verbes se conjuguent selon la personne (je, tu, il, etc.) pour indiquer qui effectue l'action. C'est une caractéristique fondamentale de la grammaire française.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Comment mémoriser les conjugaisons?</div>
+        <div class="faq-answer">Pratiquez régulièrement, écrivez les formes, et regroupez les verbes par famille. Les verbes réguliers suivent des modèles, ce qui facilite l'apprentissage.</div>
+    </div>
+</div>
+
+<script>
+const verbDatabase = {"aller": {"infinitive": "aller", "present": ["vais", "vas", "va", "allons", "allez", "vont"], "passe_compose": ["suis all\u00e9(e)", "es all\u00e9(e)", "est all\u00e9(e)", "sommes all\u00e9(e)s", "\u00eates all\u00e9(e)s", "sont all\u00e9(e)s"], "imparfait": ["allais", "allais", "allait", "allions", "alliez", "allaient"], "futur": ["irai", "iras", "ira", "irons", "irez", "iront"], "conditionnel": ["irais", "irais", "irait", "irions", "iriez", "iraient"], "subjonctif": ["aille", "ailles", "aille", "allions", "alliez", "aillent"]}, "\u00eatre": {"infinitive": "\u00eatre", "present": ["suis", "es", "est", "sommes", "\u00eates", "sont"], "passe_compose": ["ai \u00e9t\u00e9", "as \u00e9t\u00e9", "a \u00e9t\u00e9", "avons \u00e9t\u00e9", "avez \u00e9t\u00e9", "ont \u00e9t\u00e9"], "imparfait": ["\u00e9tais", "\u00e9tais", "\u00e9tait", "\u00e9tions", "\u00e9tiez", "\u00e9taient"], "futur": ["serai", "seras", "sera", "serons", "serez", "seront"], "conditionnel": ["serais", "serais", "serait", "serions", "seriez", "seraient"], "subjonctif": ["sois", "sois", "soit", "soyons", "soyez", "soient"]}, "avoir": {"infinitive": "avoir", "present": ["ai", "as", "a", "avons", "avez", "ont"], "passe_compose": ["ai eu", "as eu", "a eu", "avons eu", "avez eu", "ont eu"], "imparfait": ["avais", "avais", "avait", "avions", "aviez", "avaient"], "futur": ["aurai", "auras", "aura", "aurons", "aurez", "auront"], "conditionnel": ["aurais", "aurais", "aurait", "aurions", "auriez", "auraient"], "subjonctif": ["aie", "aies", "ait", "ayons", "ayez", "aient"]}, "faire": {"infinitive": "faire", "present": ["fais", "fais", "fait", "faisons", "faites", "font"], "passe_compose": ["ai fait", "as fait", "a fait", "avons fait", "avez fait", "ont fait"], "imparfait": ["faisais", "faisais", "faisait", "faisions", "faisiez", "faisaient"], "futur": ["ferai", "feras", "fera", "ferons", "ferez", "feront"], "conditionnel": ["ferais", "ferais", "ferait", "ferions", "feriez", "feraient"], "subjonctif": ["fasse", "fasses", "fasse", "fassions", "fassiez", "fassent"]}, "pouvoir": {"infinitive": "pouvoir", "present": ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"], "passe_compose": ["ai pu", "as pu", "a pu", "avons pu", "avez pu", "ont pu"], "imparfait": ["pouvais", "pouvais", "pouvait", "pouvions", "pouviez", "pouvaient"], "futur": ["pourrai", "pourras", "pourra", "pourrons", "pourrez", "pourront"], "conditionnel": ["pourrais", "pourrais", "pourrait", "pourrions", "pourriez", "pourraient"], "subjonctif": ["puisse", "puisses", "puisse", "puissions", "puissiez", "puissent"]}, "vouloir": {"infinitive": "vouloir", "present": ["veux", "veux", "veut", "voulons", "voulez", "veulent"], "passe_compose": ["ai voulu", "as voulu", "a voulu", "avons voulu", "avez voulu", "ont voulu"], "imparfait": ["voulais", "voulais", "voulait", "voulions", "vouliez", "voulaient"], "futur": ["voudrai", "voudras", "voudra", "voudrons", "voudrez", "voudront"], "conditionnel": ["voudrais", "voudrais", "voudrait", "voudriez", "voudriez", "voudraient"], "subjonctif": ["veuille", "veuilles", "veuille", "voulions", "vouliez", "veuillent"]}, "devoir": {"infinitive": "devoir", "present": ["dois", "dois", "doit", "devons", "devez", "doivent"], "passe_compose": ["ai d\u00fb", "as d\u00fb", "a d\u00fb", "avons d\u00fb", "avez d\u00fb", "ont d\u00fb"], "imparfait": ["devais", "devais", "devait", "devions", "deviez", "devaient"], "futur": ["devrai", "devras", "devra", "devrons", "devrez", "devront"], "conditionnel": ["devrais", "devrais", "devrait", "devrions", "devriez", "devraient"], "subjonctif": ["doive", "doives", "doive", "devions", "deviez", "doivent"]}, "parler": {"infinitive": "parler", "present": ["parle", "parles", "parle", "parlons", "parlez", "parlent"], "passe_compose": ["ai parl\u00e9", "as parl\u00e9", "a parl\u00e9", "avons parl\u00e9", "avez parl\u00e9", "ont parl\u00e9"], "imparfait": ["parlais", "parlais", "parlait", "parlions", "parliez", "parlaient"], "futur": ["parlerai", "parleras", "parlera", "parlerons", "parlerez", "parleront"], "conditionnel": ["parlerais", "parlerais", "parlerait", "parlerions", "parleriez", "parleraient"], "subjonctif": ["parle", "parles", "parle", "parlions", "parliez", "parlent"]}, "prendre": {"infinitive": "prendre", "present": ["prends", "prends", "prend", "prenons", "prenez", "prennent"], "passe_compose": ["ai pris", "as pris", "a pris", "avons pris", "avez pris", "ont pris"], "imparfait": ["prenais", "prenais", "prenait", "prenions", "preniez", "prenaient"], "futur": ["prendrai", "prendras", "prendra", "prendrons", "prendrez", "prendront"], "conditionnel": ["prendrais", "prendrais", "prendrait", "prendrions", "prendriez", "prendraient"], "subjonctif": ["prenne", "prennes", "prenne", "prenions", "preniez", "prennent"]}, "venir": {"infinitive": "venir", "present": ["viens", "viens", "vient", "venons", "venez", "viennent"], "passe_compose": ["suis venu(e)", "es venu(e)", "est venu(e)", "sommes venu(e)s", "\u00eates venu(e)s", "sont venu(e)s"], "imparfait": ["venais", "venais", "venait", "venions", "veniez", "venaient"], "futur": ["viendrai", "viendras", "viendra", "viendrons", "viendrez", "viendront"], "conditionnel": ["viendrais", "viendrais", "viendrait", "viendrions", "viendriez", "viendraient"], "subjonctif": ["vienne", "viennes", "vienne", "venions", "veniez", "viennent"]}, "savoir": {"infinitive": "savoir", "present": ["sais", "sais", "sait", "savons", "savez", "savent"], "passe_compose": ["ai su", "as su", "a su", "avons su", "avez su", "ont su"], "imparfait": ["savais", "savais", "savait", "savions", "saviez", "savaient"], "futur": ["saurai", "sauras", "saura", "saurons", "saurez", "sauront"], "conditionnel": ["saurais", "saurais", "saurait", "saurions", "sauriez", "sauraient"], "subjonctif": ["sache", "saches", "sache", "sachions", "sachiez", "sachent"]}};
+const pronouns = ['je', 'tu', 'il/elle', 'nous', 'vous', 'ils/elles'];
+const tenses = ['present', 'passe_compose', 'imparfait', 'futur', 'conditionnel', 'subjonctif'];
+
+function conjugateVerb() {
+    const verb = document.getElementById('verb').value;
+    if (!verb) {
+        alert('Veuillez sélectionner un verbe');
+        return;
+    }
+
+    const data = verbDatabase[verb];
+    let html = '<h3>Conjugaison de: <strong>' + verb + '</strong></h3>';
+
+    tenses.forEach(tense => {
+        html += '<h4>' + tense.replace('_', ' ').toUpperCase() + '</h4>';
+        html += '<table><tr><th>Personne</th><th>Forme</th></tr>';
+        data[tense].forEach((form, idx) => {
+            html += '<tr><td>' + pronouns[idx] + '</td><td>' + form + '</td></tr>';
+        });
+        html += '</table>';
+    });
+
+    document.getElementById('conjugation-table').innerHTML = html;
+    document.getElementById('result').classList.add('show');
+}
+
+function toggleFAQ(element) {
+    element.nextElementSibling.classList.toggle('show');
+}
+</script>
+
+            </div>
+
+            <aside class="sidebar">
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+                <div class="ad-space">
+                    <!-- Monetag Ads -->
+                    
+                    <script>
+                         
+                    </script>
+                </div>
+            </aside>
+        </div>
+
+        
+
+<footer>
+            <p>&copy; 2026 Education Tools | Outils d'apprentissage en ligne gratuits</p>
+            <p><a href="#">Accueil</a> | <a href="#">Conditions d'utilisation</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Contact</a></p>
+        </footer>
+    </div>
+
+
+</body>
+</html>
