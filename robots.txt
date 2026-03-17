@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chipatt.github.io/sitemap.xml
+
+# Autoriser tous les robots de recherche
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
